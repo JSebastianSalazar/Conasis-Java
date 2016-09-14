@@ -456,7 +456,7 @@
       <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-    <script src="js/index2.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
