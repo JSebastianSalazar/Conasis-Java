@@ -20,17 +20,21 @@ body{
     min-height: 100vh;
     flex-direction: column;
 }
-
+     .ftft{
+                position: fixed;
+                background-color: #009688;
+                bottom: 0;
+                z-index: 100;/* Depende el valor segun las capas flotantes que tengas */
+                right: 0%;
+                width: 100%;
+            }  
+            footer.page-footer{
+                background-color: rgba(0,137,158,0.24);
+            }
   main {
     flex: 1 0 auto;
   }
-  footer {
-  position: relative;
-  margin-top: -63px; /* ponga en negativo el alto de su pie de página para nuestro    ejemplo usamos 63, usted debe remplazarlo según su diseño   */
-  height: 63px;
-  clear:both;
-  width:100%;
- }
+ 
 #UsuariosEstadicticas{
     background-color: #f2f2f2;
 }

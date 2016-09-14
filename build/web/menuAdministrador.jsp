@@ -23,7 +23,18 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style2.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .ftft{
+                position: fixed;
+                background-color: #009688;
+                bottom: 0;
+                z-index: 100;/* Depende el valor segun las capas flotantes que tengas */
+                right: 0%;
+                width: 100%;
 
+            }  
+            
+        </style>
 
     </head>
 
@@ -45,6 +56,7 @@
         <nav class="cabecera" >
             <div class="nav-wrapper" style="background-color: transparent">
                 <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/><!--<a><%= nombre%></a>-->
+                 <a  class="brand-logo center">Control de asistencia</a>
                 <!-- <div class="right contenedorImgInstructor" style="background-color: transparent">
                      <img src="<%= session.getAttribute("foto")%>" alt="" class="circle responsive-img imgInstructor " data-delay="50" id="imglol"  style="height: 82px; width: 82px;" />
                      <form action="SalidaAdmi">
@@ -196,9 +208,9 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                    Ayuda
                 </a>
             </li>
         </ul>
@@ -251,9 +263,9 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                    Ayuda
                 </a>
             </li>
         </ul>
@@ -263,7 +275,7 @@
 
     </aside>
     <!-- Modal Structure -->
-    <div id="modalCDxI" class="modal modal-fixed-footer" >
+    <div id="modalCDxI color2" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
             <div id="tblcompetenciasDictadasXintstructor">
@@ -278,185 +290,224 @@
 
     <!--Lo que se mostrará-->
 
-    <div class="">
-        <div class="container">
-            <center>
-                <div style="margin-left: 10%">
-                    <h4>Control de asistencia</h4>
-                    <img src="imagenes/conasis2.png" alt=""/>
-                    <br>
-                    <p style="font-size: 20px">Sistema de información que registra y controla la asistencia de los aprendices, al igual que proporciona información estadística al respecto y facilita el proceso de asignación de horarios de formación.</p>
-                </div>
-            </center>
-        </div>
+    <div class="container">
 
-    </div>
-    <!--<div class="container">
-        <div class="row" style="margin: 0px ;" id="UsuariosEstadicticas">
-            <div class="card col s5" style="height: 485px">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator imgGrupo responsive-img" id="imgCarta" src="imagenes/grupo.png" alt="">
-                </div>
-
-                <div class="card-content cartaInformacion" >
-                    <span class="card-title activator grey-text text-darken-4">Usuarios<i class="material-icons right">more_vert</i></span>
-                    <p><a href="registroInstructores.jsp">Instructores</a></p>
-                    <p><a href="RegistroSecretaria.jsp">Secretarías</a></p>
-                    <p><a href="RegistroAprendiz.jsp">Aprendices</a></p>
-                </div>
-                <div class="card-reveal grupoDiv">
-                    <span class="card-title grey-text text-darken-4">Usuarios<i class="material-icons right">close</i></span><br>
-                    <p>Puedes registrar a los usuarios en el sistema para que comiencen a disfrutar de la nueva forma de tomar asistencia,  consultar sus registros,  modificar sus datos y eliminarlos.</p>
-                </div>
-            </div>
-
-            <div class="col s2"><h1></h1></div>
-
-            <div class="card large col s5" style="height: 485px; margin-top: -10px;">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" id="imgCarta2" src="imagenes/estadisticas.gif" alt="">
-                </div>
-
-                <div class="card-content cartaInformacion">
-                    <span class="card-title activator grey-text text-darken-4">Visualizar datos estadísticos<i class="material-icons right">more_vert</i></span>
-                    <p><a href="#">Datos estadísticos</a></p>
-                </div>
-                <div class="card-reveal grupoDiv">
-                    <span class="card-title grey-text text-darken-4">Datos estadísticos<i class="material-icons right">close</i></span><br>
-                    <p>Aquí puedes ver graficas  de estadísticas con datos recopilados y resumidos de:</p>
-                    <ul>
-                        <li>La asistencia por Aprendiz</li>
-                        <li>La asistencia de los apredices por Ficha</li>
-                        <li>La asistencia de los aprendices por Programa</li>
-                    </ul>
-                    <p>Además de estadisticas gráficas por género, municipio, barrio.</p>
-                </div>
-            </div>
-        </div>
-
-    <!---Ambientes y fichas
-
-    <div class="row" style="margin: 0px" id="fichasAmbientes" >
-        <div class="card col s5" style="height: 485px ;" >
+        <div class="card small">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator imgGrupo responsive-img" id="imgCarta" src="imagenes/fichas.png" alt="">
+                <center><img class="activator" src="imagenes/conasisLogo.png" style=" width:80%; height: 50%" alt="" /></center>
             </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Acerca de ...<i class="material-icons right">more_vert</i></span>
 
-            <div class="card-content cartaInformacion" >
-                <span class="card-title activator grey-text text-darken-4">Fichas<i class="material-icons right">more_vert</i></span>
-                <p><a href="ficha.jsp">Fichas</a></p>
-                 <p><a href="programacion.jsp">Programación</a></p>
             </div>
-            <div class="card-reveal grupoDiv">
-                <span class="card-title grey-text text-darken-4">Fichas<i class="material-icons right">close</i></span><br>
-                <p>En esta sección se registran las fichas del centro para posteriormente asignarles un gestor, los ambientes de clases, sus competencias entre otras caracteristicas.</p>
+            <div class="card-reveal">
+                <center>  <span class="card-title grey-text text-darken-4">Control Asistencia<i class="material-icons right">close</i></span>
+                    <p style="text-align: justify; width: 50%; height: 20%">Es un sistema de información realizado para el SENA Complejo Norte CTGI Medellin,
+                        con el que se quiere llevar un control de asistencia de los aprendices de una forma rapida donde la información registrada la podremos 
+                        visualizar  en tiempo real, además podemos generar reportes y estadisticas de inasistencias de cada aprendiz en forma individual o
+                        grupal.
+                    </p>
+                </center> 
             </div>
-        </div>
-
-        <div class="col s2" style="background-color: #f2f2f2;"><h1></h1></div>
-
-        <div class="card large col s5" style="height: 485px; margin-top:-10px;">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator responsive-img" id="imgCarta" src="imagenes/ambiente.jpg" alt="">
-            </div>
-
-            <div class="card-content cartaInformacion">
-                <span class="card-title activator grey-text text-darken-4">Ambientes<i class="material-icons right">more_vert</i></span>
-                <p><a href="ambiente.jsp">Ambientes</a></p>
-            </div>
-            <div class="card-reveal grupoDiv">
-                <span class="card-title grey-text text-darken-4">Ambientes de clases<i class="material-icons right">close</i></span><br>
-                <p>Aquí se registrán los ambientes de clases con sus caracteriticas(adecuaciones, sumistros, capacidad, etc.) para ser asignados a las distintas fichas.</p>
-            </div>
-        </div>
-    </div>
-
-    <!--Competencias y asistencia
-
-    <div class="row" style="margin: 0px" id="AsistenciaCompetencia">
-        <div class="card col s5" style="height: 485px;">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator imgGrupo responsive-img" id="imgCarta1" src="imagenes/asistencia.png" alt="">
-            </div>
-
-            <div class="card-content cartaInformacion" >
-                <span class="card-title activator grey-text text-darken-4">Asistencia<i class="material-icons right">more_vert</i></span>
-                <p><a class="modal-trigger" href="#modalCDxI" id="competenciasDictadasXintstructor" >Ingreso y salida</a></p><!-- asistencia.jsp 
-                <p><a href="inasistencia.jsp">Justificar falta</a></p>
-                <p><a href="infoAsistencia.jsp">Información de asistencia</a></p>
-            </div>
-            <div class="card-reveal grupoDiv">
-                <span class="card-title grey-text text-darken-4">Asistencia<i class="material-icons right">close</i></span><br>
-                <p>Apartado donde se puede se puede habilitar el registro de asistencia (entrada y salida de clases), el cuál es util para tomar el tiempo preciso de la llegada y salida de los aprendices.</p>
-            </div>
-        </div>
-    <!-- Modal Structure 
-   <div id="modalCDxI" class="modal modal-fixed-footer" >
-       <div class="modal-content">
-           <h4>Asistencia</h4>
-           <div id="tblcompetenciasDictadasXintstructor">
-               
-           </div>
-       </div>
-       <div class="modal-footer">
-           <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
-           <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
-       </div>
-   </div><!--fin del modal 
-           <div class="col s2"><h1></h1></div>
-
-           <div class="card large col s5" style="height: 485px; margin-top: -10px;">
-               <div class="card-image waves-effect waves-block waves-light">
-                   <center> <img class="activator responsive-img" id="imgCarta3" src="imagenes/competencias.png" alt=""></center>
-               </div>
-
-               <div class="card-content cartaInformacion">
-                   <span class="card-title activator grey-text text-darken-4">Programas y Competencias<i class="material-icons right">more_vert</i></span>
-                   <p><a href="prograXcompe.jsp">Programas y competencias</a></p>
-               </div>
-               <div class="card-reveal grupoDiv">
-                   <span class="card-title grey-text text-darken-4">Programas y Competencias<i class="material-icons right">close</i></span><br>
-                   <p>Puedes agregar las competencias pertinenetes de cada programa para posteriormente utilizarlas en la programación de las fichas, además, de buscarlas para hacer modificaciones o eliminarlas según su necesidad.</p>
-               </div>
-           </div>
-       </div>
+        </div> 
+    </div> 
 
 
-       <div class="row" id="listaMenu">
-           <ul>
-               <li><a class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Usuarios y estadisticas" id="usuarios"><i class="material-icons" >add</i></a></li>
-               <li><a class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Fichas y ambientes" id="grupos"><i class="material-icons" >add</i></a></li>
-               <li><a class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asistencia y competencias" id="asistencia"><i class="material-icons" >add</i></a></li>
-           </ul>
-       </div>
 
-   </div>-->
-    <footer class="page-footer">
 
-        <div class="footer-copyright">
+
+
+    <div class="container">
+        <footer class="page-footer">
             <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-        </div>
-    </footer>
-    <%} else {
-            session.invalidate();
-            response.sendRedirect("index.html");
-        }%>
-    <!--importación de Jquery por medio de CDN-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <!--importacion de materializecss javaScript por medio de CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <!--importacion de datatable javaScript por medio de CDN-->
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="js/sweetalert.min.js" type="text/javascript"></script>
-    <!-- <script src="js/main.js" type="text/javascript"></script>
-     <script src="js/js.js" type="text/javascript"></script>
-      <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
-    <script src="js/ajax.js" type="text/javascript"></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-    <script src="js/index.js"></script>
-</body>
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="black-text" >Desarrolladores</h5>
+                        <p class="grey-text text-lighten-3">
+                            <a href="#eme" class="modal-trigger waves-effect waves-light img">Emerson Javid Gonzalez</a>
+                            <a href="#sebas" class="modal-trigger waves-effect waves-light img">Johan Sebastian Salazar Muñoz</a>
+                            <a href="#wil" class="modal-trigger waves-effect waves-light img">Wilmar Alejandro Agudelo Yepes</a>
+                        </p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="black-text"> Ayuda </h5>
+                        <ul>
+                            <li> <a href="manual.jsp">Manual usuario</a></li>
+                            <li><a href="#propiedad" class="modal-trigger waves-effect waves-light img">Propiedad intelectual</a></li>
+                            <li><a href="#anexo" class="modal-trigger waves-effect waves-light img">Anexos</a></li>
+                        </ul>
+                    </div>
 
-</html>
+                    <!-- Modal -->
+
+
+                    <div id="anexo" class="modal">
+                        <div class="modal-content">
+                            <center> 
+                                <p style="text-align: justify; width: 70%; height: 20%">Esperamos que tengas una esperincia satisfactoria con la utilizacion 
+                                    de nuestro sistema de información y para ello estamos constantemente  realizando mejoras para que su funcionamiento sea 
+                                    cada día mas acordes a sus actividades a desarrollar. 
+                                    <br>
+                                    <br>
+                                    <b> CONASIS</b> es un sistema de información realizado en IDE NetBeans utilizando lenguajes de programación como 
+                                    JavaEE, JavaScript y SQL con un gestor de base de datos en Mysql y otras tegnologias:
+                                </p>
+                            </center>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col s4">
+                                        <ul>	
+                                            <li><b>framework </b></li>                        
+                                            <li>Materializecss </li>
+                                            <li> jquery</li>
+                                        </ul>
+                                        <ul><b>API </b></ul>
+                                        <li> Google charts </li>
+                                    </div>
+
+                                    <div class="col s4">
+                                        <ul><b>  librerias </b></ul>
+                                        <li> Gson </li> 
+                                        <li> Itext </li>
+                                        <li> Smtp. </li>
+                                    </div>
+                                    <div class="col s4">
+                                        <ul><b> plugins </b></ul>
+                                        <li> datatable </li>
+                                        <li> sweet alert.</li> 
+                                        <ul><b> Ajax </b></ul>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+
+
+
+                    <div id="propiedad" class="modal">
+                        <div class="modal-content">
+                            <center> 
+                                <p style="text-align: justify; width: 70%; height: 20%">
+                                <h4>Propiedad intelectual</h4>
+                                </p>
+                                <p style="text-align: justify; width: 70%; height: 20%">
+                                <ul>Sistema de informacón realizado:
+                                    <li>Emerson Javid Gonzalez Morales </li>
+                                    <li>Johan Sebastian Salazar Muñoz</li>
+                                    <li>Wilmar Alejandro Agudelo Yepes</li>
+                                </ul>
+                                </p>
+                            </center>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal Structure -->
+                    <div id="sebas" class="modal bottom-sheet">
+                        <div class="modal-content">
+
+                            <div class="row">
+                                <div class="col s3"></div>
+                                <div class="col s4"> 
+                                    <img class="circle" src="imagenes/IMG_3702.JPG" style="width: 50%; height: 40%" alt=""/>
+                                </div> 
+                                <div class="col s5">
+                                    <p><b>Johan Salazar</b> Tecnico en Sistemas y aprendiz de Analisis y Desarrollo de  Sistemas de Información Trabajó como desarrollador.</p>
+                                    <img style="width: 5%; height: 5% " src="imagenes/linkedin.png" alt=""/>
+                                    <img style="width: 5%; height: 5% " src="imagenes/google-plus.png" alt=""/>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div id="eme" class="modal bottom-sheet">
+                        <div class="modal-content">
+                            <div class="row">
+                                <div class="col s3"> </div>
+                                <div class="col s4">
+
+                                    <img class="circle" src="imagenes/IMG_3699.JPG" style="width: 50%; height: 20%" alt=""/>
+                                </div>
+                                <div class="col s5">
+                                    <p><b>Emerson Javid</b> Tecnico en Mantenimiento y Repacion de Equipos de Computo y aprendiz de Analisis y Desarrollo de  Sistemas de Información Trabajó como desarrollador.</p>
+                                    <img style="width: 5%; height: 5% " src="imagenes/google-plus.png" alt=""/>
+                                    <img style="width: 5%; height: 5% " src="imagenes/facebook.png" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="wil" class="modal bottom-sheet">
+                        <div class="modal-content">
+
+                            <div class="row">
+                                <div class="col s3"></div>  
+                                <div class="col s4 ">
+                                    <img class="circle" src="imagenes/IMG_3698.JPG" style="width: 20%; height: 20%" alt=""/>
+                                </div>  
+                                <div class="col s5">   
+                                    <p><b>Wilmar  Agudelo</b> Aprendiz de Analisis y Desarrollo de  Sistemas de Información Trabajó como desarrollador.</p>
+                                    <a href=""><img style="width: 5%; height: 5% " src="imagenes/google-plus.png" alt=""/></a>
+                                    <img style="width: 5%; height: 5% " src="imagenes/facebook.png" alt=""/>
+                                    <img style="width: 5%; height: 5% " src="imagenes/google-plus.png" alt=""/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            </div>
+
+            </div>    
+            <footer class="page-footer">
+                <div class="ftft">
+      <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
+            </div>
+          </div>
+                    </div>
+        </footer>
+            <%} else {
+                    session.invalidate();
+                    response.sendRedirect("index.html");
+                }%>
+            <!--importación de Jquery por medio de CDN-->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+            <!--importacion de materializecss javaScript por medio de CDN-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+            <!--importacion de datatable javaScript por medio de CDN-->
+            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+            <script src="js/sweetalert.min.js" type="text/javascript"></script>
+            <!-- <script src="js/main.js" type="text/javascript"></script>
+             <script src="js/js.js" type="text/javascript"></script>
+              <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
+            <script src="js/ajax.js" type="text/javascript"></script>
+            <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+            <script src="js/index.js"></script>
+            <script>
+                                $(document).ready(function () {
+                                    $('select').material_select();
+                                });
+
+                                $('.modal-trigger').leanModal({
+                                    dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                                    opacity: .5, // Opacity of modal background
+                                    in_duration: 300, // Transition in duration
+                                    out_duration: 200, // Transition out duration
+                                    starting_top: '4%', // Starting top style attribute
+                                    ending_top: '10%' // Ending top style attribute
+
+                                }
+                                );
+
+            </script>
+
+            </body>
+
+            </html>

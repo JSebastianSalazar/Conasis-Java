@@ -216,7 +216,7 @@
                             </div>
                             <div class="col s3"><a class="waves-effect waves-light btn modal-trigger"style="margin-top: 22px;"  id="admi"href="#modal78">Administrar</a></div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin-bottom: 0px;">
                             <center>  <a id="but_prev" href="#"><i class="material-icons">video_library</i></a> | <a id="but_pause" href="#"><i class="material-icons">pause</i></a> | <a id="but_start" href="#"><i class="material-icons">play_arrow</i></a> | <a id="but_next" href="#"><i class="material-icons">skip_next</i></a> </center>
                             <center>   <div class="carousel-container">
                                     <% list = dao.fotosInstructor();
@@ -508,6 +508,16 @@
             </div>
 
         </div>
+                             <footer class="page-footer">
+            <div class="ftft">
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2014 Copyright
+                        <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
                      <%} else {
                 session.invalidate();
                 response.sendRedirect("index.html");

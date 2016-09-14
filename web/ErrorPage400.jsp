@@ -23,7 +23,7 @@
     <div class="container">
         <div class="boo-wrapper">
             <div class="boo">
-                sdsadfdsdf
+               
                 <div class="face"></div>
             </div>
             <div class="shadow"></div>

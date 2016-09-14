@@ -4,7 +4,9 @@
     Created on : 03-mar-2016, 21:49:08
     Author     : Emerson Javid
 */
-
+ footer.page-footer{
+                background-color: #f2f2f2;
+            }
 .grupo{
     text-align: center;
     margin-top: 0px;

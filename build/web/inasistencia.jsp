@@ -83,6 +83,17 @@
         </div>
     </div>
     </div> 
+        
+    <footer class="page-footer">
+        <div class="ftft">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2014 Copyright 
+                    <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
+                </div>
+            </div>
+        </div>
+    </footer>
         <!--importación de Jquery por medio de CDN-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <!--importacion de materializecss javaScript por medio de CDN-->
