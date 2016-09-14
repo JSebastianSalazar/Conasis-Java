@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-
-<h1>hola cacorrin</h1>
 </head>
 
 <body>
