@@ -1,0 +1,139 @@
+/*
+*/
+/* 
+    Created on : 03-mar-2016, 21:49:08
+    Author     : Emerson Javid
+*/
+
+.grupo{
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 20px;
+    font-size: 19px;
+    background-color: transparent;
+}
+#lista{
+    background: #ffffff;
+    position: relative;
+    margin-top: 15px;
+    max-width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 4px; 
+    padding-top: 7px;
+    height: auto;}
+#lista:hover{
+    transition: 0.5s;
+    transform: translateY(5px);
+}
+.titulo{
+    font-size:30px;
+    text-align: center;
+}.parrafo{
+    font-size: 15px;
+    text-align: center;
+}
+.imgAgregar{
+    height: 110px;
+}
+/*Quitando espacios de otro color*/
+#lista{background: #ffffff;}
+.container .row {background: #ffffff;}
+.form {background: #ffffff;}
+#espacio1{background: #ffffff;}
+#espacio3{background: #ffffff;}
+#espacioP{background: #ffffff;}
+#espacioT{background: #ffffff;}
+#espacio2{background: #ffffff;}
+#espacio4{background: #ffffff;}
+#espacioImg{background: #ffffff;}
+
+/*Registro*/
+#registro{
+    position: relative;
+    margin-top: 100%;
+    padding: 0px;
+    margin-top: 15px;
+}
+
+
+#ambiente{
+    display: block;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.grupotabs2{
+    background-color: #bbdefb;
+}
+
+.container .grupoDiv {background: #ffffff;}
+.container label {background: #ffffff;}
+.container i {background: #ffffff;}
+
+
+@media(max-width:440px){
+    .grupo{
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 17px;
+    }
+    .cabecera{
+        height: 57px;
+    }
+}
+/*REGISTRO INSTRUCTORES*/
+
+.container form {background: #ffffff;}
+.container .grupoDiv {background: #ffffff;}
+
+.container label {background: #ffffff;}
+.container i {background: #ffffff;}
+.huella_img { width: 100px; background: #ffffff;position: relative; left: 20px;}
+.camara_img {width: 100px; background: #ffffff; position: relative; left: 23px;}
+
+#programaYcompetencias{
+    background: #ffffff; 
+    padding-bottom: 0px; 
+    margin-top: 90px;
+}
+#programaYcompetencias:hover{
+    transition: 0.5s;
+    transform: translateY(5px);
+}
+/* ENTRADA APRENDICES*/
+#ContenedorAsistencial:hover{
+    transition: 0.5s;
+    transform: translateY(5px);
+}
+#imgConasis{
+    margin-bottom: 0px;
+}
+#contenedorInfo{
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+}
+#ContimgAprendiz{
+    text-align: center;
+}
+#ContimgHuella{
+    text-align: center;
+}
+#imgHuella{
+    border: solid 2px #2196f3;
+    width: 150px;
+    height: 150px;
+}
+#imgAprendiz{
+    border: solid 2px #2196f3;
+    width: 200px;
+    height: 200px;
+}
+#InfoEntradaHuella{
+    border: solid 2px #2196f3;
+}
+.grupolbl1{
+    font-size: 20px;
+}
+.grupolbl1{
+    font-size: 18px;
+}

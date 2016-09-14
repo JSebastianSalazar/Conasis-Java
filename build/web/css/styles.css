@@ -1,0 +1,272 @@
+
+/* 
+    Created on : 07-jul-2016, 9:59:45
+    Author     : Emerson Javid Gonzalez Morales
+*/
+
+/*programa y competencia*/
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    background-color: #f2f2f2;
+    height: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+  main {
+    flex: 1 0 auto;
+  }
+  footer {
+  position: relative;
+  margin-top: -63px; /* ponga en negativo el alto de su pie de página para nuestro    ejemplo usamos 63, usted debe remplazarlo según su diseño   */
+  height: 63px;
+  clear:both;
+  width:100%;
+ }
+#UsuariosEstadicticas{
+    background-color: #f2f2f2;
+}
+#AsistenciaCompetencia{
+     background-color: #f2f2f2;
+}
+#fichasAmbientes{
+     background-color: #f2f2f2;
+}
+#listaMenu{
+    background-color: #f2f2f2;
+}
+nav{
+    background-color: #0090A5;//#0d47a1;
+}
+nav div a{
+    font-size: 19px;
+}
+#nav{
+    background-color:#0090A5; //#0d47a1;
+}
+.cabecera{
+    background: #0090A5;//#0d47a1;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    top: 0;   
+    height: 80px;
+}
+.contenedorImgInstructor{
+    width: 100px; 
+    height: 100px;
+}
+
+#cardI{
+        padding: 5px;
+    }
+.grupo{
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 20px;
+    background-color: transparent;
+}
+.linea{
+   border: solid 1px #2196f3;
+}
+/*competencia X programa*/
+#contenedorControles{
+    border-left:#f2f2f2 70px solid;  border-right:#f2f2f2 70px solid;  padding-bottom: 0px;
+}
+#contenedorTablas{
+    border-left:#f2f2f2 70px solid; border-right:#f2f2f2 70px solid; background-color: #ffffff;
+}
+/*programacion*/
+#contenedorCuadros{
+    background-color: #ffffff;
+}
+#contenedorNuevaProgramacion{
+    margin-top: 3%;
+}
+#contenedorProgamacionNueva{
+    background-color: #ffffff;
+    padding: 10px;
+}
+td, th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+@media(max-width:690px){
+   .grupo{
+        padding-top: 10px;
+        margin-top: 0;
+        font-size: 20px;
+    }
+    .cabecera{
+        height: 60px;
+    } 
+}
+/*asistencia aprendiz*/
+
+.listaInfo{
+    margin-bottom: 2px; margin-top: 2px;
+}
+#ContenedorAsistencial:hover{
+   transition: 0.5s;
+    transform: translateY(5px);
+}
+#imgConasis{
+    margin-bottom: 0px;
+}
+#contenedorInfo{
+     padding-bottom: 15px;
+     margin-bottom: 0px;
+}
+#ContimgAprendiz{
+    padding-top: 30px;
+    text-align: center;
+    padding-right: 40px;
+}
+#ContimgHuella{
+    padding-top: 40px;
+    text-align: center;
+}
+#imgHuella{
+    border: solid 2px #2196f3;
+    width: 150px;
+    height: 150px;
+}
+#imgAprendiz{
+    border: solid 2px #2196f3;
+    width: 200px;
+    height: 200px;
+}
+#InfoEntradaHuella{
+   border: solid 2px #2196f3;
+}
+.grupolbl1{
+    font-size: 20px;
+}
+.grupolbl1{
+    font-size: 18px;
+}
+.grupolblA{
+    color: #616161;
+    font-size: 18px;
+}
+.grupolblAD{
+    color: #000000;
+    font-size: 18px;
+}
+@media(max-width:480px){
+    .grupo{
+        padding-top: 10px;
+        margin-top: 0;
+        font-size: 17px;
+    }
+    .cabecera{
+        height: 47px;
+    }
+}
+@media(max-width:1024px){
+    .linea{
+   margin-bottom: 10px;
+}
+}
+@media(max-width:480px){
+    .imgInstructor{
+        transition: all 0.5s;
+        display: none;
+    }
+    .cabecera{
+        transition: all 0.5s;
+        height: 100%;
+}
+nav div a{
+    font-size: 17px;
+    text-align: left;
+}
+.button-collapse{
+        display: block;
+    }
+    
+}
+.imgInstructor{
+    width: 82px; 
+    height: 82px;
+    
+    border: solid 2px #2196f3;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+/*
+
+/*INASISTENCIA*/
+/*
+#contenedorTablasInasistenciaFicha{
+    border-left:#f2f2f2 70px solid; border-right:#f2f2f2 70px solid; background-color: #ffffff;
+}*/
+
+/* menu administrador*/
+/*@media(max-width:480px){
+    .imgInstructor{
+        transition: all 0.5s;
+        display: none;
+    }
+    .cabecera{
+        transition: all 0.5s;
+        height: 100%;
+}
+nav div a{
+    font-size: 17px;
+    text-align: left;
+}
+.button-collapse{
+        display: block;
+    }
+    
+}*/
+
+
+/*tabs */
+.tabs .tab a {
+    color:#0d47a1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: color .28s ease;
+}
+.tabs .tab a:hover{
+    color: #0090A5;
+    
+}
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #0090A5;
+    will-change: left, right;
+}
+.light-blue.accent-4 {
+    background-color: #0090A5 !important;
+}
+a {
+    color: #0090A5;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#modal124{
+   
+    filter: "alpha(opacity=60)"; /* expected to work in IE 8 */
+    filter: alpha(opacity=60);   /* IE 4-7 */
+    zoom: 1; 
+}
+#imgCarrusel{
+    width: 250px;
+    height:150px;
+}

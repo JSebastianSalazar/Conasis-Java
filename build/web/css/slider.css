@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 08-mar-2016, 16:22:18
+    Author     : Emerson
+*/
+.cartaInformacion {background: #ffffff;}
+.cartaInformacion span {background: #ffffff;}
+.cartaInformacion i {background: #ffffff;}
+.cartaInformacion p {background: #ffffff;}
+.imgGrupo {background: #ffffff;}
+.grupoDiv span {background: #ffffff;}
+.grupoDiv p {background: #ffffff;}
+.grupoDiv i {background: #ffffff;}
+
+#listaMenu{
+    margin: 0px;
+}
+#listaMenu ul{
+    list-style-type: none;
+    text-align: center;
+}
+
+#listaMenu li{
+    display: inline;
+    text-align: center;
+    margin: 0 10px 0 0;
+    width: 5px;
+    height: 5px;
+}
+#listaMenu li a{
+    width: 40px;
+    height: 40px;
+}
+#listaMenu li a i{
+    background-color: transparent; margin-top: -10px;
+}
+#imgCarta{
+    height: 315px;
+}
+#imgCarta3{
+    height: 315px;
+    width: 315px;
+}
+#imgCarta1{
+    height: 280px;
+    margin-top: 30px;
+}
+.cartaInformacion{
+    padding-top: 5px; padding-bottom: 5px;
+}
+@media(max-width:690px){
+
+}
+
+
