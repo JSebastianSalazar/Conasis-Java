@@ -25,7 +25,7 @@ public class Conexion {
                 {
                     Class.forName("com.mysql.jdbc.Driver");
                     con = DriverManager.getConnection("jdbc:mysql://" + "localhost:3306"
-                            + "/conasis", "root", "eme");
+                            + "/conasis", "root", "1234");
                    
                     con.setAutoCommit(true);
                 }
