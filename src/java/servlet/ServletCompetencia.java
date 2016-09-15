@@ -187,7 +187,30 @@ public class ServletCompetencia extends HttpServlet {
                             out.println("<h5>No se eliminó</h5>");
                         }
                     }
-
+break;
+                case "comboboxProgramacion":
+                      //listando competencias al inicio de la pagina en el combobox con json
+                    System.out.println("holaa como estas");
+                    json = new Gson();
+                    daoC = new DaoCompetencia();
+                    System.out.println(idPrograma);
+                    listC = daoC.listarCompetenciasDependintesFicha(Integer.parseInt(idPrograma));
+                    if(listC == null || listC.isEmpty()){
+                        out.println("<script>"
+                                + "$(document).ready(function () {"
+                                + "swal({title: \"Atecnión\",\n" +
+"                                text: \"¡No hay competencias... O pudo ocurrir un error en el servidor!\",\n" +
+"                                type: \"warning\",\n" +
+"                                timer: 2000,\n" +
+"                                showConfirmButton: true});"
+                                + "});"
+                                + "</script>");
+                    }else{
+                    jsons = json.toJson(listC);
+                    out.println(jsons);
+                    
+                }
+                    break;
             }
 
         }

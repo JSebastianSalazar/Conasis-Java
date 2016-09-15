@@ -545,9 +545,10 @@
     <!--importacion de materializecss javaScript por medio de CDN-->
     <!-- <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
      <script src="js/jquery.featureCarousel.min.js" type="text/javascript"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    
     <!--<script src="js/Carru.js" type="text/javascript"></script>
     <!--Import jQuery before materialize.js-->
+   
     <script src="js/AprendizIns.js" type="text/javascript"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <!--importando en archivo .js ajax permite visualizar las informacion de la base de datos en el sitio web-->
@@ -557,6 +558,7 @@
     <!--menu-->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="js/index2.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script>
                                             $(document).ready(function () {
                                                 inicioCentroAsistencia();

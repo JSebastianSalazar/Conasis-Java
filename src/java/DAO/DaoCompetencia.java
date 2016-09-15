@@ -222,6 +222,47 @@ public class DaoCompetencia { //definiendo la clase DaoCompetencias e implementa
         }
         return lista;//se retorna la lista con todos los registros encontrados
     }
+    
+    //permitirá listar toda una entidad
+    public List<Competencias> listarCompetenciasDependintesFicha(int idPrograma) {
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        String sql;
+        List<Competencias> lista = null;
+        try {
+            sql = "select c.nomCompetencia,c.idCompetencia from programaxcompetencia as p, competencias as c "
+                    + "where p.idCompetencia=c.idCompetencia And \n" +
+                    "p.idPrograma=?;";
+            con = Conexion.conectar("mysql");
+            pstm = con.prepareStatement(sql);
+            lista = new ArrayList();//se instancia un arraylist
+            pstm.setInt(1, idPrograma);//se envia los parametros de la sentencia
+            rs = pstm.executeQuery();//se ejecuta la consulta
+            //se verifica si hay datos de la consulta
+            //se recuperan todos enviandolos al objeto
+            //y luego añadiendo cada objeto a el arrayList
+            while(rs.next()){
+                Competencias c = new Competencias();
+                c.setNomCompetencia(rs.getString("nomCompetencia"));
+                c.setIdCompetencia(rs.getInt("idCompetencia"));
+                lista.add(c);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("Error Listando Competencias: " + ex);
+        }finally{
+            try {
+                rs.close();
+                pstm.close();
+                con.close();
+                return lista;//se retorna el objeto
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en DaoCompetencia (listar()) : "+ ex);
+            }
+        }
+        return lista;//se retorna la lista con todos los registros encontrados
+    }
 }
 
    

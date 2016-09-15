@@ -31,13 +31,14 @@ public class EmailUtility {
 
         // sets SMTP server properties
         Properties properties = new Properties();
+
+        properties.setProperty("proxySet", "true");
+        properties.setProperty("http.proxyHost", "http://proxy2.sena.edu.co");
+        properties.setProperty("http.proxyPort", "80");
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.setProperty("proxySet", "true");
-        properties.setProperty("sockProxyHost", "http://proxy2.sena.edu.co");
-        properties.setProperty("sockProxyPort", "80");
 
         // creates a new session with an authenticator
         Authenticator auth = new Authenticator() {

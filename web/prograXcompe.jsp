@@ -22,7 +22,7 @@
         <!-- importando el CSS de las alertas SweetAlert -->
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/registroGrupo.css" rel="stylesheet" type="text/css"/>
-        
+
         <!--Menu -->
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style2.css" rel="stylesheet" type="text/css"/>
@@ -57,7 +57,7 @@
             <div class="top-bar" ><center><p style="font-size: 16px"><%= session.getAttribute("tipo")%></p></center></div>
             <!-- Sidebar brand image -->
             <div class="sidebar-image">
-                <img src="imagenes/foto1.jpg" alt="" />
+                <img src="<%= session.getAttribute("foto")%>" alt="" />
             </div>
             <!-- Sidebar brand name -->
             <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown" style="position: relative;">
@@ -228,8 +228,8 @@
                     </div>
                     <div class="row" style="margin-bottom: 5px">
                         <div class="input-field col s6"><!-- Area de texto -->
-                            <textarea id="textarea" class="materialize-textarea" style="margin-bottom: 0px"></textarea>
-                            <label for="textarea">Textarea</label>
+                            <textarea id="textarea" class="materialize-textarea" style="margin-bottom: 0px"  onkeypress="return soloLetras(event);"></textarea>
+                            <label for="textarea">Area de texto</label>
                             <span id="vTxtarea" >El campo no puede estar vacio</span>
                         </div>
                         <div class="input-field col s5 grupoDiv"> <!--lista de competencias-->
@@ -304,8 +304,8 @@
 
     <!--importación de Jquery por medio de CDN-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <!--importacion de materializecss javaScript por medio de CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <!--importacion de materializecss javaScript por medio de CDN
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
     <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
     <!--importando en archivo .js ajax permite la comicacion entre servlets y la pagina jsp-->
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -314,6 +314,13 @@
     <!--menu-->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="js/index2.js" type="text/javascript"></script>
+     <!--importacion de materializecss javaScript por medio de CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script>
+                                $(document).ready(function () {
+                                    $('.tooltipped').tooltip({delay: 50});
+                                });
 
+    </script>
 </body>
 </html>

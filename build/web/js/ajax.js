@@ -309,10 +309,10 @@ $("#btnAgregarC").click(function () {
                         idCompetencia = null;
                     });
         } else {
-           swal({title: "Antención",
-            text: "No seleccionó una competencia de la tabla",
-            timer: 1800,
-            showConfirmButton: true});
+            swal({title: "Antención",
+                text: "No seleccionó una competencia de la tabla",
+                timer: 1800,
+                showConfirmButton: true});
         }
 
     }
@@ -393,7 +393,7 @@ $("#btnModificar").click(function () {
                     })
                             .done(function (msg) {
                                 $("#loaderE").hide();
-                                 $("#cntntMsj").html(msg);
+                                $("#cntntMsj").html(msg);
                                 $("#textarea").val('');
                                 idPrograma = null;
                                 listarProgramas();//metodo para actualizar la tabla programas
@@ -432,10 +432,10 @@ $("#btnModificar").click(function () {
                                 listarProgramas();//metodo para actualizar la tabla programas
                             });
                 } else {
-                   swal({title: "Antención",
-            text: "No seleccionó una competencia de la lista desplegable",
-            timer: 1800,
-            showConfirmButton: true});
+                    swal({title: "Antención",
+                        text: "No seleccionó una competencia de la lista desplegable",
+                        timer: 1800,
+                        showConfirmButton: true});
                 }
                 break;
         }
@@ -555,9 +555,9 @@ $("#btnEliminar").click(function () {
                     });
                 } else {
                     swal({title: "Antención",
-                    text: "Primero debe seleccionar un programa y después la competencia a eliminar",
-                    timer: 1800,
-                    showConfirmButton: true});
+                        text: "Primero debe seleccionar un programa y después la competencia a eliminar",
+                        timer: 1800,
+                        showConfirmButton: true});
                 }
             }
             break;
@@ -643,6 +643,8 @@ $("#btnListarP").click(function () {
     listarProgramas();
 });
 
+
+
 //-----------------------------------------------------PROGRAMACIÓN---------PROGRAMACIÓN-------PROGRAMACIÓN-----------------------------------------------
 //funcion para listar instructores en combobox
 function listarInstructores() {
@@ -706,10 +708,10 @@ function listarFichas() {
                 //print(msg); funcion que convierte a pdf
                 $('select[name=fichas] option').remove();
                 var myObject = eval('(' + msg + ')');
-                $('select[name=fichas]').append('<option name="opciones" value="">Seleccione</option>');
+                $('select[name=fichas]').append('<option name="opciones" value="" disabled selected>Seleccione</option>');
                 for (var i = 0; i < myObject.length + 1; i++) {
                     $('select').material_select();//funcion materialize para actualizar el combobox
-                    $('select[name=fichas]').append('<option value=' + myObject[i].id + '>' + myObject[i].numeroFicha + '</option>');
+                    $('select[name=fichas]').append('<option value=' + myObject[i].id + ' id="' + myObject[i].idPrograma + '">' + myObject[i].numeroFicha + '</option>');
                 }
 
             });
@@ -879,9 +881,9 @@ $("#btnCancelarMdAmbiente").click(function () {
 function validandoFecha() {
     if ($("#fechaInicio").val() > $("#fechaFinal").val() || $("#fechaInicio").val() === $("#fechaFinal").val()) {
         swal({title: "Antención",
-                    text: "La fecha de inicio debe ser menor a la fecha final",
-                    timer: 1800,
-                    showConfirmButton: true});
+            text: "La fecha de inicio debe ser menor a la fecha final",
+            timer: 1800,
+            showConfirmButton: true});
         $("#fechaFinal").focus();
         $("#lblfechaFinal").css("color", "#d50000");
         $("#fechaInicio").focus();
@@ -895,9 +897,9 @@ function validandoFecha() {
 function validandoHora() {
     if ($("#horaInicio").val() > $("#horaFin").val() || $("#horaInicio").val() === $("#horaFin").val()) {
         swal({title: "Antención",
-                    text: "La hora de inicio debe ser menor a la hora final",
-                    timer: 1800,
-                    showConfirmButton: true});
+            text: "La hora de inicio debe ser menor a la hora final",
+            timer: 1800,
+            showConfirmButton: true});
         $("#horaFin").focus();
         $("#lblhoraFin").css("color", "#d50000");
         $("#horaInicio").focus();
@@ -932,63 +934,63 @@ function validarCampos() {
                                             return true;
                                         } else {
                                             swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                                                text: "El campo es obligatorio",
+                                                timer: 1800,
+                                                showConfirmButton: true});
                                             $("#ambiente").focus();
                                             $("#lblambiente").css("color", "#d50000");
                                             return false;
                                         }
                                     } else {
                                         swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                                            text: "El campo es obligatorio",
+                                            timer: 1800,
+                                            showConfirmButton: true});
                                         $("#instructores").focus();
                                         $("#lblinstructores").css("color", "#d50000");
                                         return false;
                                     }
                                 } else {
-                                   swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                                    swal({title: "Antención",
+                                        text: "El campo es obligatorio",
+                                        timer: 1800,
+                                        showConfirmButton: true});
                                     $("#horaFin").focus();
                                     $("#lblhoraFin").css("color", "#d50000");
                                     return false;
                                 }
                             } else {
                                 swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                                    text: "El campo es obligatorio",
+                                    timer: 1800,
+                                    showConfirmButton: true});
                                 $("#horaInicio").focus();
                                 $("#lblhoraInicio").css("color", "#d50000");
                                 return false;
                             }
                         } else {
                             swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                                text: "El campo es obligatorio",
+                                timer: 1800,
+                                showConfirmButton: true});
                             $("#fechaFinal").focus();
                             $("#lblfechaFinal").css("color", "#d50000");
                             return false;
                         }
                     } else {
                         swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                            text: "El campo es obligatorio",
+                            timer: 1800,
+                            showConfirmButton: true});
                         $("#fechaInicio").focus();
                         $("#lblfechaInicio").css("color", "#d50000");
                         return false;
                     }
                 } else {
-                   swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                    swal({title: "Antención",
+                        text: "El campo es obligatorio",
+                        timer: 1800,
+                        showConfirmButton: true});
                     $("#dia").focus();
                     $("#lbldia").css("color", "#d50000");
                     return false;
@@ -1004,18 +1006,18 @@ function validarCampos() {
             }
         } else {
             swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+                text: "El campo es obligatorio",
+                timer: 1800,
+                showConfirmButton: true});
             $("#trimestre").focus();
             $("#lbltrimestre").css("color", "#d50000");
             return false;
         }
     } else {
-       swal({title: "Antención",
-                    text: "El campo es obligatorio",
-                    timer: 1800,
-                    showConfirmButton: true});
+        swal({title: "Antención",
+            text: "El campo es obligatorio",
+            timer: 1800,
+            showConfirmButton: true});
         $("#fichas").focus();
         $("#lblFicha").css("color", "#d50000");
         return false;
@@ -1025,8 +1027,59 @@ function validarCampos() {
 //obteniendo valores de los combobox
 //obteniendo el id de ficha
 var idFicha = null;
+$('select[name=competencias]').disabled = true;
 $('select[name=fichas]').on('change', function () {
-    idFicha = $('select[name=fichas]').val();//saber value del combobox seleccionado
+            $('select[name=competencias] ').material_select('destroy');
+             $('select[name=competencias]').append('<option name="opciones" value="" disabled selected>Seleccione</option>');
+    var idProgramaProgramaion = null;
+    if ($('select[name=fichas]').children(":selected").attr("id") !== "") {
+        idFicha = $('select[name=fichas]').val();//saber value del combobox seleccionado
+        idProgramaProgramaion = $(this).children(":selected").attr("id");
+        $.ajax({
+            beforeSend: function (xhr) {
+
+            },
+            method: "POST",
+            url: "ServletCompetencia",
+            type: "get",
+            datatype: "json",
+            data: {
+                validacion: "comboboxProgramacion",
+                idPrograma: idProgramaProgramaion
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            },
+            complete: function (jqXHR, textStatus) {
+                swal({title: "Error en el Servidor",
+                    text: "Lo sentimos... Intentalo Nuevamente",
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+                idProgramaProgramaion = null;
+            }
+        })
+                .done(function (msg) {
+                    $('#competencias').prop('disabled', false);
+                    $('select[name=competencias] option').remove();
+                    var myObject = eval('(' + msg + ')');
+                    $('select[name=competencias]').append('<option name="opciones" value="" disabled selected>Seleccione</option>');
+                    for (var i = 0; i < myObject.length + 1; i++) {
+                        $('select').material_select();//funcion materialize para actualizar el combobox
+                        $('select[name=competencias]').append('<option value=' + myObject[i].idCompetencia + '>' + myObject[i].nomCompetencia + '</option>');
+                    }
+                    if ($('select[name=fichas]').children(":selected").attr("id") == "Undefined") {
+                        $('#competencias').prop('disabled', true);
+                    } else {
+                        $('#competencias').prop('disabled', false);
+                    }
+
+                });
+
+    }
+
+
+
 });
 //obteniendo el id de la competencia
 var idCompetenciaProgramacion = null;
@@ -1151,9 +1204,9 @@ function accion(id) {//cuando se da clic
             $("#btnModificarProgramacion").show();
             $("#btnGuardar").hide();
             swal({title: "Antención",
-                    text: "Favor llenar todos los campos",
-                    timer: 1800,
-                    showConfirmButton: true});
+                text: "Favor llenar todos los campos",
+                timer: 1800,
+                showConfirmButton: true});
             idProgramacionM = ids;
             break;
     }
@@ -1215,7 +1268,7 @@ $("#btnModificarProgramacion").click(function () {
                     }
                 })
                         .done(function (msg) {
-                           $("#cntntMsj").html(msg);
+                            $("#cntntMsj").html(msg);
                             seleccionarCuadroFicha(idCuadroFichaV, '', '');
                             limpiarCampos();
                         });
@@ -1308,7 +1361,8 @@ $("#buscarA").click(function () {
             $("#vNumeroDocA").hide();
             var nDi = $("#buscarAprendiz").val();//nuero del documento del aprendiz
             $.ajax({
-                beforeSend: function (xhr) {},
+                beforeSend: function (xhr) {
+                },
                 method: "POST",
                 url: "ServletAsistencia",
                 data: {
@@ -1325,7 +1379,8 @@ $("#buscarA").click(function () {
                         timer: 4000,
                         showConfirmButton: true});
                 },
-                complete: function (jqXHR, textStatus) {}
+                complete: function (jqXHR, textStatus) {
+                }
             })
                     .done(function (msg) {
                         $("#cntntMsj").html(msg);
@@ -1337,12 +1392,12 @@ $("#buscarA").click(function () {
                         $("#lblDocumento").text(nDi);
                         $("#lblFalta").text(myObject[0].faltas);
                         $("#lblTiempo").text(myObject[0].tiempo);
-                        $("#imgAprendiz").attr("href", "'"+myObject[0].foto+"'");
+                        $("#imgAprendiz").attr("href", "'" + myObject[0].foto + "'");
                         swal({title: "Perfecto",
-                        text: myObject[0].mensaje,
-                        type: "success",
-                        timer: 2000,
-                        showConfirmButton: true});
+                            text: myObject[0].mensaje,
+                            type: "success",
+                            timer: 2000,
+                            showConfirmButton: true});
                     });
         }
     }
@@ -1352,7 +1407,7 @@ $("#buscarA").click(function () {
 
 
 //configuración de inicio de la pagina al cargar
-function inicioAsistencia(){
+function inicioAsistencia() {
     $("#btne").hide();
     $("#btns").hide();
     $("#otroA").hide();
@@ -1362,94 +1417,97 @@ function inicioAsistencia(){
     $("#vNumeroDocA").hide();
     $("#buscarA2").hide();
     $("#buscarA3").hide();
-     $.ajax({
-                beforeSend: function (xhr) {
+    $.ajax({
+        beforeSend: function (xhr) {
 
-                },
-                method: "POST",
-                url: "ServletAsistencia",
-                data: {
-                    validacion: "verificacionFicha",
-                    idProgramacion: $("#lblPrograma").text()
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    swal({title: "Error en el Servidor",
-                        text: "Lo sentimos... Intentalo Nuevamente",
-                        type: "error",
-                        timer: 4000,
-                        showConfirmButton: true});
-                },
-                complete: function (jqXHR, textStatus) {}
-            })
-                    .done(function (msg) {
-                        var i = parseInt(msg);
-                        if(i=="0"){
-                            $("#btne").show();
-                            $("#btns").hide();
-                            $("#otroA").hide();
-                            $("#buscarA2").show();
-                            $("#buscarA3").hide();
-                        }else if(i=="1"){
-                            $("#btne").hide();
-                            $("#btns").show();
-                            $("#otroA").hide();
-                            $("#buscarA2").hide();
-                            $("#buscarA3").show();
-                        }else if(i=="2"){
-                            $("#btne").hide();
-                            $("#btns").hide();
-                            $("#otroA").show();
-                        }else{
-                            $("#cntntMsj").html(msg);
-                        }
-                    });
-        
+        },
+        method: "POST",
+        url: "ServletAsistencia",
+        data: {
+            validacion: "verificacionFicha",
+            idProgramacion: $("#lblPrograma").text()
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, textStatus) {
+        }
+    })
+            .done(function (msg) {
+                var i = parseInt(msg);
+                if (i == "0") {
+                    $("#btne").show();
+                    $("#btns").hide();
+                    $("#otroA").hide();
+                    $("#buscarA2").show();
+                    $("#buscarA3").hide();
+                } else if (i == "1") {
+                    $("#btne").hide();
+                    $("#btns").show();
+                    $("#otroA").hide();
+                    $("#buscarA2").hide();
+                    $("#buscarA3").show();
+                } else if (i == "2") {
+                    $("#btne").hide();
+                    $("#btns").hide();
+                    $("#otroA").show();
+                } else {
+                    $("#cntntMsj").html(msg);
+                }
+            });
+
     $("#logicaInicial").show();
     $("#contenedorTomaAsistencia").hide();
     mostrar2();
     mostrar1();
     mostrar0();
 }
-function mostrar2(){//se ejectuta cuando faltó un aprendiz por marcar la asistencia
-    $("#btnmostrarCntA").click(function(){
+function mostrar2() {//se ejectuta cuando faltó un aprendiz por marcar la asistencia
+    $("#btnmostrarCntA").click(function () {
         $("#otroA").hide();
         $("#contenedorTomaAsistencia").show();
         $("#contentAsistencia01").hide();
         $("#contentAsistencia2").show();
     });
 }
-function mostrar1(){//se ejectuta cuando ya la ficha a marcado la entrada
-    $("#btns").click(function(){
+function mostrar1() {//se ejectuta cuando ya la ficha a marcado la entrada
+    $("#btns").click(function () {
         $("#contenedorTomaAsistencia").show();
         $("#contentAsistencia01").show();
         $("#contentAsistencia2").hide();
         $("#btns").hide();
     });
 }
-function mostrar0(){//se ejectuta cuando ya la ficha No ha marcado la entrada
-    $("#btne").click(function(){
-         $.ajax({
-                beforeSend: function (xhr) {},
-                method: "POST",
-                url: "ServletAsistencia",
-                data: {
-                    validacion: "vertimientoFicha",
-                    idProgramacion: $("#lblPrograma").text(),
-                    ficha: $("#lblFicha").text()
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    swal({title: "Error en el Servidor",
-                        text: errorThrown,
-                        type: "error",
-                        timer: 4000,
-                        showConfirmButton: true});
-                },
-                complete: function (jqXHR, textStatus) {}
-            })
-                    .done(function (msg) {
-                        $("#cntntMsj").html(msg);
-            });
-            $("#btne").hide();
+function mostrar0() {//se ejectuta cuando ya la ficha No ha marcado la entrada
+    $("#btne").click(function () {
+        $.ajax({
+            beforeSend: function (xhr) {
+            },
+            method: "POST",
+            url: "ServletAsistencia",
+            data: {
+                validacion: "vertimientoFicha",
+                idProgramacion: $("#lblPrograma").text(),
+                ficha: $("#lblFicha").text()
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                swal({title: "Error en el Servidor",
+                    text: errorThrown,
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+            },
+            complete: function (jqXHR, textStatus) {
+            }
+        })
+                .done(function (msg) {
+                    $("#cntntMsj").html(msg);
+                });
+        $("#btne").hide();
         $("#contenedorTomaAsistencia").show();
         $("#contentAsistencia01").show();
         $("#contentAsistencia2").hide();
@@ -1458,105 +1516,109 @@ function mostrar0(){//se ejectuta cuando ya la ficha No ha marcado la entrada
 
 //este se ejecuta cuando es la primera vez del dia con ese instructor que se toma asistencia
 $("#buscarA2").click(function () {
-        if ($("#buscarAprendiz2").val().length < 1) {
-            $("#buscarAprendiz2").focus();
-            $("#vNumeroDocA2").show();
-            $("#vNumeroDocA2").css("color", "#d50000");
-        } else {
-            $("#vNumeroDocA2").hide();
-            var nDi = $("#buscarAprendiz2").val();//nuero del documento del aprendiz
-            $.ajax({
-                beforeSend: function (xhr) {},
-                method: "POST",
-                url: "ServletAsistencia",
-                data: {
-                    validacion: "tomaAsistencia2",
-                    idProgramacion: $("#lblPrograma").text(),
-                    documento: nDi,
-                    tipo: 0,
-                    ficha: $("#lblFicha").text()
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    swal({title: "Error en el Servidor",
-                        text: "Lo sentimos... Intentalo Nuevamente",
-                        type: "error",
-                        timer: 4000,
-                        showConfirmButton: true});
-                },
-                complete: function (jqXHR, textStatus) {}
-            })
-                    .done(function (msg) {
-                        $("#cntntMsj").html(msg);
-                        //alert(msg);
-                        var myObject = eval('(' + msg + ')');
-                        //alert(myObject.toString());
-                        $("#buscarAprendiz").val("");
-                        $("#lblNombre").text(myObject[0].nombre);
-                        $("#lblApellido").text(myObject[0].apellido);
-                        $("#lblHora").text(myObject[0].hora);
-                        $("#lblDocumento").text(nDi);
-                        $("#lblFalta").text(myObject[0].faltas);
-                        $("#imgAprendiz").attr("href", "'"+myObject[0].foto+"'");
-                        swal({title: "Perfecto",
+    if ($("#buscarAprendiz2").val().length < 1) {
+        $("#buscarAprendiz2").focus();
+        $("#vNumeroDocA2").show();
+        $("#vNumeroDocA2").css("color", "#d50000");
+    } else {
+        $("#vNumeroDocA2").hide();
+        var nDi = $("#buscarAprendiz2").val();//nuero del documento del aprendiz
+        $.ajax({
+            beforeSend: function (xhr) {
+            },
+            method: "POST",
+            url: "ServletAsistencia",
+            data: {
+                validacion: "tomaAsistencia2",
+                idProgramacion: $("#lblPrograma").text(),
+                documento: nDi,
+                tipo: 0,
+                ficha: $("#lblFicha").text()
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                swal({title: "Error en el Servidor",
+                    text: "Lo sentimos... Intentalo Nuevamente",
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+            },
+            complete: function (jqXHR, textStatus) {
+            }
+        })
+                .done(function (msg) {
+                    $("#cntntMsj").html(msg);
+                    //alert(msg);
+                    var myObject = eval('(' + msg + ')');
+                    //alert(myObject.toString());
+                    $("#buscarAprendiz").val("");
+                    $("#lblNombre").text(myObject[0].nombre);
+                    $("#lblApellido").text(myObject[0].apellido);
+                    $("#lblHora").text(myObject[0].hora);
+                    $("#lblDocumento").text(nDi);
+                    $("#lblFalta").text(myObject[0].faltas);
+                    $("#imgAprendiz").attr("href", "'" + myObject[0].foto + "'");
+                    swal({title: "Perfecto",
                         text: myObject[0].mensaje,
                         type: "success",
                         timer: 1900,
                         showConfirmButton: true});
-                    });
-        }
+                });
+    }
     $("#buscarAprendiz2").val("");
     $("#buscarAprendiz2").focusout();
 });
 
 //este se ejecuta cuando se va a registrar la salida de los aprendices
 $("#buscarA3").click(function () {
-        if ($("#buscarAprendiz2").val().length < 1) {
-            $("#buscarAprendiz2").focus();
-            $("#vNumeroDocA2").show();
-            $("#vNumeroDocA2").css("color", "#d50000");
-        } else {
-            $("#vNumeroDocA2").hide();
-            var nDi = $("#buscarAprendiz2").val();//nuero del documento del aprendiz
-            $.ajax({
-                beforeSend: function (xhr) {},
-                method: "POST",
-                url: "ServletAsistencia",
-                data: {
-                    validacion: "tomaAsistenciaSalida",
-                    idProgramacion: $("#lblPrograma").text(),
-                    documento: nDi,
-                    tipo: 1,
-                    ficha: $("#lblFicha").text()
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    swal({title: "Error en el Servidor",
-                        text: "Lo sentimos... Intentalo Nuevamente",
-                        type: "error",
-                        timer: 4000,
-                        showConfirmButton: true});
-                },
-                complete: function (jqXHR, textStatus) {}
-            })
-                    .done(function (msg) {
-                        $("#cntntMsj").html(msg);
-                        //alert(msg);
-                        var myObject = eval('(' + msg + ')');
-                        //alert(myObject.toString());
-                        $("#buscarAprendiz").val("");
-                        $("#lblNombre").text(myObject[0].nombre);
-                        $("#lblApellido").text(myObject[0].apellido);
-                        $("#lblHora").text(myObject[0].hora);
-                        $("#lblDocumento").text(nDi);
-                        $("#lblFalta").text(myObject[0].faltas);
-                        $("#lblTiempo").text(myObject[0].tiempo);
-                        $("#imgAprendiz").attr("href", "'"+myObject[0].foto+"'");
-                        swal({title: "Perfecto",
+    if ($("#buscarAprendiz2").val().length < 1) {
+        $("#buscarAprendiz2").focus();
+        $("#vNumeroDocA2").show();
+        $("#vNumeroDocA2").css("color", "#d50000");
+    } else {
+        $("#vNumeroDocA2").hide();
+        var nDi = $("#buscarAprendiz2").val();//nuero del documento del aprendiz
+        $.ajax({
+            beforeSend: function (xhr) {
+            },
+            method: "POST",
+            url: "ServletAsistencia",
+            data: {
+                validacion: "tomaAsistenciaSalida",
+                idProgramacion: $("#lblPrograma").text(),
+                documento: nDi,
+                tipo: 1,
+                ficha: $("#lblFicha").text()
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                swal({title: "Error en el Servidor",
+                    text: "Lo sentimos... Intentalo Nuevamente",
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+            },
+            complete: function (jqXHR, textStatus) {
+            }
+        })
+                .done(function (msg) {
+                    $("#cntntMsj").html(msg);
+                    //alert(msg);
+                    var myObject = eval('(' + msg + ')');
+                    //alert(myObject.toString());
+                    $("#buscarAprendiz").val("");
+                    $("#lblNombre").text(myObject[0].nombre);
+                    $("#lblApellido").text(myObject[0].apellido);
+                    $("#lblHora").text(myObject[0].hora);
+                    $("#lblDocumento").text(nDi);
+                    $("#lblFalta").text(myObject[0].faltas);
+                    $("#lblTiempo").text(myObject[0].tiempo);
+                    $("#imgAprendiz").attr("href", "'" + myObject[0].foto + "'");
+                    swal({title: "Perfecto",
                         text: myObject[0].mensaje,
                         type: "success",
                         timer: 1900,
                         showConfirmButton: true});
-                    });
-        }
+                });
+    }
     $("#buscarAprendiz2").val("");
     $("#buscarAprendiz2").focusout();
 });
@@ -1709,14 +1771,14 @@ function modal(id) {
 var idAprendiz = null;
 var idProgramacionN = null;
 var fechaN = null;
-function novedad(idA, idP,fecha) {
+function novedad(idA, idP, fecha) {
     idAprendiz = idA;
     idProgramacionN = idP;
     fechaN = fecha;
 }
 //GUARDA LA novedad del aprendiz que faltó a la clase
 function guardarNovedad() {
-    
+
     if ($("#txtaNovedad").val().length < 1) {
         $('#txtaNovedad').focus();
         $('#validarTxtaN').show();
@@ -1753,7 +1815,7 @@ function guardarNovedad() {
             }
         })
                 .done(function (msg) {
-                   $("#cntntMsj").html(msg);
+                    $("#cntntMsj").html(msg);
                 });
     }
 }
@@ -1761,9 +1823,9 @@ function guardarNovedad() {
 
 //-------------CENTRO DE ASISTENCIA------------------------------------------------------------------------------------
 //mostrara las fichas que el instructor tiene clase
-function inicioCentroAsistencia(){
+function inicioCentroAsistencia() {
     //llamando a google chart Solo se puede llamar una sola vez
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages': ['corechart']});
     $("#contenedorGeneralAprendices").hide();
     $.ajax({
         beforeSend: function () {
@@ -1883,181 +1945,187 @@ function tablaAprendices(val) {
 }
 
 //modal de faltas
-function mdCntFaltas(id){
+function mdCntFaltas(id) {
     $("#modal7").openModal("#" + $(id).attr('id'));
     $("#mdTiempoApre").hide();
     $("#mdFaltasApre").show();
     $("#contentEstadisticaApre").hide();
     $("#contentEstadisticaFaltasApre").hide();
     var object = eval($(id).attr('value'));
-    for(var i = 0; i < object.length; i++){
+    for (var i = 0; i < object.length; i++) {
         var idProgramacion = object[i].idProgramacion;
         var idAprendiz = object[i].idAprendiz;
-        
-    $.ajax({
-        beforeSend: function () {        },
-        method: "POST",
-        url: "ServletAsistencia", //nombre del servlet
-        data: {
-            //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "faltas",
-            documento: idAprendiz,
-            idProgramacion: idProgramacion,
-            idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
-        }
-        , error: function (jqXHR, estado, error) {
-            swal({title: "Error en el Servidor",
-                text: "Lo sentimos... Intentalo Nuevamente",
-                type: "error",
-                timer: 4000,
-                showConfirmButton: true});
-        },
-        complete: function (jqXHR, estado) {
-            //esto se ejecuta despues del done o error
-            //aca se oculta la imagen de cargando que se mostró en el beforeSend
-            // alert("completado");
-        }
-    })
-            .done(function (msg) {
-                //acá se muestra lo que se imprime en el servlert
-                //alertas de si guardo o no o si ocurrio un error
-                $("#mdFaltasApre").html(msg);
-            });
-        }
+
+        $.ajax({
+            beforeSend: function () {
+            },
+            method: "POST",
+            url: "ServletAsistencia", //nombre del servlet
+            data: {
+                //aca se optiene  los datos del formulario para enviarlos al servlet
+                validacion: "faltas",
+                documento: idAprendiz,
+                idProgramacion: idProgramacion,
+                idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
+            }
+            , error: function (jqXHR, estado, error) {
+                swal({title: "Error en el Servidor",
+                    text: "Lo sentimos... Intentalo Nuevamente",
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+            },
+            complete: function (jqXHR, estado) {
+                //esto se ejecuta despues del done o error
+                //aca se oculta la imagen de cargando que se mostró en el beforeSend
+                // alert("completado");
+            }
+        })
+                .done(function (msg) {
+                    //acá se muestra lo que se imprime en el servlert
+                    //alertas de si guardo o no o si ocurrio un error
+                    $("#mdFaltasApre").html(msg);
+                });
+    }
 }
 //El tiempo en que el aprendiz ha estado en clase
-function mdCntTiempo(id){
+function mdCntTiempo(id) {
     $("#modal7").openModal("#" + $(id).attr('id'));
     $("#mdTiempoApre").show();
     $("#mdFaltasApre").hide();
     $("#contentEstadisticaApre").hide();
     $("#contentEstadisticaFaltasApre").hide();
-    
+
     var object = eval($(id).attr('value'));
-    for(var i = 0; i < object.length; i++){
+    for (var i = 0; i < object.length; i++) {
         var idProgramacion = object[i].idProgramacion;
         var idAprendiz = object[i].idAprendiz;
-    $.ajax({
-        beforeSend: function () {},
-        method: "POST",
-        url: "ServletAsistencia", //nombre del servlet
-        data: {
-            //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "tiempoEnClase",
-            documento: idAprendiz,
-            idProgramacion: idProgramacion,
-            idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
-        }
-        , error: function (jqXHR, estado, error) {
-            swal({title: "Error en el Servidor",
-                text: "Lo sentimos... Intentalo Nuevamente",
-                type: "error",
-                timer: 4000,
-                showConfirmButton: true});
-        },
-        complete: function (jqXHR, estado) {}
-    })
-            .done(function (msg) {
-                $("#mdTiempoApre").html(msg);
+        $.ajax({
+            beforeSend: function () {
+            },
+            method: "POST",
+            url: "ServletAsistencia", //nombre del servlet
+            data: {
+                //aca se optiene  los datos del formulario para enviarlos al servlet
+                validacion: "tiempoEnClase",
+                documento: idAprendiz,
+                idProgramacion: idProgramacion,
+                idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
+            }
+            , error: function (jqXHR, estado, error) {
+                swal({title: "Error en el Servidor",
+                    text: "Lo sentimos... Intentalo Nuevamente",
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+            },
+            complete: function (jqXHR, estado) {
+            }
+        })
+                .done(function (msg) {
+                    $("#mdTiempoApre").html(msg);
 
-            });
-        }
+                });
+    }
 }
 
 //GRAFICA unfinished
 //fechas en que han faltado
 //estadistica Aprendiz falta
-function mdCntGenral(id){
+function mdCntGenral(id) {
     $("#modal7").openModal("#" + $(id).attr('id'));
     $("#contentEstadisticaApre").show();
     $("#mdFaltasApre").hide();
-     $("#mdTiempoApre").hide();
-     $("#contentEstadisticaFaltasApre").hide();
+    $("#mdTiempoApre").hide();
+    $("#contentEstadisticaFaltasApre").hide();
     var object = eval($(id).attr('value'));
-    for(var i = 0; i < object.length; i++){
+    for (var i = 0; i < object.length; i++) {
         var idProgramacion = object[i].idProgramacion;
         var idAprendiz = object[i].idAprendiz;
-        
-    $.ajax({
-        beforeSend: function () {        },
-        method: "POST",
-        url: "ServletAsistencia", //nombre del servlet
-        data: {
-            //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "diasAsistidos",
-            documento: idAprendiz,
-            idProgramacion: idProgramacion,
-            idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
-        }
-        , error: function (jqXHR, estado, error) {
-            swal({title: "Error en el Servidor",
-                text: "Lo sentimos... Intentalo Nuevamente",
-                type: "error",
-                timer: 4000,
-                showConfirmButton: true});
-        },
-        complete: function (jqXHR, estado) {}
-    })
-            .done(function (msg) {
-                $("#cntntMsj").html(msg);
-               ///falta
-      google.charts.setOnLoadCallback(function (){
-          drawChart(msg);
-      });
-            });
-            
-         function drawChart(msg) {
-                var object  = eval(msg);
-        var data = new google.visualization.DataTable();
-        //agrego las columnas
-        data.addColumn('date', 'Fecha');
-        data.addColumn('number', 'Asistencia');
-       var fecha = [] ;
-       var dia = [] ;
-        for (var j = 0; j <object.length; j++){
-            fecha[j] = object[j].fecha;
-            dia[j] = object[j].entradaSalida;
-        }
-        alert(fecha);
-        alert(dia);
-        for(var f = 0; f < fecha.length;f++){
-        data.addRows([[new Date(fecha[f]) , f]]);//filas de la grafica
-    }
 
-        var options = {
-          title: 'Asistencia en la competencia.     Asistió = 0 - No asistio = 3',
-          hAxis: {format : ['yyyy-MM-dd'],title: 'Fecha' },//
-          vAxis: {title: 'Asistó = 0  Falto = 3',  titleTextStyle: {color: '#333'},minValue: 0, maxValue: 3},
-          animation:{
-        duration: 1000,
-        easing: 'out'
-      }
-        };
-
-        var chart = new google.visualization.AreaChart(document.getElementById('contentEstadisticaApre'));
-        chart.draw(data, options);
-        //dando animación
-        setTimeout(function (){
-             for(var f = 0; f < fecha.length;f++){
-                data.setValue(f, 1, dia[f]);
+        $.ajax({
+            beforeSend: function () {
+            },
+            method: "POST",
+            url: "ServletAsistencia", //nombre del servlet
+            data: {
+                //aca se optiene  los datos del formulario para enviarlos al servlet
+                validacion: "diasAsistidos",
+                documento: idAprendiz,
+                idProgramacion: idProgramacion,
+                idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
             }
-           chart.draw(data, options);
-        },1000);
+            , error: function (jqXHR, estado, error) {
+                swal({title: "Error en el Servidor",
+                    text: "Lo sentimos... Intentalo Nuevamente",
+                    type: "error",
+                    timer: 4000,
+                    showConfirmButton: true});
+            },
+            complete: function (jqXHR, estado) {
+            }
+        })
+                .done(function (msg) {
+                    $("#cntntMsj").html(msg);
+                    ///falta
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(msg);
+                    });
+                });
+
+        function drawChart(msg) {
+            var object = eval(msg);
+            var data = new google.visualization.DataTable();
+            //agrego las columnas
+            data.addColumn('date', 'Fecha');
+            data.addColumn('number', 'Asistencia');
+            var fecha = [];
+            var dia = [];
+            for (var j = 0; j < object.length; j++) {
+                fecha[j] = object[j].fecha;
+                dia[j] = object[j].entradaSalida;
+            }
+            alert(fecha);
+            alert(dia);
+            for (var f = 0; f < fecha.length; f++) {
+                data.addRows([[new Date(fecha[f]), f]]);//filas de la grafica
+            }
+
+            var options = {
+                title: 'Asistencia en la competencia.     Asistió = 0 - No asistio = 3',
+                hAxis: {format: ['yyyy-MM-dd'], title: 'Fecha'}, //
+                vAxis: {title: 'Asistó = 0  Falto = 3', titleTextStyle: {color: '#333'}, minValue: 0, maxValue: 3},
+                animation: {
+                    duration: 1000,
+                    easing: 'out'
+                }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('contentEstadisticaApre'));
+            chart.draw(data, options);
+            //dando animación
+            setTimeout(function () {
+                for (var f = 0; f < fecha.length; f++) {
+                    data.setValue(f, 1, dia[f]);
+                }
+                chart.draw(data, options);
+            }, 1000);
         }
-        }
+    }
 }
 
 //GRAFICA -ok
 //dias faltados por grupo
-function mdCntFaltasGrupal(id){
+function mdCntFaltasGrupal(id) {
     $("#modal7").openModal("#" + $(id).attr('id'));
     $("#contentEstadisticaFaltasApre").show();
     $("#contentEstadisticaApre").hide();
     $("#mdFaltasApre").hide();
-     $("#mdTiempoApre").hide();
+    $("#mdTiempoApre").hide();
     var idProgramacion = $(id).attr('value');
     $.ajax({
-        beforeSend: function () {        },
+        beforeSend: function () {
+        },
         method: "POST",
         url: "ServletUsuario", //nombre del servlet
         data: {
@@ -2073,63 +2141,64 @@ function mdCntFaltasGrupal(id){
                 timer: 4000,
                 showConfirmButton: true});
         },
-        complete: function (jqXHR, estado) {}
+        complete: function (jqXHR, estado) {
+        }
     })
             .done(function (msg) {
                 $("#cntntMsj").html(msg);
-                
-              //  google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(function (){
-          drawChart(msg);
-      });
+
+                //  google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(function () {
+                    drawChart(msg);
+                });
             });
-            function drawChart(msg) {
-                var object  = eval(msg);
+    function drawChart(msg) {
+        var object = eval(msg);
         var data = new google.visualization.DataTable();
         //agrego las columnas
         data.addColumn('string', 'Nombres');
         data.addColumn('number', 'Días');
-       var nombre = [] ;
-       var dia = [] ;
-        for (var j = 0; j <object.length; j++){
-            nombre[j] = object[j].nombre +" "+ object[j].apellido ;
+        var nombre = [];
+        var dia = [];
+        for (var j = 0; j < object.length; j++) {
+            nombre[j] = object[j].nombre + " " + object[j].apellido;
             dia[j] = object[j].dia;
         }
-        for(var f = 0; f < nombre.length;f++){
-        data.addRows([[nombre[f] , f]]);//filas de la grafica
-    }
-     //parte visual de la grafica colores, etc..
-var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 0,
-                         type: "string",
-                         role: "annotation" }]);
+        for (var f = 0; f < nombre.length; f++) {
+            data.addRows([[nombre[f], f]]);//filas de la grafica
+        }
+        //parte visual de la grafica colores, etc..
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {calc: "stringify",
+                sourceColumn: 0,
+                type: "string",
+                role: "annotation"}]);
         var options = {
             title: 'Días faltados por aprendiz en la competencia',
             subtitle: 'Días',
-          vAxis: {title: 'Nombres',  titleTextStyle: {color: '#333'}},
-          hAxis: {title: 'Días',  titleTextStyle: {color: '#333'},format: 'short'},
-          bar: {groupWidth: "10%"},
-        legend: { position: "none" },
-        animation:{
-        duration: 1000,
-        easing: 'out'
-      }
+            vAxis: {title: 'Nombres', titleTextStyle: {color: '#333'}},
+            hAxis: {title: 'Días', titleTextStyle: {color: '#333'}, format: 'short'},
+            bar: {groupWidth: "10%"},
+            legend: {position: "none"},
+            animation: {
+                duration: 1000,
+                easing: 'out'
+            }
         };
 //dibuja la grafica
-    var chart = new google.visualization.BarChart(document.getElementById('contentEstadisticaFaltasApre'));
+        var chart = new google.visualization.BarChart(document.getElementById('contentEstadisticaFaltasApre'));
         chart.draw(view, options);
         //le da la animacion
-        setTimeout(function (){
-             for(var f = 0; f < nombre.length;f++){
+        setTimeout(function () {
+            for (var f = 0; f < nombre.length; f++) {
                 data.setValue(f, 1, dia[f]);
             }
-           chart.draw(view, options);
-        },1000);
-  }
-           
-        }
+            chart.draw(view, options);
+        }, 1000);
+    }
+
+}
 
 /*
  * DIAS QUE HAY EN DOS FECHAS
@@ -2145,8 +2214,26 @@ var view = new google.visualization.DataView(data);
  var dias = Math.floor(dif / (1000 * 60 * 60 * 24)); 
  return dias;
  }
-
-var f1 = '10/09/2014';
-var f2='15/10/2014';
-alert(restaFechas(f1,f2));
+ 
+ var f1 = '10/09/2014';
+ var f2='15/10/2014';
+ alert(restaFechas(f1,f2));
  */
+// solo letras js
+function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toString();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";//Se define todo el abecedario que se quiere que se muestre.
+    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
+
+    tecla_especial = false
+    for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+
+    if (letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}

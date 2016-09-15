@@ -25,6 +25,11 @@
  <!--Menu -->
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style2.css" rel="stylesheet" type="text/css"/>
+         <style>
+            footer.page-footer{
+                background-color: #f2f2f2;
+            }
+        </style>
     </head>
 
     <% Instructor dao = new Instructor();
@@ -56,7 +61,7 @@
         <div class="top-bar" ><center><p style="font-size: 16px"><%= session.getAttribute("tipo")%></p></center></div>
         <!-- Sidebar brand image -->
         <div class="sidebar-image">
-            <img src="imagenes/foto1.jpg" alt="" />
+            <img src="<%= session.getAttribute("foto")%>" alt="" />
         </div>
          <!-- Sidebar brand name -->
          <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown" style="position: relative;">
@@ -183,19 +188,19 @@
         <div id="cntntMsj"></div>
             <div class="row container" style="margin-top: 2%; ">
                 <div id="contenedorControles" style="  padding-bottom: 2px; border-left: 0px; border-right: 0px;">
-                    <div class="row z-depth-1" style="background-color: #ffffff; padding-top:15px;">
+                    <div class="row z-depth-1" style="background-color: #ffffff; padding-top:15px; padding-right: 10px; padding-left: 10px;">
                         <!-------------------  FORMULARIO FICHA -----------------------------------> 
                         <form action="" class="col s12 m12" id="contenedorFormularioAmbiente">
                             <div class="row" style="margin-bottom: 0px;">
 
                             <div class="input-field col s6">
                                 <i class="material-icons prefix">done</i>
-                                <input id="capacidad" type="number" class="validate">
+                                <input id="capacidad" type="text" class="validate" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                                 <label for="icon_prefix" id="lblcapacidad">Capacidad</label>
                             </div>
                             <div class="input-field col s6">
                                 <i class="material-icons prefix">done</i>
-                                <input id="tipoAmbiente" type="text" class="validate">
+                                <input id="tipoAmbiente" type="text" class="validate" onkeypress="return soloLetras(event);">
                                 <label for="icon_prefix" id="lbltipoAmbiente">Tipo ambiente</label>
                             </div>
                         
@@ -203,20 +208,20 @@
                             <div class="row s12 " style="margin-bottom: 0px;">
                             <div class="input-field col s6" >
                                 <i class="material-icons prefix">done</i>
-                                <input id="suministros" type="text" class="validate">
-                                <label for="icon_prefix" id="lblsuministros">Suministros</label>
+                                <input id="suministros" type="text" class="validate"   onkeypress="return soloLetras(event);">
+                                <label for="icon_prefix" id="lblsuministros">Suministros</label >
                             </div>
 
                             <div class="input-field col s6" style="margin-top: 0px;">
                                 <i class="material-icons prefix">done</i>
-                                <textarea id="observacion" class="materialize-textarea"class="validate" ></textarea>
+                                <textarea id="observacion" class="materialize-textarea"class="validate"  onkeypress="return soloLetras(event);"></textarea>
                                 <label for="icon_prefix" id="lblobservacion">Observacion</label>
                             </div>
                             </div>
                             </div>
                             <div class="row" style="margin-bottom: 10px;">
                                 <div class="col s2"><h1></h1></div>
-                                <div class="col s3"><button class="btn waves-effect light-blue accent-4 waves-light" type="button" name="cancelar" id="btnCancelarAmbiente" >Cancelar</button></div>
+                                <div class="col s3"><button class="btn waves-effect light-blue accent-4 waves-light" type="button" name="cancelar" id="btnCancelarAmbiente"  onClick="location.href = 'menuAdministrador.jsp'">Cancelar</button></div>
                                 <div class="col s2"><h1></h1></div>
                                 <div class="col s3" style="padding-left: 10%"><button class="btn waves-effect light-blue accent-4 waves-light" type="button" name="guardar" id="btnGuardarAmbiente">Guardar</button></div>
                                 <div class="col s3" style="padding-left: 10%"><button class="btn waves-effect light-blue accent-4 waves-light" type="button" name="modificar" id="btnModificarAmbiente" value="">Modificar</button></div>

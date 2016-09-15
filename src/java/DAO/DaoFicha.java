@@ -165,7 +165,7 @@ public class DaoFicha {
             List<Ficha> lista = null;
             Ficha f;
         try {
-            sql = "SELECT id,numeroFicha FROM ficha";
+            sql = "SELECT id,numeroFicha,idPrograma FROM ficha";
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
@@ -174,6 +174,7 @@ public class DaoFicha {
                 f = new Ficha();
                 f.setId(rs.getInt("id"));
                 f.setNumeroFicha(rs.getString("numeroFicha"));
+                f.setIdPrograma(rs.getInt("idPrograma"));
                 lista.add(f);
             }
             

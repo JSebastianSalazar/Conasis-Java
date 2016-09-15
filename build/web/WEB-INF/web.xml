@@ -56,6 +56,14 @@
         <servlet-name>ServletUsuario</servlet-name>
         <servlet-class>servlet.ServletUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Barrio</servlet-name>
+        <servlet-class>servlet.Barrio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ejemplo</servlet-name>
+        <servlet-class>servlet.ejemplo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogInServlet</servlet-name>
         <url-pattern>/LogInServlet</url-pattern>
@@ -147,6 +155,14 @@
     <servlet-mapping>
         <servlet-name>ServletUsuario</servlet-name>
         <url-pattern>/ServletUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Barrio</servlet-name>
+        <url-pattern>/Barrio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ejemplo</servlet-name>
+        <url-pattern>/ejemplo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -62,7 +62,7 @@
             <div class="top-bar" ><center><p style="font-size: 16px"><%= session.getAttribute("tipo")%></p></center></div>
             <!-- Sidebar brand image -->
             <div class="sidebar-image">
-                <img src="imagenes/foto1.jpg" alt="" />
+                <img src="<%= session.getAttribute("foto")%>" alt="" />
             </div>
             <!-- Sidebar brand name -->
             <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown" style="position: relative;">
@@ -189,14 +189,15 @@
     <div id="cntntMsj"></div>
     <div class="row container" style="margin-top: 2%; ">
         <div id="contenedorControles" style="  padding-bottom: 2px; border-left: 0px; border-right: 0px;">
-            <div class="row z-depth-1" style="background-color: #ffffff; padding-top:15px;">
+            <div class="row z-depth-1" style="background-color: #ffffff; padding-top:15px; padding-left: 12px; padding-right: 12px;">
                 <!-------------------  FORMULARIO FICHA -----------------------------------> 
                 <form action="" class="col s12 m12" id="contenedorFormularioFicha">
                     <div class="row" style="margin-bottom: 0px;">
                         <br>
                         <div class="input-field col s4"  >
-                            <i class="material-icons prefix">done<label for="icon_prefix">example</label></i>
-                            <input id="numeroFicha" type="number" class="validate" >
+                            <i class="material-icons prefix">done</i>
+                            <input id="numeroFicha"  maxlength="10"type="text" class="validate" onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
+                                        event.returnValue = false;">
                             <label for="icon_prefix" id="lblFicha">Numero ficha</label>
                         </div>
                         <div class="input-field col s4">

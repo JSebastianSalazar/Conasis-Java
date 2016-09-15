@@ -1,3 +1,58 @@
+// combobox
+$(document).ready(function () {//se accede al documento
+    $('select').material_select();
+
+    $('#municipio').change(function () {
+        SeleccionandoCombo(this, 'barrio1');
+    });
+    function SeleccionandoCombo(combo1, combo2) {
+        combo2 = document.getElementById("barrio1");//se obtiene combo2 por id
+        LimpiarCombo(combo2);
+
+        if (combo1.options[combo1.selectedIndex].value !== "") {
+            combo2.disabled = true;
+
+            $.ajax({//permite acceder al servidor por medio de un objeto json xml o html asincrono dejar en segundo plano el proceso y no alterar la pagina 
+                type: 'get',
+                url: 'ejemplo',
+                dataType: 'json',
+                data: {valor1: combo1.options[combo1.selectedIndex].value},
+                success: function (resultado) {
+                    var MyObjeto = eval(resultado);//convertir un String de tipo Json a un objeto
+                    llenarCombo(MyObjeto, combo2);
+                    combo1.disabled = false;
+                    combo2.disabled = false;
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus + " - " + errorThrown + " - " + jqXHR);
+                },
+                complete: function (jqXHR, textStatus) {
+                    alert(jqXHR + " - " + textStatus);
+                }
+
+            });
+
+        }
+    }
+    //metodo para limpiar combo
+    function LimpiarCombo(combo) {
+        while (combo.length > 0) {// desde su tamaño hasta 0
+            combo.remove(combo.length - 1);// remueve uno por uno 
+
+        }
+
+    }
+    function llenarCombo(json, combo) {
+        combo.options[0] = new Option('Barrrios', '');
+        for (var i = 0; i < json.length; i++) {
+            combo.options[combo.length] = new Option(json[i].municipio, json[i].id);
+        }
+    }
+
+});
+
+
 $(document).ready(function () {
 
     //Tomando foto
@@ -126,53 +181,7 @@ $(document).ready(function () {
 
 });
 
-// combobox
-$(document).ready(function () {//se accede al documento
-    $('select').material_select();
 
-    $('#municipio').change(function () {
-        SeleccionandoCombo(this, 'barrio1');
-    });
-    function SeleccionandoCombo(combo1, combo2) {
-        combo2 = document.getElementById("barrio1");//se obtiene combo2 por id
-        LimpiarCombo(combo2);
-        if (combo1.options[combo1.selectedIndex].value !== "") {
-            combo2.disabled = true;
-            $.ajax({//permite acceder al servidor por medio de un objeto json xml o html asincrono dejar en segundo plano el proceso y no alterar la pagina 
-                type: 'get',
-                url: 'Barrio',
-                dataType: 'json',
-                data: {valor1: combo1.options[combo1.selectedIndex].value},
-                success: function (resultado) {
-
-                    var MyObjeto = eval(resultado);//convertir un String de tipo Json a un objeto
-                    llenarCombo(MyObjeto, combo2);
-                    combo1.disabled = false;
-                    combo2.disabled = false;
-
-                }
-
-            });
-
-        }
-    }
-    //metodo para limpiar combo
-    function LimpiarCombo(combo) {
-        while (combo.length > 0) {// desde su tamaño hasta 0
-            combo.remove(combo.length - 1);// remueve uno por uno 
-
-        }
-
-    }
-    function llenarCombo(json, combo) {
-        combo.options[0] = new Option('Barrrios', '');
-        for (var i = 0; i < json.length; i++) {
-            combo.options[combo.length] = new Option(json[i].municipio, json[i].id);
-
-        }
-    }
-
-});
 //Se utiliza para que el campo de texto solo acepte letras
 function soloLetras(e) {
     key = e.keyCode || e.which;
@@ -181,29 +190,29 @@ function soloLetras(e) {
     especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
 
     tecla_especial = false
-    for(var i in especiales) {
-        if(key == especiales[i]) {
+    for (var i in especiales) {
+        if (key == especiales[i]) {
             tecla_especial = true;
             break;
         }
     }
 
-    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+    if (letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
 }
 
-function SoloNumeros(evt){
- if(window.event){//asignamos el valor de la tecla a keynum
-  keynum = evt.keyCode; //IE
- }
- else{
-  keynum = evt.which; //FF
- } 
- //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
- if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
-  return true;
- }
- else{
-  return false;
- }
+function SoloNumeros(evt) {
+    if (window.event) {//asignamos el valor de la tecla a keynum
+        keynum = evt.keyCode; //IE
+    }
+    else {
+        keynum = evt.which; //FF
+    }
+    //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
+    if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

@@ -469,7 +469,7 @@
             </div>
 
             </div>    
-            <footer class="page-footer">
+            <footer class="page-footer" style="background-color: #f2f2f2;">
                 <div class="ftft">
       <div class="footer-copyright">
             <div class="container">

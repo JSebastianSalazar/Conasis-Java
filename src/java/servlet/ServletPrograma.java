@@ -139,6 +139,7 @@ public class ServletPrograma extends HttpServlet {
                     pc.setIdPrograma(Integer.parseInt(idPrograma));
                     if (daoPc.consultarPrograma(pc) != 0) {
                         pc.setIdPrograma(Integer.parseInt(idPrograma));
+                            p.setIdPrograma(Integer.parseInt(idPrograma));
                         if (daoPc.eliminarTodo(pc)) { //eliminando en la tabla intermedia
                             p = new Programa();
                             p.setIdPrograma(Integer.parseInt(idPrograma));
@@ -151,10 +152,12 @@ public class ServletPrograma extends HttpServlet {
                             out.println("No se ejecutó la eliminación en cascada");
                         }
                     } else {
+                         p = new Programa();
+                            p.setIdPrograma(Integer.parseInt(idPrograma));
                         if (daoP.eliminar(p)) {//eliminando en la tabla programa
                             out.println("<h5>Eliminado con exito</h5>");
                         } else {
-                            out.println("<h5>No se eliminó</h5>");
+                            out.println("<h5>No se eliminók</h5>");
                         }
                     }
 

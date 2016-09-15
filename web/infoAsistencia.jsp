@@ -25,6 +25,12 @@
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style2.css" rel="stylesheet" type="text/css"/>
 
+        <style>
+
+            footer.page-footer{
+                background-color: #f2f2f2;
+            }
+        </style>
     </head>
 
     <% Instructor dao = new Instructor();

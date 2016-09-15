@@ -246,8 +246,8 @@ public class DAOUsuario extends Conexion {
             Usuario u;
         try {
             sql = "SELECT u.id,u.nombre,u.apellido "
-                    + "FROM usuario as u, tipoUsuario as t "
-                    + "WHERE t.idTipoUsuario=u.idTipousuario AND t.idTipousuario='2'";
+                    + "FROM usuario as u, tipoUsuario as t, estado as e "
+                    + "WHERE t.idTipoUsuario=u.idTipousuario AND u.id=e.idUsuario AND  t.idTipousuario='2' AND e.tipo='1'";
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
