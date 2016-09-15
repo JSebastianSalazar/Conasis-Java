@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sebas/Desktop/final/conasis/src/java/servlet/Barrio.java</file>
-            <file>file:/C:/Users/sebas/Desktop/final/conasis/src/java/beans/Aprendiz.java</file>
+            <file>file:/C:/Users/sebas/Desktop/final/conasis/web/registroInstructores.jsp</file>
+            <file>file:/C:/Users/sebas/Desktop/final/conasis/web/programacion.jsp</file>
+            <file>file:/C:/Users/sebas/Desktop/final/conasis/src/java/servlet/ServletAsistencia.java</file>
             <file>file:/C:/Users/sebas/Desktop/final/conasis/web/RegistroAprendizIns.jsp</file>
+            <file>file:/C:/Users/sebas/Desktop/final/conasis/web/js/ajax.js</file>
             <file>file:/C:/Users/sebas/Desktop/final/conasis/web/js/AprendizIns.js</file>
         </group>
     </open-files>

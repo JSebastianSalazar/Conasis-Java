@@ -527,6 +527,9 @@
     <!--Import jQuery before materialize.js-->
     <!--importación de Jquery por medio de CDN-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+      <!--menu-->
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src="js/index2.js" type="text/javascript"></script>
     <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
     <script src="js/jquery.featureCarousel.min.js" type="text/javascript"></script>
     <script src="js/usuario.js" type="text/javascript"></script>
@@ -535,10 +538,6 @@
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="js/js.js" type="text/javascript"></script>
     <script src="js/Carru.js" type="text/javascript"></script>
-    <!--menu-->
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-    <script src="js/index2.js" type="text/javascript"></script>
-    <!--importacion de materializecss javaScript por medio de CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  
 </body>
 </html>

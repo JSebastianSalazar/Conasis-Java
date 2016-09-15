@@ -808,6 +808,7 @@ function idCuadroFicha(id) {
     ProgramaCombobox = null;
 }
 function seleccionarCuadroFicha(idF, ficha, programa) {
+    alert("idFicha "+idF +" - " + " ficha " + ficha+" - " +" programa "+programa);
     $.ajax({
         beforeSend: function (xhr) {
             $("#contenedorProgramacionFichas").show();
@@ -1084,7 +1085,7 @@ $('select[name=fichas]').on('change', function () {
 //obteniendo el id de la competencia
 var idCompetenciaProgramacion = null;
 $('select[name=competencias]').on('change', function () {
-    idCompetenciaProgramacion = $('select[name=competencias]').val();//saber value del combobox seleccionado
+    idCompetenciaProgramacion = $('select[name=competencias]').val();//saber value del combobbox seleccionado
 });
 //obteniendo el id del instructor
 //obteniendo el id de ficha

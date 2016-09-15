@@ -24,10 +24,6 @@
     padding-bottom: 4px; 
     padding-top: 7px;
     height: auto;}
-#lista:hover{
-    transition: 0.5s;
-    transform: translateY(5px);
-}
 .titulo{
     font-size:30px;
     text-align: center;
@@ -98,15 +94,7 @@
     padding-bottom: 0px; 
     margin-top: 90px;
 }
-#programaYcompetencias:hover{
-    transition: 0.5s;
-    transform: translateY(5px);
-}
 /* ENTRADA APRENDICES*/
-#ContenedorAsistencial:hover{
-    transition: 0.5s;
-    transform: translateY(5px);
-}
 #imgConasis{
     margin-bottom: 0px;
 }

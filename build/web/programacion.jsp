@@ -296,11 +296,11 @@
 
             <div class="input-field col s6 ">
                 <input type="time" class="" id="horaInicio" name="horaInicio">
-                <label for="horaInicio" style="margin-top: -30px;" id="lblhoraInicio">Hora inicio en formato 24:00</label>
+                <label for="horaInicio" style="margin-top: -30px;" id="lblhoraInicio">Hora inicio en formato 12h</label>
             </div>
             <div class="input-field col s6 ">
                 <input  class="" id="horaFin" name="horaFin" type="time" >
-                <label for="horaFin" style="margin-top: -30px;" id="lblhoraFin">Hora fin en formato 24:00</label>
+                <label for="horaFin" style="margin-top: -30px;" id="lblhoraFin">Hora fin en formato 12h</label>
             </div>
             <div class="input-field col s6"> <!--lista de los tipos de documentos-->
                 <select class="" name="instructores" id="instructores">

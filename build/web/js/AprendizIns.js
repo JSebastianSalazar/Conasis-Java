@@ -216,3 +216,44 @@ function SoloNumeros(evt) {
         return false;
     }
 }
+
+$(document).ready(function (){
+    fichasInstructor();
+});
+function fichasInstructor() {
+    $("#contenedorGeneralAprendices").hide();
+    $.ajax({
+        beforeSend: function () {
+            //aca pueden poner una imagen gif como un preloader
+            //¿para qué?
+            //este metodo se ejecuta antes de llegar al servlet
+            //por ejemplo al guardar algo, parecera la imagen cargando mientras se completa el registro
+        },
+        method: "POST",
+        url: "ServletAsistencia", //nombre del servlet
+        data: {
+            //aca se optiene  los datos del formulario para enviarlos al servlet
+            validacion: "fichasInstructor3",
+            idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
+        }
+        , error: function (jqXHR, estado, error) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, estado) {
+            //esto se ejecuta despues del done o error
+            //aca se oculta la imagen de cargando que se mostró en el beforeSend
+        }
+    })
+            .done(function (msg) {
+                //acá se muestra lo que se imprime en el servlert
+                //alertas de si guardo o no o si ocurrio un error
+                $("#contenedorFichasInstructor2").html(msg);
+
+            });
+}
+
+/*tablaAprendices(this)*/

@@ -118,10 +118,6 @@ td, th {
 .listaInfo{
     margin-bottom: 2px; margin-top: 2px;
 }
-#ContenedorAsistencial:hover{
-   transition: 0.5s;
-    transform: translateY(5px);
-}
 #imgConasis{
     margin-bottom: 0px;
 }
@@ -244,10 +240,6 @@ nav div a{
     text-overflow: ellipsis;
     overflow: hidden;
     transition: color .28s ease;
-}
-.tabs .tab a:hover{
-    color: #0090A5;
-    
 }
 .tabs .indicator {
     position: absolute;

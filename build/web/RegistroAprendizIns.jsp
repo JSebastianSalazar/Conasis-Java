@@ -307,7 +307,7 @@
                     %>
             </div>-->
 
-                    <div class="row" style="margin-top: 2%;">
+                    <div class="row" style="margin-top: 2%; background-color: #f2f2f2">
                         <div id="contenedorControles" style="border-left: 0px; border-right: 0px;padding-bottom: 0px; ">
                             <div class="row" style="background-color: #f2f2f2; padding-left: 0px; padding-top: 0px; margin-bottom: 0px">
                                 <div class="row z-depth-1" style="margin-right: 0px; margin-right: 0px; margin-bottom: 15px; padding-top: 5px;"><!-- Seleccion programa o competencia -->
@@ -549,8 +549,7 @@
     <!--<script src="js/Carru.js" type="text/javascript"></script>
     <!--Import jQuery before materialize.js-->
    
-    <script src="js/AprendizIns.js" type="text/javascript"></script>
-    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+   <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <!--importando en archivo .js ajax permite visualizar las informacion de la base de datos en el sitio web-->
     <script type="text/javascript" src="js/ajax.js"></script>
     <!--Importacion del CDN de Google Chart -->
@@ -571,5 +570,6 @@
                                                 });
                                             });
     </script>
+     <script src="js/AprendizIns.js" type="text/javascript"></script>
 </body>
 </html>

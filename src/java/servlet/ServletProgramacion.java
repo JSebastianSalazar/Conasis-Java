@@ -76,6 +76,7 @@ public class ServletProgramacion extends HttpServlet {
             String jsons;
             HttpSession session= request.getSession(true);
             Usuario u;
+            String idUsuarioLogueado;
 
             idProgramacion = request.getParameter("idProgramacion");
             idFicha = request.getParameter("idFicha");
@@ -91,8 +92,8 @@ public class ServletProgramacion extends HttpServlet {
             nombrePrograma = request.getParameter("nombrePrograma");
             idCompetencia = request.getParameter("idCompetencia");
             idUsuario = request.getParameter("idUsuario");
-           // idInstructor = request.getParameter("idInstructor");
-            idInstructor =session.getAttribute("idIns")+"";
+           idInstructor = request.getParameter("idInstructor");
+            idUsuarioLogueado =session.getAttribute("idIns")+"";
             
             p = new Programacion();
             f = new Ficha();
@@ -431,7 +432,7 @@ public class ServletProgramacion extends HttpServlet {
                     }
                     break;
                 case "competenciasDictadasXintstructor":                    
-                    lista = daop.competenciasDictadasXintstructor(Integer.parseInt(idInstructor));
+                    lista = daop.competenciasDictadasXintstructor(Integer.parseInt(idUsuarioLogueado));
                     if (!lista.isEmpty() || lista.size() != 0) {
                                                
                         out.println("<table class='highlight bordered' id='tblCompetenciasInstructor'>");
