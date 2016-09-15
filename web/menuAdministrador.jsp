@@ -33,7 +33,7 @@
                 width: 100%;
 
             }  
-            
+            .a{font-size: 17px;}
         </style>
 
     </head>
@@ -274,8 +274,12 @@
         %>
 
     </aside>
-    <!-- Modal Structure -->
-    <div id="modalCDxI color2" class="modal modal-fixed-footer" >
+   
+    <%
+            if (tipo.equals("Instructor")) {
+        %>
+         <!-- Modal Structure -->
+    <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
             <div id="tblcompetenciasDictadasXintstructor">
@@ -287,13 +291,15 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->
-
+     <%
+        } 
+        %>
     <!--Lo que se mostrará-->
 
     <div class="container">
 
         <div class="card small">
-            <div class="card-image waves-effect waves-block waves-light">
+            <div class="card-image waves-effect waves-block waves-light activator">
                 <center><img class="activator" src="imagenes/conasisLogo.png" style=" width:80%; height: 50%" alt="" /></center>
             </div>
             <div class="card-content">
@@ -324,17 +330,17 @@
                     <div class="col l6 s12">
                         <h5 class="black-text" >Desarrolladores</h5>
                         <p class="grey-text text-lighten-3">
-                            <a href="#eme" class="modal-trigger waves-effect waves-light img">Emerson Javid Gonzalez</a>
-                            <a href="#sebas" class="modal-trigger waves-effect waves-light img">Johan Sebastian Salazar Muñoz</a>
-                            <a href="#wil" class="modal-trigger waves-effect waves-light img">Wilmar Alejandro Agudelo Yepes</a>
+                            <a href="#eme" class="modal-trigger waves-effect waves-light img a">Emerson Javid Gonzalez</a>
+                            <a href="#sebas" class="modal-trigger waves-effect waves-light img a">Johan Sebastian Salazar Muñoz</a>
+                            <a href="#wil" class="modal-trigger waves-effect waves-light img a">Wilmar Alejandro Agudelo Yepes</a>
                         </p>
                     </div>
                     <div class="col l4 offset-l2 s12">
                         <h5 class="black-text"> Ayuda </h5>
                         <ul>
-                            <li> <a href="manual.jsp">Manual usuario</a></li>
-                            <li><a href="#propiedad" class="modal-trigger waves-effect waves-light img">Propiedad intelectual</a></li>
-                            <li><a href="#anexo" class="modal-trigger waves-effect waves-light img">Anexos</a></li>
+                            <li> <a href="manual.jsp" class="a">Manual usuario</a></li>
+                            <li><a href="#propiedad" class="modal-trigger waves-effect waves-light img a">Propiedad intelectual</a></li>
+                            <li><a href="#anexo" class="modal-trigger waves-effect waves-light img a">Anexos</a></li>
                         </ul>
                     </div>
 
@@ -484,7 +490,7 @@
             <!--importacion de datatable javaScript por medio de CDN-->
             <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
             <script src="js/sweetalert.min.js" type="text/javascript"></script>
-            <!-- <script src="js/main.js" type="text/javascript"></script>
+            <!-- <script src="js/main.js" type="text/javascript"></script>-->
              <script src="js/js.js" type="text/javascript"></script>
               <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
             <script src="js/ajax.js" type="text/javascript"></script>
@@ -493,6 +499,11 @@
             <script>
                                 $(document).ready(function () {
                                     $('select').material_select();
+                                    $("#competenciasDictadasXintstructor").click(function (){
+                                        $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
+                                        
+                                        $(".sidebar-overlay").trigger("click");
+                                    });
                                 });
 
                                 $('.modal-trigger').leanModal({

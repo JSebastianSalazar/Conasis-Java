@@ -241,6 +241,26 @@
         %>
 
     </aside>
+        <%
+            if (tipo.equals("Instructor")) {
+        %>
+         <!-- Modal Structure -->
+    <div id="modalCDxI" class="modal modal-fixed-footer" >
+        <div class="modal-content">
+            <h4>Asistencia</h4>
+            <div id="tblcompetenciasDictadasXintstructor">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
+            <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
+        </div>
+    </div><!--fin del modal -->
+     <%
+        } 
+        %>
+    
     <div class="contenedorTab ">
         <div class="row">
             <div class="col s12 ">
@@ -540,6 +560,13 @@
     <script>
                                             $(document).ready(function () {
                                                 inicioCentroAsistencia();
+                                                var overlay = $('.sidebar-overlay');
+                                                var sidebar = $('#sidebar');
+                                                $("#competenciasDictadasXintstructor").click(function () {
+                                                    $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
+
+                                                    $(".sidebar-overlay").trigger("click");
+                                                });
                                             });
     </script>
 </body>

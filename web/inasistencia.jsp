@@ -3,6 +3,10 @@
     Created on : 22-ago-2016, 13:49:20
     Author     : Emerson
 --%>
+<%@page import="beans.Usuario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.Instructor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -24,13 +28,244 @@
         <!-- importando el CSS del datable por medio de CDN -->
         <link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <title>Entrada y Salida</title>
+     <!--Menu -->
+        <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style2.css" rel="stylesheet" type="text/css"/>
+
     </head>
-    <body style="background-color: #f2f2f2">
-        <nav class="cabecera">
-            <center><h5 class="grupo">Inasistencias</h5></center>
-            <!--<div id="mensajes" class="col s3"></div>-->
-            </nav>
-        <div class="linea"></div>
+
+    <% Instructor dao = new Instructor();
+        List<Usuario> list = new ArrayList();
+        if (session.getAttribute("usuario") != null) {
+            String nombre = "" + session.getAttribute("usuario");
+            String tipo = "" + session.getAttribute("tipo");
+    %>
+
+    <body style="background: #f2f2f2">
+        <nav class="cabecera" >
+            <div class="nav-wrapper" style="background-color: transparent">
+                <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/>
+                <a  class="brand-logo center">Inasistencias</a>
+            </div>
+        </div>
+    </nav>
+    <div class="linea col s12"></div>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Material sidebar -->
+    <aside id="sidebar" class="sidebar sidebar-default open" role="navigation">
+        <!-- Sidebar header -->
+        <div class="sidebar-header header-cover" style="margin-bottom: 0px; background-color: #0090A5;opacity: 0.9; filter: alpha(opacity=90);"><!--url(http://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);             background-image:url(imagenes/conasisLogo.png); -->   
+            <!-- Top bar <div class="top-bar" style="margin-top: -8px"></div>-->
+            <center><a href="menuAdministrador.jsp"> <img src="imagenes/conasisLogo.png" alt="" style="width: 260px; height: 156px"/></a></center>
+        </div>
+        <div class="sidebar-header" style="height: 163px;">
+            <!-- Top bar -->
+            <div class="top-bar" ><center><p style="font-size: 16px"><%= session.getAttribute("tipo")%></p></center></div>
+            <!-- Sidebar brand image -->
+            <div class="sidebar-image">
+                <img src="<%= session.getAttribute("foto")%>" alt="" />
+            </div>
+            <!-- Sidebar brand name -->
+            <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown" style="position: relative;">
+                <p style="font-size: 16px">  <%=nombre%></p>
+                <b class="caret"></b>
+            </a>
+        </div>
+        <!-- Sidebar navigation -->
+        <ul class="nav sidebar-nav">
+            <li class="dropdown">
+                <ul id="settings-dropdown" class="dropdown-menu">
+                    <li><form action="SalidaAdmi">
+                            <a href="#" onclick="$(this).closest('form').submit()">
+                                <i class="sidebar-icon material-icons">power_settings_new</i>
+                                Salir
+                            </a></form>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+        <%
+            if (tipo.equals("administrador")) {
+        %>
+        <!-- Sidebar navigation -->
+        <ul class="nav sidebar-nav">
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Administrar Usuarios
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="registroInstructores.jsp" tabindex="-1">
+                            Instructores
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="RegistroSecretaria.jsp" tabindex="-1">
+                            Secretaria
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="RegistroAprendizIns.jsp" tabindex="-1">
+                            Aprendices
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Formación
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="ambiente.jsp" tabindex="-1">
+                            Ambientes
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ficha.jsp" tabindex="-1">
+                            Fichas
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="prograXcompe.jsp" tabindex="-1">
+                            Programas y competencias
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="programacion.jsp" tabindex="-1">
+                            Programación
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Centro de Asistencia
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                            Ingreso y salida
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inasistencia.jsp" tabindex="-1">
+                            Justificar falta
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="infoAsistencia.jsp" tabindex="-1">
+                            información de asistencia
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <i class="sidebar-icon material-icons" >help outline</i>
+                    Acerca de
+                </a>
+            </li>
+        </ul>
+        <%
+        } else {
+        %>
+        <!-- Sidebar navigation -->
+        <ul class="nav sidebar-nav">
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Aprendices
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="RegistroAprendizIns.jsp" tabindex="-1">
+                            Aprendices
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Centro de Asistencia
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                            Ingreso y salida
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inasistencia.jsp" tabindex="-1">
+                            Justificar falta
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="infoAsistencia.jsp" tabindex="-1">
+                            información de asistencia
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <i class="sidebar-icon material-icons" >help outline</i>
+                    Acerca de
+                </a>
+            </li>
+        </ul>
+        <%
+            }
+        %>
+
+    </aside>
+
+    <%
+        if (tipo.equals("Instructor")) {
+    %>
+    <!-- Modal Structure -->
+    <div id="modalCDxI" class="modal modal-fixed-footer" >
+        <div class="modal-content">
+            <h4>Asistencia</h4>
+            <div id="tblcompetenciasDictadasXintstructor">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
+            <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
+        </div>
+    </div><!--fin del modal -->
+    <%
+        }
+    %>
         <div id="cntntMsj"></div>
        <div >
         <div class="row" style="margin-top: 2%;">
@@ -94,6 +329,10 @@
             </div>
         </div>
     </footer>
+            <%} else {
+            session.invalidate();
+            response.sendRedirect("index.html");
+               }%> 
         <!--importación de Jquery por medio de CDN-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <!--importacion de materializecss javaScript por medio de CDN-->
@@ -105,5 +344,16 @@
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <!--importacion de datatable javaScript por medio de CDN-->
         <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <!--menu-->
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src="js/index2.js" type="text/javascript"></script>
+    <script>
+                                $(document).ready(function () {
+                                    $("#competenciasDictadasXintstructor").click(function () {
+                                        $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
+                                        $(".sidebar-overlay").trigger("click");
+                                    });
+                                });
+    </script>
     </body>
 </html>
