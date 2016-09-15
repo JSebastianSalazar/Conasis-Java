@@ -307,8 +307,8 @@
 
             </div>
             <div class="card-reveal">
-                <center>  <span class="card-title grey-text text-darken-4">Control Asistencia<i class="material-icons right">close</i></span>
-                    <p style="text-align: justify; width: 50%; height: 20%">Es un sistema de información realizado para el SENA Complejo Norte CTGI Medellin,
+                <center>  <span class="card-title grey-text text-darken-4" style="font-size: 25px;">Control Asistencia<i class="material-icons right">close</i></span>
+                    <p style="text-align: justify; width: 50%; height: 20%; font-size: 20px;">Es un sistema de información realizado para el SENA Complejo Norte CTGI Medellin,
                         con el que se quiere llevar un control de asistencia de los aprendices de una forma rapida donde la información registrada la podremos 
                         visualizar  en tiempo real, además podemos generar reportes y estadisticas de inasistencias de cada aprendiz en forma individual o
                         grupal.
