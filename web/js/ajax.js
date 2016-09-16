@@ -808,7 +808,6 @@ function idCuadroFicha(id) {
     ProgramaCombobox = null;
 }
 function seleccionarCuadroFicha(idF, ficha, programa) {
-    alert("idFicha "+idF +" - " + " ficha " + ficha+" - " +" programa "+programa);
     $.ajax({
         beforeSend: function (xhr) {
             $("#contenedorProgramacionFichas").show();
