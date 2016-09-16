@@ -174,12 +174,12 @@
             </ul>
         </li>
         <li class="divider"></li>
-        <li>
-            <a href="#">
-                <i class="sidebar-icon material-icons" >help outline</i>
-                Acerca de
-            </a>
-        </li>
+       <li>
+                <a href="manual.jsp">
+                    <i class="sidebar-icon material-icons" >help outline</i>
+                    Ayuda
+                </a>
+            </li>
     </ul>
       
 </aside>

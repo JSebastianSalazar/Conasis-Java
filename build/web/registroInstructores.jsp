@@ -179,9 +179,9 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                    Ayuda
                 </a>
             </li>
         </ul>

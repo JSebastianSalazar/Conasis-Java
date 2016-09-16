@@ -127,7 +127,7 @@ public class ServletProgramacion extends HttpServlet {
                         out.println("});");
                         out.println("</script");*/
                         out.println("<div></div>");
-                        out.println("<table class='highlight bordered' id='tblAmbnt'>");
+                        out.println("<table class='highlight bordered ' id='tblAmbnt'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id'>Capacidad</th>");
@@ -263,7 +263,7 @@ public class ServletProgramacion extends HttpServlet {
                         
                         out.println("<div class='center-align'><h5>" + nombrePrograma + "</h5></div>");
                         out.println("<div class='center-align'><h5>" + nombreFicha + "</h5></div>");
-                        out.println("<table class='highlight bordered' id='tblProgramacionFicha'>");
+                        out.println("<table class='highlight bordered linea col s12' id='tblProgramacionFicha'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id' >Competencia</th>");
@@ -435,7 +435,7 @@ public class ServletProgramacion extends HttpServlet {
                     lista = daop.competenciasDictadasXintstructor(Integer.parseInt(idUsuarioLogueado));
                     if (!lista.isEmpty() || lista.size() != 0) {
                                                
-                        out.println("<table class='highlight bordered' id='tblCompetenciasInstructor'>");
+                        out.println("<table class='highlight bordered linea col s12' id='tblCompetenciasInstructor'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id'>Ficha</th>");

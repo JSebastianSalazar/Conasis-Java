@@ -217,9 +217,15 @@ function SoloNumeros(evt) {
     }
 }
 
+
+//***********************************************ACA ACA ACA ACA ACA ACA ***********************************************
+
+//ESTO ES SOBRE LO Que va a trabajar
+//la funcion fichasInstructor puede dejaerlo asi
 $(document).ready(function (){
     fichasInstructor();
 });
+//la funcion fichasInstructor puede dejaerlo asi NO LA MODIFIQUE
 function fichasInstructor() {
     $("#contenedorGeneralAprendices").hide();
     $.ajax({
@@ -233,8 +239,7 @@ function fichasInstructor() {
         url: "ServletAsistencia", //nombre del servlet
         data: {
             //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "fichasInstructor3",
-            idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
+            validacion: "fichasInstructor3"
         }
         , error: function (jqXHR, estado, error) {
             swal({title: "Error en el Servidor",
@@ -256,4 +261,105 @@ function fichasInstructor() {
             });
 }
 
-/*tablaAprendices(this)*/
+//muestra los aprendices que estan en la ficha
+//cuando se da clic sobre la ficha mostrará los aprendices
+function tablaAprendicesFicha(val) {
+    $("#contenedorGeneralAprendices").show();
+    var numeroFicha = $(val).attr('id');
+    var idProgramacion = $(val).attr('value');
+    $.ajax({
+        beforeSend: function () {
+            //aca pueden poner una imagen gif como un preloader
+            //¿para qué?
+            //este metodo se ejecuta antes de llegar al servlet
+            //por ejemplo al guardar algo, parecera la imagen cargando mientras se completa el registro
+        },
+        method: "POST",
+        url: "ServletUsuario", //nombre del servlet
+        data: {
+            //aca se optiene  los datos del formulario para enviarlos al servlet
+            validacion: "aprendicesDeFichas",
+            ficha: numeroFicha
+        }
+        , error: function (jqXHR, estado, error) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, estado) {
+            //esto se ejecuta despues del done o error
+            //aca se oculta la imagen de cargando que se mostró en el beforeSend
+            // alert("completado");
+        }
+    })
+            .done(function (msg) {
+                //acá se muestra lo que se imprime en el servlert
+                //alertas de si guardo o no o si ocurrio un error
+                $("#contentAprendices").html(msg);
+
+            });
+}
+
+
+///ACA si modifica 
+//acá en el case eliminar hace el ajax para eliminar el aprendiz
+//en el case de modificar hace el ajax para modiciar
+function accion(id) {//cuando se da clic 
+    var ids = $(id).attr('id');// ESTE ES EL ID DEL APRENDIZ
+    switch ($(id).text()) {
+        case "Eliminar":
+            $.ajax({
+                beforeSend: function (xhr) {
+
+                },
+                method: "POST",
+                url: "",
+                data: {
+                    idAprendiz: ids// ESTE ES EL ID DEL APRENDIZ
+        },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    swal({title: "Error en el Servidor",
+                        text: "Lo sentimos... Intentalo Nuevamente",
+                        type: "error",
+                        timer: 4000,
+                        showConfirmButton: true});
+                },
+                complete: function (jqXHR, textStatus) {
+
+                }
+            })
+                    .done(function (msg) {
+                    });
+            break;
+        case "Modificar":
+            //HACE EL MODIFICAR AJAX
+            
+            break;
+    }
+}
+
+
+//estas dos funciones no las modifique 
+//No las toque 
+function ubicacion(id) {//cuando el mouse no esta en cima
+    switch ($(id).text()) {
+        case "Eliminar":
+            $($(id)).css("color", "#d50000");
+            break;
+        case "Modificar":
+            $($(id)).css("color", "#d50000");
+            break;
+    }
+}
+function normal(id) {//cuando el mouse no esta encima
+    switch ($(id).text()) {
+        case "Eliminar":
+            $($(id)).css("color", "#039be5");
+            break;
+        case "Modificar":
+            $($(id)).css("color", "#039be5");
+            break;
+    }
+}

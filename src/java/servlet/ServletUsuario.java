@@ -269,9 +269,47 @@ public class ServletUsuario extends HttpServlet {
                                 out.println(json);
                             }
                             break;
+                        
+                        //ESTO LO PASA AL SERLET DE APRENDIZ SI QUIERE
+                    case "tblAprendicesFicha":
+                        lista = dao.aprendicesDeFichas(ficha);
+                    if (lista.isEmpty() || lista.size() == 0) {
+                        out.println("<br>");
+                        out.println("<center><h4>La ficha No tiene aprendices<h4></center>");
+                    } else {
+                        out.println("<table class='highlight bordered' >");
+                        out.println("<thead>");
+                        out.println("<tr>");
+                        out.println("<th data-field='id'><center>Numero documento</center></th>");
+                        out.println("<th data-field='id'><center>Nombre</center></th>");
+                        out.println("<th data-field='id'><center>Apellido</center></th>");
+                         out.println("<th data-field='id'>Acción</th>");
+                        out.println("</tr>");
+                        out.println("</thead>");
+                        out.println("<tbody>");
+                        int idA = 0;
+                        for (int i = 0; i < lista.size(); i++) {
+                            u = lista.get(i);
+                            idA=u.getIdProgramacion();
+                            json = "[{idProgramacion:\n" + u.getIdProgramacion() + "\n,idAprendiz:\n" + u.getId() + "\n}]";
+                            //idA = u.getId();
+                            out.println("<tr>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getTipoDocumento() + "</td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
+                             out.println("<td id='' ><ul style='margin-bottom: 0px; margin-top: 0px;'>"
+                                    + "<li><a  id='" + u.getId() + "' onclick='accion(this)' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer'>Eliminar</a></li>"
+                                    + "<li><a id='" + u.getId() + "' onclick='accion(this)' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer' value='"+json+"'>Modificar</a></li>"
+                                    + "</ul></td>");
+                            out.println("<tr>");
+                        }
+                        out.println("</tbody>");
+                        out.println("</table>");
+                    }
+                        break;
 
+            
             }
-
         }
     }
 

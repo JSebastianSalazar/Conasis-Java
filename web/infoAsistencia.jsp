@@ -179,9 +179,9 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                    Ayuda
                 </a>
             </li>
         </ul>
@@ -230,13 +230,19 @@
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
                     </li>
+                    <li>
+                        <a href="" tabindex="-1">
+                            Ficha a cargo
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                    Ayuda
                 </a>
             </li>
         </ul>

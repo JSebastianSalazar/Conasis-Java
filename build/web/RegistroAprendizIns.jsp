@@ -226,6 +226,12 @@
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
                     </li>
+                    <li>
+                        <a href="" tabindex="-1">
+                            Ficha a cargo
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="divider"></li>

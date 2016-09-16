@@ -62,7 +62,7 @@ public class ServletAmbiente extends HttpServlet {
                     if (!listaA.isEmpty() || listaA != null) {
                         
                         out.println("<div></div>");
-                        out.println("<table class='highlight bordered' id='tblAmbiente'>");
+                        out.println("<table class='highlight bordered linea col s12' id='tblAmbiente'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id' >Capacidad</th>");

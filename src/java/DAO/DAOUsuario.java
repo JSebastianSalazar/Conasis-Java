@@ -396,36 +396,31 @@ public class DAOUsuario extends Conexion {
      }
      
     
-     
-     /*select date(fechaHora),novedad from asistencia
-where idProgramacion=2 and idUsuario=5 and entradaSalida='3';*/
-     
-    /*NO ESTA SIENDO UTILIZADO
-    //consulta los usuarios que faltaron en una fecha y ya direon razones
-    public List<Usuario> aprendicesNoAsistieronRazones(String fecha, String ficha, int idProgramacion){
-        PreparedStatement pstm = null;
+// MODIFIQUE ESTO
+        //pongalo en el servlet de aprendiz
+        //complete los datos en la consulta
+     public List<Usuario> aprendicesFichas(String ficha){
+        java.sql.PreparedStatement pstm = null;
             ResultSet rs = null;
             String sql;
             Connection con = null;
             List<Usuario> lista = null;
             Usuario u;
         try {
-            sql = "Select id,numeroDoc,nombre,apellido,novedad \n" +
-                "from usuario AS u ,asistencia as a \n" +
-                "where a.idUsuario = u.id AND u.idTipoUsuario=3 AND u.numeroFicha=? AND DATE(a.fechaHora)=? AND a.idProgramacion=? AND a.entradaSalida='3' AND novedad is not null AND fechaNovedad is not null;";//
+            sql = "select distinct id,numeroDoc,nombre,apellido from usuario "
+                    + "WHERE  u.numeroficha=?";//
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
-            pstm.setString(2, fecha);
             pstm.setString(1, ficha);
-            pstm.setInt(3, idProgramacion);
             rs = pstm.executeQuery();
             lista = new ArrayList();
             while(rs.next()){
                 u = new Usuario();
                 u.setId(rs.getInt("id"));
-                u.setNumeroDoc(rs.getString("numeroDoc"));
+                u.setDocumento(rs.getString("numeroDoc"));
                 u.setNombre(rs.getString("nombre"));
                 u.setApellido(rs.getString("apellido"));
+                u.setIdProgramacion(rs.getInt("idProgramacion"));
                 lista.add(u);
             }
         } catch (SQLException ex) {
@@ -441,7 +436,7 @@ where idProgramacion=2 and idUsuario=5 and entradaSalida='3';*/
                 return lista;
             }
         }
-    }*/
+    }
      
     
     

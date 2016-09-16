@@ -64,9 +64,7 @@ public class ServletFicha extends HttpServlet {
                 case "listarFichas":
                     listaF = daoF.consultarFicha();
                     if (!listaF.isEmpty() || listaF != null) {
-                        
-                        out.println("<div></div>");
-                        out.println("<table class='highlight bordered' id='tblFichas'>");
+                        out.println("<table class='highlight bordered linea col s12' id='tblFichas'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id' >Programa</th>");
