@@ -1313,6 +1313,7 @@ function actualizarListDiasSemana() {
 
 
 //-------------------------ASISTENCIA-------------------------*************
+//competencias que el instructor va a dictar 
 $("#competenciasDictadasXintstructor").click(function () {
     $("#mdAceptarProgramacion").hide();
     $.ajax({
@@ -1341,6 +1342,35 @@ $("#competenciasDictadasXintstructor").click(function () {
                 $("#tblcompetenciasDictadasXintstructor").html(msg);
             });
 });
+//competencias que las fichas veran en el día
+$("#competenciasAdministrador").click(function () {
+    $("#mdAceptarProgramacion").hide();
+    $.ajax({
+        beforeSend: function (xhr) {
+
+        },
+        method: "POST",
+        url: "ServletProgramacion",
+        data: {
+            validacion: "asistenciaAdministrador"
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, textStatus) {
+
+        }
+    })
+            .done(function (msg) {
+                //alert(msg);
+                $("#tblcompetenciasDictadasXintstructor").html(msg);
+            });
+});
+
 
 //funciona cuando ya la ficha marcó la entrada y salida
 // es decir, cuando se cerró la entrada y salida  y faltan aprendices
@@ -1901,6 +1931,49 @@ function tablaCompetencias(val) {
 
             });
 }
+
+
+//las fichas en que el instructor dicta clase
+function tablaCompetenciasComoGestor(val) {
+    var gestor = $(val).attr('value');
+    var numeroFicha = $(val).text();
+    $("#contenedorGeneralAprendices").show();
+    $.ajax({
+        beforeSend: function () {
+            //aca pueden poner una imagen gif como un preloader
+            //¿para qué?
+            //este metodo se ejecuta antes de llegar al servlet
+            //por ejemplo al guardar algo, parecera la imagen cargando mientras se completa el registro
+        },
+        method: "POST",
+        url: "ServletAsistencia", //nombre del servlet
+        data: {
+            //aca se optiene  los datos del formulario para enviarlos al servlet
+            validacion: "competenciasInssGestor",
+            ficha: numeroFicha,
+            idInstructor: 2 //Esto es el id del usuaio logueado//CAMBIAR
+        }
+        , error: function (jqXHR, estado, error) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, estado) {
+            //esto se ejecuta despues del done o error
+            //aca se oculta la imagen de cargando que se mostró en el beforeSend
+            // alert("completado");
+        }
+    })
+            .done(function (msg) {
+                //acá se muestra lo que se imprime en el servlert
+                //alertas de si guardo o no o si ocurrio un error
+                $("#contentAprendices").html(msg);
+
+            });
+}
+
 
 
 //muestra los aprendices que estan en la ficha

@@ -16,7 +16,7 @@
          <link href="css/registroGrupo.css" rel="stylesheet" type="text/css"/>
          <link href="css/slider.css" rel="stylesheet" type="text/css"/>-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-        <!-- importando el CSS del datable por medio de CDN -->
+        <!-- importando el CSS del datable por medio de CDN  DATATABLE-->
         <link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/styles.css" rel="stylesheet" type="text/css"/>
         <!-- importando iconos materializecss por medio del CDN-->
@@ -187,7 +187,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                        <a href="#modalCDxI" id="competenciasAdministrador"  tabindex="-1">
                             Ingreso y salida
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
@@ -281,9 +281,7 @@
 
     </aside>
    
-    <%
-            if (tipo.equals("Instructor")) {
-        %>
+
          <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
@@ -297,11 +295,9 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->
-     <%
-        } 
-        %>
+     
     <!--Lo que se mostrará-->
-
+<div id="cntntMsj"></div>
     <div class="container">
 
         <div class="card small">
@@ -507,7 +503,10 @@
                                     $('select').material_select();
                                     $("#competenciasDictadasXintstructor").click(function (){
                                         $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
-                                        
+                                        $(".sidebar-overlay").trigger("click");
+                                    });
+                                    $("#competenciasAdministrador").click(function (){
+                                        $("#modalCDxI").openModal("#competenciasAdministrador");
                                         $(".sidebar-overlay").trigger("click");
                                     });
                                 });

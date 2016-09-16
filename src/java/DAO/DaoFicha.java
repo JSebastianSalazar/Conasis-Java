@@ -241,7 +241,7 @@ public class DaoFicha {
             List<Ficha> lista = null;
             Ficha f;
         try {
-            sql = "SELECT f.numeroFicha, f.id, p.idProgramacion " +
+            sql = "SELECT f.numeroFicha, f.id, p.idProgramacion,f.gestor " +
                     "FROM programacion as p, ficha as f, usuarioXprogramacion up " +
                     "WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND up.idUsuario=? GROUP BY f.numeroFicha;";//recive el id delinstructor logeado
             con = Conexion.conectar("mysql");
@@ -254,6 +254,7 @@ public class DaoFicha {
                 f.setId(rs.getInt("id"));
                 f.setNumeroFicha(rs.getString("numeroFicha"));
                 f.setIdProgramacion(rs.getInt("idProgramacion"));
+                f.setGestor(rs.getString("gestor"));
                 lista.add(f);
             }
             

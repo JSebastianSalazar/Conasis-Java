@@ -286,3 +286,34 @@ function soloLetras(e) {
     if (letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
 }
+
+
+
+//competencias que las fichas veran en el día
+$("#competenciasAdministrador").click(function () {
+    $("#mdAceptarProgramacion").hide();
+    $.ajax({
+        beforeSend: function (xhr) {
+
+        },
+        method: "POST",
+        url: "ServletProgramacion",
+        data: {
+            validacion: "asistenciaAdministrador"
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, textStatus) {
+
+        }
+    })
+            .done(function (msg) {
+                //alert(msg);
+                $("#tblcompetenciasDictadasXintstructor").html(msg);
+            });
+});

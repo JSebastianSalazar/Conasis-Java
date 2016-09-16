@@ -155,7 +155,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                        <a href="#modalCDxI" id="competenciasAdministrador"  tabindex="-1">
                             Ingreso y salida
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
@@ -185,7 +185,21 @@
 
     </aside>
 
+               <!-- Modal Structure -->
+    <div id="modalCDxI" class="modal modal-fixed-footer" >
+        <div class="modal-content">
+            <h4>Asistencia</h4>
+            <div id="tblcompetenciasDictadasXintstructor">
 
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
+            <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
+        </div>
+    </div><!--fin del modal -->  
+    
+    
     <div id="cntntMsj"></div>
     <div class="row container" style="margin-top: 2%; ">
         <div id="contenedorControles" style="  padding-bottom: 2px; border-left: 0px; border-right: 0px;">
@@ -276,7 +290,6 @@
         }%>  
     <!--importación de Jquery por medio de CDN-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
     <!--menu-->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="js/index2.js" type="text/javascript"></script>
@@ -289,7 +302,15 @@
     <script src="js/ajaxFicha.js" type="text/javascript"></script>
     <!--importacion del javaScript de las Alertas SweetAlert-->
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
-
+    
+ <script>
+            $(document).ready(function () {
+            $("#competenciasAdministrador").click(function (){
+                                        $("#modalCDxI").openModal("#competenciasAdministrador");
+                                        $(".sidebar-overlay").trigger("click");
+                                    });
+                                  });
+        </script>
 
 </body>
 </html>

@@ -289,7 +289,7 @@ public class DaoProgramacion {
             sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida "
                     + "FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp "
                     + "WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion "
-                    + "AND cp.idCompetencia=c.idCompetencia AND up.idUsuario=? AND p.diaSemana=? GROUP BY f.numeroFicha ORDER BY p.horaIngreso DESC";
+                    + "AND cp.idCompetencia=c.idCompetencia AND up.idUsuario=? AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, id);
@@ -330,4 +330,117 @@ public class DaoProgramacion {
             }
         }
     }
+    ///Serve para mostrar competencias al gestor para tomar asistencia
+    public List<Programacion> competenciasGestorF(String gestor, int idInstruc) {
+        PreparedStatement pstm = null;
+            ResultSet rs = null;
+            String sql;
+            Connection con = null;
+            List<Programacion> lista = null;
+            Programacion p;
+        try {
+            sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida \n" +
+"              FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp \n" +
+"              WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion \n" +
+"              AND cp.idCompetencia=c.idCompetencia AND f.gestor=? AND up.idUsuario<>? AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
+            con = Conexion.conectar("mysql");
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, gestor);
+            pstm.setInt(2, idInstruc);
+            String[] dias = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"};
+            Date hoy = new Date();
+            int numeroDia = 0;
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(hoy);
+            numeroDia = cal.get(Calendar.DAY_OF_WEEK);
+            //System.out.println("hoy es " + dias[numeroDia - 1]);
+            //pstm.setString(3, ""+dias[numeroDia - 1]);
+            pstm.setString(3, "Martes");//ESTO NO VA
+            rs = pstm.executeQuery();
+            lista = new ArrayList();
+            while (rs.next()) {
+                p = new Programacion();
+                p.setIdProgramacion(rs.getInt("idProgramacion"));
+                p.setHoraIngreso(rs.getString("horaIngreso"));
+                p.setHoraSalida(rs.getString("horaSalida"));
+                p.setIdAmbiente(rs.getInt("idAmbiente"));
+                //propiedades de otros objetos
+                p.setNomCompetencia(rs.getString("nomCompetencia"));
+                p.setNumeroficha(rs.getString("numeroFicha"));
+                lista.add(p);
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error consultando competenciasImplantadasXinstructor" + ex);
+        }finally{
+            try{
+            pstm.close();
+            rs.close();
+            con.close();
+            }catch(SQLException ex){
+                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) "+ex);
+            }finally{
+                return lista;
+            }
+        }
+    }
+    
+    ///sirve por si falta un instructor y el administrador puede tomar asistencia
+     ///Serve para mostrar competencias al gestor para tomar asistencia
+    public List<Programacion> competenciasAdministrador() {
+        PreparedStatement pstm = null;
+            ResultSet rs = null;
+            String sql;
+            Connection con = null;
+            List<Programacion> lista = null;
+            Programacion p;
+        try {
+            sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida \n" +
+"              FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp \n" +
+"              WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion \n" +
+"              AND cp.idCompetencia=c.idCompetencia AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
+            con = Conexion.conectar("mysql");
+            pstm = con.prepareStatement(sql);
+            String[] dias = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"};
+            Date hoy = new Date();
+            int numeroDia = 0;
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(hoy);
+            numeroDia = cal.get(Calendar.DAY_OF_WEEK);
+            //System.out.println("hoy es " + dias[numeroDia - 1]);
+            //pstm.setString(3, ""+dias[numeroDia - 1]);
+            pstm.setString(1, "Martes");//ESTO NO VA
+            rs = pstm.executeQuery();
+            lista = new ArrayList();
+            while (rs.next()) {
+                p = new Programacion();
+                p.setIdProgramacion(rs.getInt("idProgramacion"));
+                p.setHoraIngreso(rs.getString("horaIngreso"));
+                p.setHoraSalida(rs.getString("horaSalida"));
+                p.setIdAmbiente(rs.getInt("idAmbiente"));
+                //propiedades de otros objetos
+                p.setNomCompetencia(rs.getString("nomCompetencia"));
+                p.setNumeroficha(rs.getString("numeroFicha"));
+                lista.add(p);
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error consultando competenciasImplantadasXinstructor" + ex);
+        }finally{
+            try{
+            pstm.close();
+            rs.close();
+            con.close();
+            }catch(SQLException ex){
+                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) "+ex);
+            }finally{
+                return lista;
+            }
+        }
+    }
 }
+
+    
+
+
+

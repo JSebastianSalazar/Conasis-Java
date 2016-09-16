@@ -92,8 +92,9 @@ public class ServletProgramacion extends HttpServlet {
             nombrePrograma = request.getParameter("nombrePrograma");
             idCompetencia = request.getParameter("idCompetencia");
             idUsuario = request.getParameter("idUsuario");
-           idInstructor = request.getParameter("idInstructor");
+            idInstructor = request.getParameter("idInstructor");
             idUsuarioLogueado =session.getAttribute("idIns")+"";
+            String nombre = "" + session.getAttribute("usuario");
             
             p = new Programacion();
             f = new Ficha();
@@ -434,7 +435,7 @@ public class ServletProgramacion extends HttpServlet {
                 case "competenciasDictadasXintstructor":                    
                     lista = daop.competenciasDictadasXintstructor(Integer.parseInt(idUsuarioLogueado));
                     if (!lista.isEmpty() || lista.size() != 0) {
-                                               
+                        out.println("<center><h5>Formaciónes que impartiras hoy</5></center><br>");                       
                         out.println("<table class='highlight bordered linea col s12' id='tblCompetenciasInstructor'>");
                         out.println("<thead>");
                         out.println("<tr>");
@@ -470,7 +471,86 @@ public class ServletProgramacion extends HttpServlet {
                         out.println("});");
                         out.println("</script");
                     } else {
-                        out.println("<div class='center-align'><h5>No tiene que tomar asistencia en el día de hoy</h5></div>");
+                        out.println("<div class='center-align'><h5>No tiene que tomar asistencia en el día de hoy</h5></div><br>");
+                    }
+                    out.println(" <div class=\"linea\"></div>");
+                    lista = daop.competenciasGestorF(nombre,Integer.parseInt(idUsuarioLogueado));
+                    if (!lista.isEmpty() || lista.size() != 0) {
+                        out.println("<center><h5>formaciónes a las cuales su ficha asistirá</5></center><br>");
+                        out.println("<table class='highlight bordered linea col s12' id='tblCompetenciasInstructor'>");
+                        out.println("<thead>");
+                        out.println("<tr>");
+                        out.println("<th data-field='id'>Ficha</th>");
+                        out.println("<th data-field='id'>Nombre Competencia</th>");
+                        out.println("<th data-field='id'>Hora Inicio</th>");
+                        out.println("<th data-field='id'>Hora Fin</th>");
+                        out.println("<th data-field='id'>Acción</th>");
+                        out.println("</tr>");
+                        out.println("</thead>");
+                        out.println("<tbody>");
+                        for (int i = 0; i < lista.size(); i++) {
+                            p = lista.get(i);
+                            out.println("<tr >");///onclick='datosAcademicosAsistencia(" + p.getNumeroficha() + ","+p.getNomCompetencia()+")'
+                            out.println("<td id='' >" + p.getNumeroficha() + "</td>");
+                            out.println("<td id=''  >" + p.getNomCompetencia() + "</td>");
+                            out.println("<td id='' >" + p.getHoraIngreso() + "</td>");
+                            out.println("<td id='' >" + p.getHoraSalida() + "</td>");
+                            out.println("<td id='' ><a  href='asistencia.jsp?ficha="+p.getNumeroficha()+"&nomComp="+p.getNomCompetencia()+"&idProgramacion="+p.getIdProgramacion()+"' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer'>Aceptar</a></td>");
+                            out.println("</tr>");
+                            
+                        }
+                        out.println("</tbody>");
+                        out.println("</table>");
+                        
+                        out.println("<script>");
+                        out.println("$(document).ready(function () {");
+                        out.println("$('#tblCompetenciasInstructor').dataTable({");
+                        out.println("'language': { ");
+                        out.println("'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'");
+                        out.println("}");
+                        out.println("});");
+                        out.println("});");
+                        out.println("</script");
+                    }
+                    break;
+                case "asistenciaAdministrador":
+                lista = daop.competenciasAdministrador();
+                    if (!lista.isEmpty() || lista.size() != 0) {
+                        out.println("<center><h5>formaciones que se impartirán en el día de hoy</5></center><br>");
+                        out.println("<table class='highlight bordered linea col s12' id='tblCompetenciasInstructor'>");
+                        out.println("<thead>");
+                        out.println("<tr>");
+                        out.println("<th data-field='id'>Ficha</th>");
+                        out.println("<th data-field='id'>Nombre Competencia</th>");
+                        out.println("<th data-field='id'>Hora Inicio</th>");
+                        out.println("<th data-field='id'>Hora Fin</th>");
+                        out.println("<th data-field='id'>Acción</th>");
+                        out.println("</tr>");
+                        out.println("</thead>");
+                        out.println("<tbody>");
+                        for (int i = 0; i < lista.size(); i++) {
+                            p = lista.get(i);
+                            out.println("<tr >");///onclick='datosAcademicosAsistencia(" + p.getNumeroficha() + ","+p.getNomCompetencia()+")'
+                            out.println("<td id='' >" + p.getNumeroficha() + "</td>");
+                            out.println("<td id=''  >" + p.getNomCompetencia() + "</td>");
+                            out.println("<td id='' >" + p.getHoraIngreso() + "</td>");
+                            out.println("<td id='' >" + p.getHoraSalida() + "</td>");
+                            out.println("<td id='' ><a  href='asistencia.jsp?ficha="+p.getNumeroficha()+"&nomComp="+p.getNomCompetencia()+"&idProgramacion="+p.getIdProgramacion()+"' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer'>Aceptar</a></td>");
+                            out.println("</tr>");
+                            
+                        }
+                        out.println("</tbody>");
+                        out.println("</table>");
+                        
+                        out.println("<script>");
+                        out.println("$(document).ready(function () {");
+                        out.println("$('#tblCompetenciasInstructor').dataTable({");
+                        out.println("'language': { ");
+                        out.println("'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'");
+                        out.println("}");
+                        out.println("});");
+                        out.println("});");
+                        out.println("</script");
                     }
                     break;
             }

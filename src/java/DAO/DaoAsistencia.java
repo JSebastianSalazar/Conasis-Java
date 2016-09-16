@@ -24,7 +24,7 @@ import util.Conexion;
  * @fecha 18/08/2016
  */
 public class DaoAsistencia {
-    
+
     public int verificacionFicha(int idP) {
         Connection con = null;
         CallableStatement cStmt = null;
@@ -37,7 +37,7 @@ public class DaoAsistencia {
             cStmt.setInt(1, idP);
             cStmt.registerOutParameter(2, Types.INTEGER);
             cStmt.execute();
-            retorno =  cStmt.getInt(2);
+            retorno = cStmt.getInt(2);
         } catch (SQLException ex) {
             System.out.println("Error en la verificación de la ficha " + ex);
         } finally {
@@ -51,39 +51,41 @@ public class DaoAsistencia {
             }
         }
     }
-    
+
     //vertirá todos los aprendices pertenecientes a la ficha escogida a la entidad asistencia
     //cuando se seleccione que va a entrar,es decir, cuando se va a registrar la asistencia
-    public boolean  vertimientoAprendices(int idP, String ficha){
+    public boolean vertimientoAprendices(int idP, String ficha) {
         Connection con = null;
         PreparedStatement pstm = null;
         boolean retorno = false;
-        String sql = "insert into asistencia (entradaSalida, fechaHora, idUsuario, idProgramacion)\n" +
-                    "select '3',NOW(), id, ?\n" +//el parametro ? es el id de la programacion
-                    "from usuario\n" +
-                    "WHERE numeroFicha=? AND idTipoUsuario=4;";//este parametro ? es el numero de la ficha
-         try {
+        String sql = "insert into asistencia (entradaSalida, fechaHora, idUsuario, idProgramacion)\n"
+                + "select '3',NOW(), id, ?\n" +//el parametro ? es el id de la programacion
+                "from usuario\n"
+                + "WHERE numeroFicha=? AND idTipoUsuario=4;";//este parametro ? es el numero de la ficha
+        try {
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, idP);
             pstm.setString(2, ficha);
-            if(pstm.executeUpdate() != 0){
+            if (pstm.executeUpdate() != 0) {
                 retorno = true;
             }
         } catch (SQLException ex) {
-             System.out.println("Error en vertimientoAprendices "+ex);
-        }finally{
+            System.out.println("Error en vertimientoAprendices " + ex);
+        } finally {
             try {
                 pstm.close();
                 con.close();
             } catch (SQLException ex) {
-                System.out.println("Error cerrando conexiones en vertimientoAprendices " +ex);
-            }finally{
+                System.out.println("Error cerrando conexiones en vertimientoAprendices " + ex);
+            } finally {
                 return retorno;
             }
-         }
+        }
     }
+
     //SE UTILIZA CUANDO UN APRENDIZ FALTÓ POR MARCAR ASISTENCIA (LLEGO RETRASDO)
+
     public List tomaAsistencia(int idP, String ficha, String documento, String tipo) {
         Connection con = null;
         CallableStatement cStmt = null;
@@ -168,7 +170,7 @@ public class DaoAsistencia {
     }
 
 //SE EJECUTA CUANDO LA FICHA EN LA PROGRAMACIÓN YA TOMO ASISTENCIA    
-        public List tomaAsistenciaSalida(int idP, String ficha, String documento, String tipo) {
+    public List tomaAsistenciaSalida(int idP, String ficha, String documento, String tipo) {
         Connection con = null;
         CallableStatement cStmt = null;
         String sql;
@@ -208,8 +210,9 @@ public class DaoAsistencia {
                 return retorno;
             }
         }
-    }        
+    }
 //MUESTRA LAS VECES QUE EL INSTRUCTOR HA DICTADO CLASE EN LA FICHA
+
     public List InasistenciaFicha(int idInstructor, String ficha) {
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -250,6 +253,7 @@ public class DaoAsistencia {
         }
     }
 //INSERTA LA NOVEDAD DE UN APRENDIZ QUE FALTO A CLASE
+
     public boolean insertarNovedad(String novedad, int idAprendiz, int idProgramacion, String fecha) {
         PreparedStatement pstm = null;
         Connection con = null;
@@ -264,23 +268,23 @@ public class DaoAsistencia {
             pstm.setInt(2, idAprendiz);
             pstm.setInt(3, idProgramacion);
             pstm.setString(4, fecha);
-            if(pstm.executeUpdate() != 0){
+            if (pstm.executeUpdate() != 0) {
                 retorno = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Error insertando novedad en DaoAsistencia "+ex);
+            System.out.println("Error insertando novedad en DaoAsistencia " + ex);
         } finally {
             try {
                 pstm.close();
                 con.close();
             } catch (SQLException ex) {
-                System.out.println("Error cerrando conexion en daoAsistencia "+ex);
+                System.out.println("Error cerrando conexion en daoAsistencia " + ex);
             } finally {
                 return retorno;
             }
         }
     }
-    
+
     //MUESTRA LAS COMPETENCIAS QUE EL INSTRUCTOR DICTA EN LA FICHA
     public List competencias(int idInstructor, String ficha) {
         PreparedStatement pstm = null;
@@ -290,10 +294,10 @@ public class DaoAsistencia {
         List lista = null;
         Asistencia a;
         try {
-            sql = "SELECT p.idProgramacion, c.nomCompetencia\n" +
-"FROM usuarioXprogramacion as up, programacion as p, ficha as f, comp_progra as cp, competencias as c\n" +
-"WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND \n" +
-"p.idProgramacion=cp.idProgramacion AND cp.idCompetencia=c.idCompetencia AND f.numeroFicha=? AND up.idUsuario=?;";//recive el id delinstructor logeado
+            sql = "SELECT p.idProgramacion, c.nomCompetencia\n"
+                    + "FROM usuarioXprogramacion as up, programacion as p, ficha as f, comp_progra as cp, competencias as c\n"
+                    + "WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND \n"
+                    + "p.idProgramacion=cp.idProgramacion AND cp.idCompetencia=c.idCompetencia AND f.numeroFicha=? AND up.idUsuario=?;";//recive el id delinstructor logeado
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setString(1, ficha);
@@ -320,25 +324,65 @@ public class DaoAsistencia {
             }
         }
     }
-    
-     //Muestra los aprendices de una ficha
-     public List<Asistencia> faltas(int idProgramacion, int idAprendiz){
+
+    //MUESTRA LAS COMPETENCIAS QUE EL INSTRUCTOR DICTA EN LA FICHA
+
+    public List competenciasGestor(String ficha) {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Asistencia> lista = null;
-            Asistencia a;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List lista = null;
+        Asistencia a;
         try {
-            sql = "select date(fechaHora),novedad from asistencia\n" +
-                  "where idProgramacion=? and idUsuario=? and entradaSalida='3';";//
+            sql = "SELECT p.idProgramacion, c.nomCompetencia\n"
+                    + "FROM usuarioXprogramacion as up, programacion as p, ficha as f, comp_progra as cp, competencias as c\n"
+                    + "WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND \n"
+                    + "p.idProgramacion=cp.idProgramacion AND cp.idCompetencia=c.idCompetencia AND f.numeroFicha=?;";//recive el id delinstructor logeado
+            con = Conexion.conectar("mysql");
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, ficha);
+            rs = pstm.executeQuery();
+            lista = new ArrayList();
+            while (rs.next()) {
+                a = new Asistencia();
+                a.setCompepetencia(rs.getString("nomCompetencia"));
+                a.setIdP(rs.getInt("idProgramacion"));
+                lista.add(a);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Listando fichas del instructor" + ex);
+        } finally {
+            try {
+                rs.close();
+                pstm.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexion en daoFicha (competencias) " + ex);
+            } finally {
+                return lista;
+            }
+        }
+    }
+
+    //Muestra los aprendices de una ficha
+    public List<Asistencia> faltas(int idProgramacion, int idAprendiz) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Asistencia> lista = null;
+        Asistencia a;
+        try {
+            sql = "select date(fechaHora),novedad from asistencia\n"
+                    + "where idProgramacion=? and idUsuario=? and entradaSalida='3';";//
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, idProgramacion);
             pstm.setInt(2, idAprendiz);
             rs = pstm.executeQuery();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 a = new Asistencia();
                 a.setFecha(rs.getString(1));
                 a.setNovedad(rs.getString("novedad"));
@@ -346,28 +390,28 @@ public class DaoAsistencia {
             }
         } catch (SQLException ex) {
             System.out.println("faltas del aprendiz " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoAsistencia (faltas) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoAsistencia (faltas) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
-     
+
      //aun no lo perfecciono en la gráfica
-     //Servirá para la grafica de un aprendiz
-     public List<Asistencia> diasAsistidos(int idProgramacion, int idAprendiz){
+    //Servirá para la grafica de un aprendiz
+    public List<Asistencia> diasAsistidos(int idProgramacion, int idAprendiz) {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Asistencia> lista = null;
-            Asistencia a;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Asistencia> lista = null;
+        Asistencia a;
         try {
             sql = "select date(fechaHora),entradaSalida from asistencia where idUsuario=? and idProgramacion=? and entradaSalida<>1;";//
             con = Conexion.conectar("mysql");
@@ -376,7 +420,7 @@ public class DaoAsistencia {
             pstm.setInt(1, idAprendiz);
             rs = pstm.executeQuery();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 a = new Asistencia();
                 a.setFecha(rs.getString(1));
                 a.setEntradaSalida(rs.getString("entradaSalida"));
@@ -384,28 +428,28 @@ public class DaoAsistencia {
             }
         } catch (SQLException ex) {
             System.out.println("dias Asistidos " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoAsistencia (dias asistidos) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoAsistencia (dias asistidos) " + ex);
+            } finally {
                 return lista;
             }
-        }  
-     }
-     
+        }
+    }
+
         //
-        //Tiempo en que el estudiante esta en clase
-        public String tiempoEnClase(int idProgramacion, int idAprendiz){
+    //Tiempo en que el estudiante esta en clase
+    public String tiempoEnClase(int idProgramacion, int idAprendiz) {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            String retorno = null;
-            Asistencia a;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        String retorno = null;
+        Asistencia a;
         try {
             sql = "SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( horaEnClase ) ) ) FROM asistencia where idUsuario=? and idProgramacion=? and entradaSalida='1'";
             con = Conexion.conectar("mysql");
@@ -413,23 +457,22 @@ public class DaoAsistencia {
             pstm.setInt(2, idProgramacion);
             pstm.setInt(1, idAprendiz);
             rs = pstm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 retorno = rs.getString(1);
             }
         } catch (SQLException ex) {
             System.out.println("TiempoEn clase" + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoAsistencia (TiempoEnClase) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoAsistencia (TiempoEnClase) " + ex);
+            } finally {
                 return retorno;
             }
         }
     }
-        
-     
+
 }

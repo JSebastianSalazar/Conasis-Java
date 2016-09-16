@@ -161,7 +161,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                        <a href="#modalCDxI" id="competenciasAdministrador"  tabindex="-1">
                             Ingreso y salida
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
@@ -191,6 +191,19 @@
 
     </aside>
 
+<!-- Modal Structure -->
+    <div id="modalCDxI" class="modal modal-fixed-footer" >
+        <div class="modal-content">
+            <h4>Asistencia</h4>
+            <div id="tblcompetenciasDictadasXintstructor">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
+            <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
+        </div>
+    </div><!--fin del modal -->  
 
     <div id="cntntMsj"></div>
     <div id="contenedorFichasPrograma" style="margin-top:2%; ">
@@ -385,6 +398,10 @@
             }else{
                  $('#competencias').prop('disabled', false);
             }
+            $("#competenciasAdministrador").click(function (){
+                                        $("#modalCDxI").openModal("#competenciasAdministrador");
+                                        $(".sidebar-overlay").trigger("click");
+                                    });
         });
        
     </script>

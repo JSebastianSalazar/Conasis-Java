@@ -22,8 +22,8 @@
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
 
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-
+        <!-- importando el CSS del datable por medio de CDN  DATATABLE-->
+        <link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet'   type='text/css'>
 
         <!--Let browser know website is optimized for mobile-->
@@ -158,7 +158,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                        <a href="#modalCDxI" id="competenciasAdministrador"  tabindex="-1">
                             Ingreso y salida
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
@@ -187,6 +187,22 @@
         </ul>
 
     </aside>
+                
+                             <!-- Modal Structure -->
+    <div id="modalCDxI" class="modal modal-fixed-footer" >
+        <div class="modal-content">
+            <h4>Asistencia</h4>
+            <div id="tblcompetenciasDictadasXintstructor">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
+            <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
+        </div>
+    </div><!--fin del modal -->  
+    
+     <div id="cntntMsj"></div>
     <!--Lo que aparecerá-->
     <div class="contenedorTab ">
         <div class="row">
@@ -535,9 +551,18 @@
     <script src="js/usuario.js" type="text/javascript"></script>
     <!--importacion de materializecss javaScript por medio de CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+     <!--importacion de datatable javaScript por medio de CDN-->
+            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="js/js.js" type="text/javascript"></script>
     <script src="js/Carru.js" type="text/javascript"></script>
-  
+  <script>
+            $(document).ready(function () {
+            $("#competenciasAdministrador").click(function (){
+                                        $("#modalCDxI").openModal("#competenciasAdministrador");
+                                        $(".sidebar-overlay").trigger("click");
+                                    });
+                                  });
+        </script>
 </body>
 </html>

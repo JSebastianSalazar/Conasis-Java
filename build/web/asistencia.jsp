@@ -17,6 +17,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- importando materizalizecss CSS por medio de CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+         <!--importacion de datatable javaScript por medio de CDN-->
+            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <link href="css/styles.css" rel="stylesheet" type="text/css"/>
         <!-- importando el CSS de las alertas SweetAlert -->
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
@@ -130,6 +132,8 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <!--importacion de materializecss javaScript por medio de CDN-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+        <!--importacion de datatable javaScript por medio de CDN-->
+            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
         <!--importando en archivo .js ajax permite visualizar las informacion de la base de datos en el sitio web-->
         <script type="text/javascript" src="js/ajax.js"></script>
