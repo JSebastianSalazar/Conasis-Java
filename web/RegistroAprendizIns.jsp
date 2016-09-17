@@ -249,8 +249,8 @@
         %>
 
     </aside>
-        
-         <!-- Modal Structure -->
+
+    <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
@@ -263,7 +263,7 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->
-    
+
     <div class="contenedorTab ">
         <div class="row">
             <div class="col s12 ">
@@ -400,11 +400,18 @@
                                                 event.returnValue = false;">
                                     <label class="active" for="telefono_fijo">Telefono fijo</label>
                                 </div>
-                                <div class="input-field col s6 grupoDiv"> 
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input value="" id="estrato" type="text"  maxlength="1" name="estrato" class="validate"onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
-                                                event.returnValue = false;" >
-                                    <label class="active" for="estrato">estrato</label>
+                                
+                                <div class="input-field col s6 grupoDiv"> <!--generos-->
+                                    <i class="material-icons prefix">view_list_circle</i>
+                                    <select required class="grupoDiv"  id="estrato1" name="estrato">
+                                        <option name="opciones" value="" disabled selected></option>
+                                        <option name="opciones" value="1">1</option>
+                                        <option name="opciones" value="2">2</option>
+                                        <option name="opciones" value="2">3</option>
+                                        <option name="opciones" value="2">4</option>
+                                        <option name="opciones" value="2">5</option>
+                                    </select>
+                                    <label>Genero</label>
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> 
@@ -546,14 +553,14 @@
         }%> 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!--importacion de datatable javaScript por medio de CDN-->
-            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <!-- <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
      <script src="js/jquery.featureCarousel.min.js" type="text/javascript"></script>-->
-    
+
     <!--<script src="js/Carru.js" type="text/javascript"></script>
     <!--Import jQuery before materialize.js-->
-   
-   <script src="js/sweetalert.min.js" type="text/javascript"></script>
+
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <!--importando en archivo .js ajax permite visualizar las informacion de la base de datos en el sitio web-->
     <script type="text/javascript" src="js/ajax.js"></script>
     <!--Importacion del CDN de Google Chart -->
@@ -571,12 +578,12 @@
                                                     $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
                                                     $(".sidebar-overlay").trigger("click");
                                                 });
-                                                $("#competenciasAdministrador").click(function (){
-                                        $("#modalCDxI").openModal("#competenciasAdministrador");
-                                        $(".sidebar-overlay").trigger("click");
-                                    });
+                                                $("#competenciasAdministrador").click(function () {
+                                                    $("#modalCDxI").openModal("#competenciasAdministrador");
+                                                    $(".sidebar-overlay").trigger("click");
+                                                });
                                             });
     </script>
-     <script src="js/AprendizIns.js" type="text/javascript"></script>
+    <script src="js/AprendizIns.js" type="text/javascript"></script>
 </body>
 </html>

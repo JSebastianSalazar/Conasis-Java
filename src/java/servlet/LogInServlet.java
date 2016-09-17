@@ -46,7 +46,7 @@ public class LogInServlet extends HttpServlet {
             String foto;
             int c = 0;
 
-          String id;
+            String id;
             if (usuario.isEmpty() && password.isEmpty()) {
                 response.setStatus(400);
                 out.println("Debe llenar todos los campos");
@@ -67,10 +67,10 @@ public class LogInServlet extends HttpServlet {
                             System.out.println("admi entro");
                             nombre = list.get(2) + " " + list.get(3);
                             foto = list.get(1) + "";
-                           
+
                             session.setAttribute("usuario", nombre);
                             session.setAttribute("foto", foto);
-                            id =(String) list.get(5);
+                            id = (String) list.get(5);
                             session.setAttribute("idIns", id);
                             session.setAttribute("tipo", "administrador");
 
@@ -80,11 +80,11 @@ public class LogInServlet extends HttpServlet {
                             // instru
                             nombre = list.get(2) + " " + list.get(3);
                             foto = list.get(1) + "";
-                             id = (String) list.get(5);
+                            id = (String) list.get(5);
                             session.setAttribute("usuario", nombre);
                             session.setAttribute("foto", foto);
-                              session.setAttribute("idIns", id);
-                             System.out.println(id);
+                            session.setAttribute("idIns", id);
+                            System.out.println(id);
                             session.setAttribute("tipo", "Instructor");
                             out.print("Instructor");
                         } else if (list.get(4) == (Object) 3) {
@@ -106,12 +106,12 @@ public class LogInServlet extends HttpServlet {
                     } else if (list.get(0) == (Object) 0) {
                         // el usuario nop eiste
                         //response.setStatus(400);
-                        //out.println("Esta cuenta no se encutra en la base de datos");
+                        out.println("Esta cuenta no se encutra en la base de datos");
                         response.sendError(400, "Esta cuanta no se encuentra en la base de datos");
                     } else if (list.get(0) == (Object) 2) {
-//                        response.setStatus(400);
+                        response.setStatus(400);
 //                        estado
-//                        out.println("Lo sentimos la cuenta la cual desea ingresar  se encuentra inactiva");
+                        out.println("Lo sentimos la cuenta la cual desea ingresar  se encuentra inactiva");
                         response.sendError(400, "Lo sentimos la cuenta la cual desea ingresar  se encuentra inactiva");
                     } else {
 //                        response.setStatus(400);

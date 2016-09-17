@@ -64,6 +64,10 @@
         <servlet-name>ejemplo</servlet-name>
         <servlet-class>servlet.ejemplo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroAprendiz</servlet-name>
+        <servlet-class>servlet.RegistroAprendiz</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogInServlet</servlet-name>
         <url-pattern>/LogInServlet</url-pattern>
@@ -163,6 +167,10 @@
     <servlet-mapping>
         <servlet-name>ejemplo</servlet-name>
         <url-pattern>/ejemplo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroAprendiz</servlet-name>
+        <url-pattern>/RegistroAprendiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
