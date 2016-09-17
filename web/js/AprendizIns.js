@@ -28,7 +28,7 @@ $(document).ready(function () {//se accede al documento
                     alert(textStatus + " - " + errorThrown + " - " + jqXHR);
                 },
                 complete: function (jqXHR, textStatus) {
-                    alert(jqXHR + " - " + textStatus);
+                    //alert(jqXHR + " - " + textStatus);
                 }
 
             });
@@ -92,15 +92,15 @@ $(document).ready(function () {
                 nombre: $("#nombre").val(),
                 genero: $("#genero").val(),
                 telefono_fijo: $("#telefono_fijo").val(),
-                estrato: $("#estrato").val(),
+                estrato: $("#estrato1").val(),
                 email: $("#email").val(),
                 barrio1: $("#barrio1").val(),
                 Ficha: $("#Ficha").val(),
                 fechaNacimiento: $("#fechaNacimiento").val()
             },
             success: function () {
-                swal("Muy Bien", " ¡ Registro Satisfactorio ! ", "success");
-                window.location.assign("menuInstructor.jsp");
+                swal("Perfecto", " ¡ Registro Satisfactorio ! ", "success");
+                window.location.assign("menuAdministrador.jsp");
             },
             error: function (respuesta) {
                 swal("Error", respuesta.responseText, "error");
