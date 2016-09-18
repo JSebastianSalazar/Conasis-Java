@@ -28,41 +28,40 @@ import util.Conexion;
 public class DaoProgramacion {
 
     /*public boolean insertar(Programacion p) {//no esta siendo utilizado lo reemplazó el procedimiento almacenado
-        PreparedStatement pstm;
-            String sql;
-            Connection con;
-            sql = "INSERT INTO programacion (trimestre,fechaInicio,"
-                    + "fechaFinal,diaSemana,horaIngreso,horaSalida,idAmbiente,idFicha) "
-                    + "VALUES (?,?,?,?,?,?,?,?)";
-        try {
-            con = Conexion.conectar("mysql");
-            pstm = con.prepareStatement(sql);
-            pstm.setString(1, p.getTrimestre());
-            pstm.setDate(2, p.getFechaInicio());
-            pstm.setDate(3, p.getFechaFinal());
-            pstm.setString(4, p.getDiaSemana());
-            pstm.setString(5, p.getHoraIngreso());
-            pstm.setString(6, p.getHoraSalida());
-            pstm.setInt(7, p.getIdAmbiente());
-            pstm.setInt(8, p.getIdFicha());
-            pstm.executeUpdate();
-            pstm.close();
-            con.close();
-            return true;
-        } catch (SQLException ex) {
-            //Logger.getLogger(DaoUsuarioXprogramacion.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("error ingresando una programación " + ex);
-            return false;
-        }
-    }*/
-
+     PreparedStatement pstm;
+     String sql;
+     Connection con;
+     sql = "INSERT INTO programacion (trimestre,fechaInicio,"
+     + "fechaFinal,diaSemana,horaIngreso,horaSalida,idAmbiente,idFicha) "
+     + "VALUES (?,?,?,?,?,?,?,?)";
+     try {
+     con = Conexion.conectar("mysql");
+     pstm = con.prepareStatement(sql);
+     pstm.setString(1, p.getTrimestre());
+     pstm.setDate(2, p.getFechaInicio());
+     pstm.setDate(3, p.getFechaFinal());
+     pstm.setString(4, p.getDiaSemana());
+     pstm.setString(5, p.getHoraIngreso());
+     pstm.setString(6, p.getHoraSalida());
+     pstm.setInt(7, p.getIdAmbiente());
+     pstm.setInt(8, p.getIdFicha());
+     pstm.executeUpdate();
+     pstm.close();
+     con.close();
+     return true;
+     } catch (SQLException ex) {
+     //Logger.getLogger(DaoUsuarioXprogramacion.class.getName()).log(Level.SEVERE, null, ex);
+     System.out.println("error ingresando una programación " + ex);
+     return false;
+     }
+     }*/
     public List<Programacion> programacionFicha(int idFicha) {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Programacion> lista = null;
-            Programacion p;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Programacion> lista = null;
+        Programacion p;
         try {
             sql = "SELECT c.nomCompetencia,p.idProgramacion, p.trimestre, p.fechaInicio, p.fechaFinal, "
                     + "p.diaSemana,p.horaIngreso,p.horaSalida,p.idAmbiente, u.nombre, u.apellido "
@@ -98,116 +97,114 @@ public class DaoProgramacion {
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error consultando programacion por ficha " + ex);
-        }finally{
+        } finally {
             try {
                 rs.close();
                 pstm.close();
                 con.close();
             } catch (SQLException ex) {
-                System.out.println("Error cerrando conexiones en daoProgramación (programaciónFicha) "+ex);
-            }finally{
+                System.out.println("Error cerrando conexiones en daoProgramación (programaciónFicha) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
 
     /*public int conultarUltimoID() {
-        try {
-            //;
-            PreparedStatement pstm;
-            ResultSet rs;
-            String sql;
-            Connection con;
-            int id = 0;
-            sql = "SELECT MAX(idProgramacion) FROM programacion";
-            con = Conexion.conectar("mysql");
-            pstm = con.prepareStatement(sql);
-            rs = pstm.executeQuery();
-            if (rs.next()) {
-                id = rs.getInt(1);
-            }
-            pstm.close();
-            rs.close();
-            con.close();
-            return id;
-        } catch (SQLException ex) {
-            //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error consultando ultimo ID: " + ex);
-            return 0;
-        }
-    }*/
-
+     try {
+     //;
+     PreparedStatement pstm;
+     ResultSet rs;
+     String sql;
+     Connection con;
+     int id = 0;
+     sql = "SELECT MAX(idProgramacion) FROM programacion";
+     con = Conexion.conectar("mysql");
+     pstm = con.prepareStatement(sql);
+     rs = pstm.executeQuery();
+     if (rs.next()) {
+     id = rs.getInt(1);
+     }
+     pstm.close();
+     rs.close();
+     con.close();
+     return id;
+     } catch (SQLException ex) {
+     //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
+     System.out.println("Error consultando ultimo ID: " + ex);
+     return 0;
+     }
+     }*/
     public boolean eliminarProgramacion(int id) {
-            CallableStatement cStmt = null;
-            String sql;
-            Connection con = null;
-            sql = "{CALL eliminarProgramacion(?)}";
-            boolean retorno = false;
+        CallableStatement cStmt = null;
+        String sql;
+        Connection con = null;
+        sql = "{CALL eliminarProgramacion(?)}";
+        boolean retorno = false;
         try {
             con = Conexion.conectar("mysql");
             cStmt = con.prepareCall(sql);
             cStmt.setInt(1, id);
-            if(cStmt.executeUpdate() != 0){
+            if (cStmt.executeUpdate() != 0) {
                 retorno = true;
             }
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error eliminando " + ex);
-        }finally{
-                try {
-                    cStmt.close();
-                    con.close();
-                } catch (SQLException ex) {
-                    System.out.println("Error cerrando conexiones en daoProgramación (eliminarProgramación) "+ex);
-                }finally{
-                    return retorno;
-                }
+        } finally {
+            try {
+                cStmt.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoProgramación (eliminarProgramación) " + ex);
+            } finally {
+                return retorno;
+            }
         }
     }
 
-   /* public boolean modificarProgramacion(Programacion p) {//no esta siendo utilizado
-        CallableStatement cStmt = null;
-            String sql = null;
-            Connection con = null;
-            boolean retorno = false;
-        try {
-            sql = "{CALL modificarProgramacion (?,?,?,?,?,?,?,?,?,?,?)}";
-            con = Conexion.conectar("mysql");
-            cStmt = con.prepareCall(sql);
-            cStmt.setInt(1, p.getIdProgramacion());
-            cStmt.setString(2, p.getTrimestre());
-            cStmt.setDate(3, p.getFechaInicio());
-            cStmt.setDate(4, p.getFechaFinal());
-            cStmt.setString(5, p.getDiaSemana());
-            cStmt.setString(6, p.getHoraIngreso());
-            cStmt.setString(7, p.getHoraSalida());
-            cStmt.setInt(8, p.getIdAmbiente());
-            cStmt.setInt(9, p.getIdFicha());
-            cStmt.setInt(10, p.getIsUsuario());
-            cStmt.setInt(11, p.getIdCompetencia());
-            if(cStmt.executeUpdate() != 0){
-                retorno = true;
-            }
-        } catch (SQLException ex) {
-            //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error modificando " + ex);
-        }finally{
-                try {
-                    cStmt.close();
-                    con.close();
-                } catch (SQLException ex) {
-                    System.out.println("Error cerrando conexiones en daoProgramación (modificarProgramación) "+ex);
-                }finally{
-                    return retorno;
-                }
-        }
-    }*/
-
+    /* public boolean modificarProgramacion(Programacion p) {//no esta siendo utilizado
+     CallableStatement cStmt = null;
+     String sql = null;
+     Connection con = null;
+     boolean retorno = false;
+     try {
+     sql = "{CALL modificarProgramacion (?,?,?,?,?,?,?,?,?,?,?)}";
+     con = Conexion.conectar("mysql");
+     cStmt = con.prepareCall(sql);
+     cStmt.setInt(1, p.getIdProgramacion());
+     cStmt.setString(2, p.getTrimestre());
+     cStmt.setDate(3, p.getFechaInicio());
+     cStmt.setDate(4, p.getFechaFinal());
+     cStmt.setString(5, p.getDiaSemana());
+     cStmt.setString(6, p.getHoraIngreso());
+     cStmt.setString(7, p.getHoraSalida());
+     cStmt.setInt(8, p.getIdAmbiente());
+     cStmt.setInt(9, p.getIdFicha());
+     cStmt.setInt(10, p.getIsUsuario());
+     cStmt.setInt(11, p.getIdCompetencia());
+     if(cStmt.executeUpdate() != 0){
+     retorno = true;
+     }
+     } catch (SQLException ex) {
+     //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
+     System.out.println("Error modificando " + ex);
+     }finally{
+     try {
+     cStmt.close();
+     con.close();
+     } catch (SQLException ex) {
+     System.out.println("Error cerrando conexiones en daoProgramación (modificarProgramación) "+ex);
+     }finally{
+     return retorno;
+     }
+     }
+     }*/
     public int modificarProgramacion2(Programacion p) {
         CallableStatement cStmt = null;
-            String sql;
-            Connection con = null;
-            int respuesta = 0;
+        String sql;
+        Connection con = null;
+        int respuesta = 0;
         try {
             sql = "{CALL modificarProgramacion (?,?,?,?,?,?,?,?,?,?,?,?)}";
             con = Conexion.conectar("mysql");
@@ -229,23 +226,23 @@ public class DaoProgramacion {
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error modificando2 " + ex);
-        }finally{
-                try {
-                    cStmt.close();
-                    con.close();
-                } catch (SQLException ex) {
-                    System.out.println("Error cerrando conexiones en daoProgramación (modificarProgramación2) "+ex);
-                }finally{
-                    return respuesta;
-                }
+        } finally {
+            try {
+                cStmt.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoProgramación (modificarProgramación2) " + ex);
+            } finally {
+                return respuesta;
+            }
         }
     }
 
     public int insertar2(Programacion p) {
         CallableStatement cStmt = null;
-            String sql;
-            Connection con = null;
-            int respuesta = 0;
+        String sql;
+        Connection con = null;
+        int respuesta = 0;
         try {
             sql = "{CALL guardarProgramacion (?,?,?,?,?,?,?,?,?,?,?)}";
             con = Conexion.conectar("mysql");
@@ -266,25 +263,25 @@ public class DaoProgramacion {
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error insertando Programacion " + ex);
-        }finally{
-                try {
-                    cStmt.close();
-                    con.close();
-                } catch (SQLException ex) {
-                    System.out.println("Error cerrando conexiones en daoProgramación (insertar2) "+ex);
-                }finally{
-                    return respuesta;
-                }
+        } finally {
+            try {
+                cStmt.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoProgramación (insertar2) " + ex);
+            } finally {
+                return respuesta;
+            }
         }
     }
 
     public List<Programacion> competenciasDictadasXintstructor(int id) {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Programacion> lista = null;
-            Programacion p;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Programacion> lista = null;
+        Programacion p;
         try {
             sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida "
                     + "FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp "
@@ -300,7 +297,7 @@ public class DaoProgramacion {
             cal.setTime(hoy);
             numeroDia = cal.get(Calendar.DAY_OF_WEEK);
             //System.out.println("hoy es " + dias[numeroDia - 1]);
-            pstm.setString(2, ""+dias[numeroDia - 1]);
+            pstm.setString(2, "" + dias[numeroDia - 1]);
             //pstm.setString(2, "Lunes");//ESTO NO VA
             rs = pstm.executeQuery();
             lista = new ArrayList();
@@ -318,31 +315,33 @@ public class DaoProgramacion {
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error consultando competenciasImplantadasXinstructor" + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
+
     ///Serve para mostrar competencias al gestor para tomar asistencia
+
     public List<Programacion> competenciasGestorF(String gestor, int idInstruc) {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Programacion> lista = null;
-            Programacion p;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Programacion> lista = null;
+        Programacion p;
         try {
-            sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida \n" +
-"              FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp \n" +
-"              WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion \n" +
-"              AND cp.idCompetencia=c.idCompetencia AND f.gestor=? AND up.idUsuario<>? AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
+            sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida \n"
+                    + "              FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp \n"
+                    + "              WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion \n"
+                    + "              AND cp.idCompetencia=c.idCompetencia AND f.gestor=? AND up.idUsuario<>? AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setString(1, gestor);
@@ -372,33 +371,33 @@ public class DaoProgramacion {
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error consultando competenciasImplantadasXinstructor" + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
-    
+
     ///sirve por si falta un instructor y el administrador puede tomar asistencia
-     ///Serve para mostrar competencias al gestor para tomar asistencia
+    ///Serve para mostrar competencias al gestor para tomar asistencia
     public List<Programacion> competenciasAdministrador() {
         PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Programacion> lista = null;
-            Programacion p;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Programacion> lista = null;
+        Programacion p;
         try {
-            sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida \n" +
-"              FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp \n" +
-"              WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion \n" +
-"              AND cp.idCompetencia=c.idCompetencia AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
+            sql = "SELECT p.idProgramacion, f.numeroFicha, c.nomCompetencia,p.idAmbiente, p.horaIngreso, p.horaSalida \n"
+                    + "              FROM programacion as p, ficha as f, competencias as c, usuarioXprogramacion up, comp_progra cp \n"
+                    + "              WHERE up.idProgramacion=p.idProgramacion AND p.idFicha=f.id AND p.idProgramacion=cp.idProgramacion \n"
+                    + "              AND cp.idCompetencia=c.idCompetencia AND p.diaSemana=? ORDER BY p.horaIngreso DESC";
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             String[] dias = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"};
@@ -426,21 +425,16 @@ public class DaoProgramacion {
         } catch (SQLException ex) {
             //Logger.getLogger(DaoProgramacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error consultando competenciasImplantadasXinstructor" + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoProgramación (competenciasDictadasXintstructor) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
 }
-
-    
-
-
-

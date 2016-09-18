@@ -209,7 +209,7 @@
                             </p>
                             <p>
                                 <input name="grupo" type="radio" id="rdPrograma" value="programa"/>
-                                <label for="rdPrograma">Porgrama</label>
+                                <label for="rdPrograma">Programa</label>
                             </p>
                         </div>
                         <div class="col s7" style='padding-left:100px; padding-right:100px'>

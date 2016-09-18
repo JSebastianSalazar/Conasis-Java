@@ -59,7 +59,7 @@ function listarProgramasCobobox() {
                 $('select[name=programas]').append('<option name="opciones" value="" >Seleccione</option>');
                 for (var i = 0; i < myObject.length + 1; i++) {
                     $('select').material_select();//funcion materialize para actualizar el combobox
-                    $('select[name=programas]').append('<option value=' + myObject[i].idPrograma + '>' + myObject[i].nomPrograma + '</option>');
+                    $('select[name=programas]').append('<option value=' + myObject[i].idPrograma+  '>' + myObject[i].nomPrograma + '</option>');
 
                 }
 

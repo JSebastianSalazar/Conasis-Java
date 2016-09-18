@@ -400,7 +400,7 @@
                                                 event.returnValue = false;">
                                     <label class="active" for="telefono_fijo">Telefono fijo</label>
                                 </div>
-                                
+
                                 <div class="input-field col s6 grupoDiv"> <!--generos-->
                                     <i class="material-icons prefix">view_list_circle</i>
                                     <select required class="grupoDiv"  id="estrato1" name="estrato">
@@ -411,7 +411,7 @@
                                         <option name="opciones" value="2">4</option>
                                         <option name="opciones" value="2">5</option>
                                     </select>
-                                    <label>Genero</label>
+                                    <label>Estrato</label>
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> 
@@ -444,21 +444,20 @@
 
                                     <select class="browser-default"  id="municipio" name="municipio">
                                         <option value="" disabled selected>Municipios</option>
-                                        <option  value="1" > Medellin</option>
-                                        <option value="2">Bello</option>
-                                        <option  value="3" >Itagui</option>
-                                        <option  value="4" > Caldas</option>
-                                        <option value="5" > Estrella</option>
-                                        <option value="6" >Sabaneta</option>
-                                        <option value="7" >envigado</option>
-                                        <option value="8" >copacabana</option>
-                                        <option value="9" >Girardota</option>
                                         <option value="10" >Barbosa</option>
+                                        <option value="2">Bello</option>
+                                        <option  value="4" > Caldas</option>
+                                        <option value="8" >copacabana</option>
+                                        <option value="7" >envigado</option>
+                                        <option value="5" > Estrella</option>
+                                        <option value="9" >Girardota</option>
+                                        <option  value="3" >Itagui</option>
+                                        <option  value="1" > Medellin</option>
+                                        <option value="6" >Sabaneta</option>
                                     </select>
 
                                 </div>
                                 <div class="input-field col s6" grupoDiv>
-
                                     <select class="browser-default" id="barrio1">
 
 
