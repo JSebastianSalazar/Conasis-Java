@@ -10,7 +10,7 @@ $(document).ready(function (){
     listarFichas();
     //llamando a google chart Solo se puede llamar una sola vez
     google.charts.load('current', {'packages': ['corechart']});
-    stdGenero();
+    //stdGenero();
 });
 
 //funcion para listar fichas en combobox
@@ -92,14 +92,14 @@ function stdGenero(ficha) {
         function drawChart(h,m) {
             var data = google.visualization.arrayToDataTable([
         ["Element", "Density", { role: "style" } ],
-        ["Hombres", h, "#b87333"],
-        ["Mujeres", m, "silver"]
+        ["Hombres",parseInt(h), "#b87333"],//)
+        ["Mujeres",parseInt(m), "silver"]//
       ]);
 
             var options = {
-                title: 'Asistencia en la competencia.     Asistió = 0 - No asistio = 3',
-                hAxis: {format: ['yyyy-MM-dd'], title: 'Fecha'}, //
-                vAxis: {title: 'Asistó = 0  Falto = 3', titleTextStyle: {color: '#333'}, minValue: 0, maxValue: 3},
+                title: 'Cantidad generos por ficha',
+                hAxis: { title: 'Sexo'}, //
+                vAxis: {title: 'Cantidad', titleTextStyle: {color: '#333'}},
                 animation: {
                     duration: 1000,
                     easing: 'out'

@@ -231,19 +231,16 @@ public class DAOUsuario extends Conexion {
             }
         }
     }
-    
-    
+
     // emer 
-    
-    
-       //sirve para listar los instructores en un combobox
-    public List<Usuario> instructores(){
+    //sirve para listar los instructores en un combobox
+    public List<Usuario> instructores() {
         java.sql.PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Usuario> lista = null;
-            Usuario u;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Usuario> lista = null;
+        Usuario u;
         try {
             sql = "SELECT u.id,u.nombre,u.apellido "
                     + "FROM usuario as u, tipoUsuario as t, estado as e "
@@ -252,7 +249,7 @@ public class DAOUsuario extends Conexion {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setNombre(rs.getString("nombre"));
@@ -261,32 +258,31 @@ public class DAOUsuario extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("Listando instructores comboox " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoUsuario (instructores) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoUsuario (instructores) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
-    
-    
-   //consulta los usuarios que faltaron en una fecha y no han reportado el porque no asistieron
-    public List<Usuario> aprendicesNoAsistieron(String fecha, String ficha, int idProgramacion){
+
+    //consulta los usuarios que faltaron en una fecha y no han reportado el porque no asistieron
+    public List<Usuario> aprendicesNoAsistieron(String fecha, String ficha, int idProgramacion) {
         java.sql.PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Usuario> lista = null;
-            Usuario u;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Usuario> lista = null;
+        Usuario u;
         try {
-            sql = "Select id,numeroDoc,nombre,apellido,novedad \n" +
-                "from usuario AS u ,asistencia as a \n" +
-                "where a.idUsuario = u.id AND u.idTipoUsuario=3 AND u.numeroFicha=? AND DATE(a.fechaHora)=? AND a.idProgramacion=? AND a.entradaSalida='3';";//AND novedad is null AND fechaNovedad is null
+            sql = "Select id,numeroDoc,nombre,apellido,novedad \n"
+                    + "from usuario AS u ,asistencia as a \n"
+                    + "where a.idUsuario = u.id AND u.idTipoUsuario=3 AND u.numeroFicha=? AND DATE(a.fechaHora)=? AND a.idProgramacion=? AND a.entradaSalida='3';";//AND novedad is null AND fechaNovedad is null
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setString(2, fecha);
@@ -294,7 +290,7 @@ public class DAOUsuario extends Conexion {
             pstm.setInt(3, idProgramacion);
             rs = pstm.executeQuery();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setDocumento(rs.getString("numeroDoc"));
@@ -305,27 +301,27 @@ public class DAOUsuario extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("Listando que faltaron en tabla " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
-    
+
     //Muestra los aprendices de una ficha
-     public List<Usuario> aprendicesDeFichas(String ficha){
+    public List<Usuario> aprendicesDeFichas(String ficha) {
         java.sql.PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Usuario> lista = null;
-            Usuario u;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Usuario> lista = null;
+        Usuario u;
         try {
             sql = "select distinct id,numeroDoc,nombre,apellido,p.idProgramacion from usuario as u, asistencia as a, programacion as p "
                     + "WHERE u.id=a.idUsuario AND a.idProgramacion=p.idProgramacion AND u.numeroficha=?";//
@@ -334,7 +330,7 @@ public class DAOUsuario extends Conexion {
             pstm.setString(1, ficha);
             rs = pstm.executeQuery();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setDocumento(rs.getString("numeroDoc"));
@@ -345,26 +341,26 @@ public class DAOUsuario extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("Listando que faltaron en tabla " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
-     
+
     //traerá los días faltados a clases por estudiante
-        public List<Usuario> faltasAprendiz(int idProgramacion){
+    public List<Usuario> faltasAprendiz(int idProgramacion) {
         java.sql.PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Usuario> lista = null;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Usuario> lista = null;
         try {
             sql = "select count(entradaSalida), nombre,Apellido from asistencia, usuario where idUsuario=id and  entradaSalida='3' and idProgramacion=? group by idUsuario";//
             con = Conexion.conectar("mysql");
@@ -373,7 +369,7 @@ public class DAOUsuario extends Conexion {
             rs = pstm.executeQuery();
             Usuario u = new Usuario();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 u = new Usuario();
                 u.setDia(rs.getInt(1));
                 u.setNombre(rs.getString("nombre"));
@@ -382,30 +378,29 @@ public class DAOUsuario extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("dias faltados " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoAsistencia (diasfaltados) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoAsistencia (diasfaltados) " + ex);
+            } finally {
                 return lista;
             }
-        }  
-     }
-     
-    
+        }
+    }
+
 // MODIFIQUE ESTO
-        //pongalo en el servlet de aprendiz
-        //complete los datos en la consulta
-     public List<Usuario> aprendicesFichas(String ficha){
+    //pongalo en el servlet de aprendiz
+    //complete los datos en la consulta
+    public List<Usuario> aprendicesFichas(String ficha) {
         java.sql.PreparedStatement pstm = null;
-            ResultSet rs = null;
-            String sql;
-            Connection con = null;
-            List<Usuario> lista = null;
-            Usuario u;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Usuario> lista = null;
+        Usuario u;
         try {
             sql = "select distinct id,numeroDoc,nombre,apellido from usuario "
                     + "WHERE  u.numeroficha=?";//
@@ -414,7 +409,7 @@ public class DAOUsuario extends Conexion {
             pstm.setString(1, ficha);
             rs = pstm.executeQuery();
             lista = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setDocumento(rs.getString("numeroDoc"));
@@ -425,23 +420,22 @@ public class DAOUsuario extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("Listando que faltaron en tabla " + ex);
-        }finally{
-            try{
-            pstm.close();
-            rs.close();
-            con.close();
-            }catch(SQLException ex){
-                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) "+ex);
-            }finally{
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) " + ex);
+            } finally {
                 return lista;
             }
         }
     }
-     
-    
- public List stdGenero(String ficha) {
+
+    public List stdGenero(String ficha) {
         CallableStatement procedure = null;
-        
+
         List respuesta = new ArrayList();
         Connection con = this.conectar("mysql");
         String sql = "{CALL genero(?,?,?)}";
@@ -454,7 +448,10 @@ public class DAOUsuario extends Conexion {
             procedure.execute();
             respuesta.add(0, procedure.getInt(2)); //obtiene lo retornado en el procedimiento
             respuesta.add(1, procedure.getInt(3)); //obtiene lo retornado en el procedimiento
-
+            System.out.println(procedure.getInt(2));
+            System.out.println("HGF");
+            System.out.println(respuesta.get(0));
+            System.out.println(respuesta.get(1));
         } catch (SQLException ex) {
             System.out.println("Error al stdGenro " + ex.getMessage());
         } finally {
@@ -467,12 +464,6 @@ public class DAOUsuario extends Conexion {
                 return respuesta;
             }
         }
-    }    
-    
-    
-    
+    }
 
-    
-    
-    
 }

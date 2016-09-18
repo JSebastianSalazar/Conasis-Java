@@ -33,6 +33,7 @@
         </div>
         <!--importación de Jquery por medio de CDN-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <!--importacion de materializecss javaScript por medio de CDN-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
          <!--importacion del javaScript de las Alertas SweetAlert-->
