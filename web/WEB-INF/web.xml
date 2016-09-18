@@ -68,6 +68,10 @@
         <servlet-name>RegistroAprendiz</servlet-name>
         <servlet-class>servlet.RegistroAprendiz</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletEstadistica</servlet-name>
+        <servlet-class>servlet.ServletEstadistica</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogInServlet</servlet-name>
         <url-pattern>/LogInServlet</url-pattern>
@@ -171,6 +175,10 @@
     <servlet-mapping>
         <servlet-name>RegistroAprendiz</servlet-name>
         <url-pattern>/RegistroAprendiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEstadistica</servlet-name>
+        <url-pattern>/ServletEstadistica</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

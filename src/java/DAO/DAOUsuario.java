@@ -439,6 +439,36 @@ public class DAOUsuario extends Conexion {
     }
      
     
+ public List stdGenero(String ficha) {
+        CallableStatement procedure = null;
+        
+        List respuesta = new ArrayList();
+        Connection con = this.conectar("mysql");
+        String sql = "{CALL genero(?,?,?)}";
+        try {
+            procedure = (CallableStatement) con.prepareCall(sql);
+
+            procedure.setString(1, ficha);
+            procedure.registerOutParameter(2, Types.INTEGER);
+            procedure.registerOutParameter(3, Types.INTEGER);
+            procedure.execute();
+            respuesta.add(0, procedure.getInt(2)); //obtiene lo retornado en el procedimiento
+            respuesta.add(1, procedure.getInt(3)); //obtiene lo retornado en el procedimiento
+
+        } catch (SQLException ex) {
+            System.out.println("Error al stdGenro " + ex.getMessage());
+        } finally {
+            try {
+                procedure.close();
+                this.desconectar(con);
+            } catch (SQLException ex) {
+                System.out.println("error cerrando conexion");
+            } finally {
+                return respuesta;
+            }
+        }
+    }    
+    
     
     
 

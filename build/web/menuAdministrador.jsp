@@ -57,23 +57,6 @@
             <div class="nav-wrapper" style="background-color: transparent">
                 <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/><!--<a><%= nombre%></a>-->
                  <a  class="brand-logo center">Control de asistencia</a>
-                <!-- <div class="right contenedorImgInstructor" style="background-color: transparent">
-                     <img src="<%= session.getAttribute("foto")%>" alt="" class="circle responsive-img imgInstructor " data-delay="50" id="imglol"  style="height: 82px; width: 82px;" />
-                     <form action="SalidaAdmi">
- 
-                         <div class="dropdown" id="dropdown">  
-                             <a class="mainmenu toggle-login"><%= session.getAttribute("tipo")%></a>  
-                             <div class="submenu">  
-                                 <center>     <ul class="menuitems" id="main">  
-                                     <li><a href="configuracion.jsp"style="width:  135px;" >Configurar</a></li>  
-                                     <li><a href="#" style="width:  135px;">  Ayuda  </a></li>
-                                     <li><a href="#" style="width:  135px;"> Diseño</a></li>
-                                     <li><a href="#" onclick="$(this).closest('form').submit()" style="width:  135px;"> Salir </a></li>  
-                                     </ul> </center> 
-                             </div>  
-                         </div>  
- 
-                     </form>-->
             </div>
         </div>
     </nav>
@@ -201,6 +184,33 @@
                     <li>
                         <a href="infoAsistencia.jsp" tabindex="-1">
                             información de asistencia
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Estadisticas
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="estadisticas.jsp" id=""  tabindex="-1">
+                            Genero
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" tabindex="-1">
+                            Estrato
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" tabindex="-1">
+                            ??
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
                     </li>
