@@ -114,6 +114,7 @@ public class DaoAsistencia {
             retorno.add(4, cStmt.getInt(9));
             retorno.add(5, cStmt.getString(10));//no serecupera como INT ya que solo mostraria la HORA
             retorno.add(6, cStmt.getString(11));
+            System.out.println(cStmt.getString(11)+"metodo tomaAsistencia");
         } catch (SQLException ex) {
             System.out.println("Error en toma de asistencia " + ex);
         } finally {
@@ -155,6 +156,7 @@ public class DaoAsistencia {
             retorno.add(3, cStmt.getString(7));
             retorno.add(4, cStmt.getInt(8));
             retorno.add(5, cStmt.getString(9));
+             System.out.println(cStmt.getString(9)+"tomaAsistencia2");
         } catch (SQLException ex) {
             System.out.println("Error en toma de asistencia 2 " + ex);
         } finally {
@@ -198,6 +200,7 @@ public class DaoAsistencia {
             retorno.add(4, cStmt.getInt(8));
             retorno.add(5, cStmt.getString(9));//no serecupera como INT ya que solo mostraria la HORA
             retorno.add(6, cStmt.getString(10));
+             System.out.println(cStmt.getString(10)+"tomaAsistenciaSalida");
         } catch (SQLException ex) {
             System.out.println("Error en toma de asistencia 2 " + ex);
         } finally {

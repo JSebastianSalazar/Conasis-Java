@@ -47,18 +47,20 @@ public class LogInServlet extends HttpServlet {
             int c = 0;
 
             String id;
-            if (usuario.isEmpty() && password.isEmpty()) {
-                response.setStatus(400);
-                out.println("Debe llenar todos los campos");
-            } else {
+            if (usuario.equals("")) {
+                
+               response.setStatus(400, "Debe llenar el campo de usuario");
+            } else if (password.equals("")){
+                  response.setStatus(400, "Debe llenar el campo de contraseña");
+                
+            } else{
                 DAOUsuario dao = new DAOUsuario();
                 HttpSession session = request.getSession(true);
                 log.setUsuario(usuario);
                 log.setClave(password);
                 list = dao.logueo(log);
                 if (list.isEmpty() || list == null) {
-                    response.setStatus(400);
-                    out.println("Ocurrio un error");
+                    response.sendError(500, "Ha ocurrido un error inesperado");
                 } else {
 //                   
                     if (list.get(0) == (Object) 1) {
@@ -100,29 +102,32 @@ public class LogInServlet extends HttpServlet {
                         } else {
 //                            response.setStatus(400);
 //                            out.println("Ocurrio un error ");
-                            response.sendError(400, "Ocurrio un error ");
+                            response.setStatus(400, "Ha  ocurrido un error");
 
                         }
                     } else if (list.get(0) == (Object) 0) {
                         // el usuario nop eiste
                         //response.setStatus(400);
-                        out.println("Esta cuenta no se encutra en la base de datos");
-                        response.sendError(400, "Esta cuanta no se encuentra en la base de datos");
+                        //out.println("Esta cuenta no se encutra en la base de datos");
+                        response.setStatus(400,"Esta cuanta no se encuentra en la base de datos");
+                        
                     } else if (list.get(0) == (Object) 2) {
-                        response.setStatus(400);
+                       // response.setStatus(400);
 //                        estado
-                        out.println("Lo sentimos la cuenta la cual desea ingresar  se encuentra inactiva");
-                        response.sendError(400, "Lo sentimos la cuenta la cual desea ingresar  se encuentra inactiva");
+                         response.setStatus(400, "Lo sentimos la cuenta la cual desea ingresar  se encuentra inactiva");
+                      
                     } else {
 //                        response.setStatus(400);
-                        response.sendError(400, "Ocurrio un error ");
+                        response.setStatus(400, "Ha ocurrido un error");
 
                     }
                 }
-
+                         }
+   /*             
+*/
             }
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

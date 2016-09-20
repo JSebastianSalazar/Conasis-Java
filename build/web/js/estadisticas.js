@@ -5,13 +5,31 @@
  */
 
 $(document).ready(function (){
+    $('#stdgenerocontainer').hide();
+    $('#stdestratocontainer').hide();
     
     $('select').material_select();
-    listarFichas();
-    //llamando a google chart Solo se puede llamar una sola vez
+   //llamando a google chart Solo se puede llamar una sola vez
     google.charts.load('current', {'packages': ['corechart']});
     //stdGenero();
 });
+$('#redireccionEstadistica').click(function (){
+    window.location.assign("estadisticas.jsp");
+    $('#stdgenerocontainer').show();
+    $('#stdestratocontainer').hide();
+    listarFichas();
+    
+});
+$('#redireccioEstadisticaestrato').click(function (){
+    window.location.assign("estadisticas.jsp");
+    $('#stdgenerocontainer').hide();
+    $('#stdestratocontainer').show();
+   // listarFichas();
+    
+});
+
+
+
 
 //funcion para listar fichas en combobox
 function listarFichas() {
@@ -49,11 +67,12 @@ function listarFichas() {
             });
 }
 $('select[name=fichas]').on('change', function () {
-    var Nficha = $('select[name=competencias] option:selected').text(); //saber el texto entre los option del combobox seleccionado
+    var Nficha = $('select[name=fichas] option:selected').text(); //saber el texto entre los option del combobox seleccionado
     stdGenero(Nficha);
 });
 
 function stdGenero(ficha) {
+ 
         $.ajax({
             beforeSend: function () {
             },
@@ -80,8 +99,8 @@ function stdGenero(ficha) {
                         var h;
                         var m;
                         for(var i = 0; i < array.length;i++){
-                            alert(array[0]);
-                            alert(array[1]);
+                       
+                           
                             h = array[0];
                             m = array[1];      
                         }
@@ -91,7 +110,7 @@ function stdGenero(ficha) {
 
         function drawChart(h,m) {
             var data = google.visualization.arrayToDataTable([
-        ["Element", "Density", { role: "style" } ],
+        ["Element", "Cantidad", { role: "style" } ],
         ["Hombres",parseInt(h), "#b87333"],//)
         ["Mujeres",parseInt(m), "silver"]//
       ]);

@@ -530,7 +530,7 @@
         <div class="ftft">
             <div class="footer-copyright">
                 <div class="container">
-                    © 2014 Copyright
+                    © 2016 Copyright
                     <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
                 </div>
             </div>

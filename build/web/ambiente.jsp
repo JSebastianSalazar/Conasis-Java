@@ -220,13 +220,13 @@
                             <div class="row s12 " style="margin-bottom: 0px;">
                             <div class="input-field col s6" >
                                 <i class="material-icons prefix">done</i>
-                                <input id="suministros" type="text" class="validate"   onkeypress="return soloLetras(event);">
+                                <input id="suministros" type="text" class="validate" >
                                 <label for="icon_prefix" id="lblsuministros">Suministros</label >
                             </div>
 
                             <div class="input-field col s6" style="margin-top: 0px;">
                                 <i class="material-icons prefix">done</i>
-                                <textarea id="observacion" class="materialize-textarea"class="validate"  onkeypress="return soloLetras(event);"></textarea>
+                                <textarea id="observacion" class="materialize-textarea"class="validate"  ></textarea>
                                 <label for="icon_prefix" id="lblobservacion">Observacion</label>
                             </div>
                             </div>
@@ -261,7 +261,7 @@
             <div class="ftft">
                 <div class="footer-copyright">
                     <div class="container">
-                        © 2014 Copyright 
+                        © 2016 Copyright 
                         <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
                     </div>
                 </div>

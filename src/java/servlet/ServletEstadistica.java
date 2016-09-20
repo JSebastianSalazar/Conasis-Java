@@ -56,6 +56,7 @@ public class ServletEstadistica extends HttpServlet {
             switch(validacion){
                 case "stdGenero":
                     genero = daoU.stdGenero(numeroFicha);
+                    System.out.println(numeroFicha);
                     System.out.println("z"+genero.size());
                     if(genero.isEmpty() || genero == null){
                         response.setStatus(200);

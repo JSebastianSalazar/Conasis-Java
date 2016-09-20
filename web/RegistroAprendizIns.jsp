@@ -177,9 +177,9 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                   Ayuda
                 </a>
             </li>
         </ul>
@@ -238,9 +238,9 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                    Acerca de
+                    Ayuda
                 </a>
             </li>
         </ul>
@@ -373,7 +373,7 @@
                                     <input id="apellido" type="text" name="apellido" class="validate" maxlength="50" required onkeypress="return soloLetras(event);">
                                     <label class="active" for="apellido">Apellidos</label>
                                 </div>
-
+                                <br><br><br>
                                 <div class="boton col s6 grupoDiv" style="margin-left: 20%;" >
                                     <button class="btn waves-effect light-blue accent-4 waves-light " type="button" id="cancelar" onClick="location.href = 'menuAdministrador.jsp'" >Cancelar</button>
                                     <!-- <input  class="waves-effect light-blue accent-4 btn" type="button" id="cancelar" name="Guardar" value="Cancelar" onClick="location.href='menuAdministrador.jsp'"/>-->
@@ -396,9 +396,9 @@
                                 </div>
                                 <div class="input-field col s6 grupoDiv">
                                     <i class="material-icons prefix">phone_circle</i>
-                                    <input value="" id="telefono_fijo" type="text" maxlength="8" name="fijo" class="validate" required onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
+                                    <input value="" id="telefono_fijo" type="text" maxlength="10" name="fijo" class="validate" required onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
                                                 event.returnValue = false;">
-                                    <label class="active" for="telefono_fijo">Telefono fijo</label>
+                                    <label class="active" for="telefono_fijo">Telefono Celular</label>
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> <!--generos-->
@@ -421,7 +421,7 @@
                                 </div>
 
                                 <br>
-                                <br>
+                                <br><br>
                                 <div> 
                                     <div class="boton col s4 grupoDiv" style="padding-left: 10%;">
                                         <button class="btn waves-effect light-blue accent-4 waves-light " type="button" id="btnatr" >VOLVER</button>
@@ -466,10 +466,8 @@
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> 
-                                    <select required class="browser-default"  id="Ficha" name="Ficha">
-                                        <option name="opciones" value="" disabled selected>Ficha</option>
-                                        <option name="opciones" value="1">901528</option>
-                                        <option name="opciones" value="0">981212</option>
+                                    <select required class="browser-default"  id="Ficha" name="fichas">
+                                   
                                     </select>
 
                                 </div>
@@ -479,6 +477,7 @@
                                     <input type="date"  id="fechaNacimiento"  class="datepicker" name="fechaNacimiento1">
                                     <label class="active" for="Fecha_Nacimiento">Fecha Nacimiento</label>
                                 </div>
+                                <br><br>
                                 <div> 
                                     <div class="boton col s4 grupoDiv" style="padding-left: 10%;">
                                         <button class="btn waves-effect light-blue accent-4 waves-light " type="button" id="ultimate" >VOLVER</button>
@@ -540,7 +539,7 @@
         <div class="ftft">
             <div class="footer-copyright">
                 <div class="container">
-                    © 2014 Copyright 
+                    © 2016 Copyright 
                     <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
                 </div>
             </div>
@@ -552,7 +551,6 @@
         }%> 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!--importacion de datatable javaScript por medio de CDN-->
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <!-- <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
      <script src="js/jquery.featureCarousel.min.js" type="text/javascript"></script>-->
 
@@ -564,8 +562,11 @@
     <script type="text/javascript" src="js/ajax.js"></script>
     <!--Importacion del CDN de Google Chart -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <!--menu-->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
     <script src="js/index2.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script>

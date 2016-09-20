@@ -195,7 +195,9 @@ public class ServletUsuario extends HttpServlet {
                     
                     break;
                     case "aprendicesDeFichas":
+                        System.out.println("Hola soy aprendicesDeFicha");
                     lista = dao.aprendicesDeFichas(ficha);
+                        System.out.println(lista.size()+" - tamaño");
                     if (lista.isEmpty() || lista.size() == 0) {
                         out.println("<br>");
                         out.println("<center><h4>La ficha No tiene aprendices<h4></center>");
@@ -219,7 +221,7 @@ public class ServletUsuario extends HttpServlet {
                             json = "[{idProgramacion:\n" + u.getIdProgramacion() + "\n,idAprendiz:\n" + u.getId() + "\n}]";
                             //idA = u.getId();
                             out.println("<tr>");
-                            out.println("<td id='" + "" + "' onclick=''>" + u.getTipoDocumento() + "</td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getDocumento() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
                             out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntFaltas(this)'  id='btnMdlFalta' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'
@@ -272,12 +274,14 @@ public class ServletUsuario extends HttpServlet {
                         
                         //ESTO LO PASA AL SERLET DE APRENDIZ SI QUIERE
                     case "tblAprendicesFicha":
-                        lista = dao.aprendicesDeFichas(ficha);
-                    if (lista.isEmpty() || lista.size() == 0) {
+                        lista = new ArrayList();
+                        lista = dao.aprendicesDeFichas2(ficha);
+                        System.out.println(ficha);
+                    if (lista.isEmpty() || lista == null) {
                         out.println("<br>");
                         out.println("<center><h4>La ficha No tiene aprendices<h4></center>");
                     } else {
-                        out.println("<table class='highlight bordered' >");
+                        out.println("<table class='highlight bordered' id='sebas'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id'><center>Numero documento</center></th>");
@@ -288,13 +292,15 @@ public class ServletUsuario extends HttpServlet {
                         out.println("</thead>");
                         out.println("<tbody>");
                         int idA = 0;
+                        System.out.println(lista.size()+"aca estoy");
                         for (int i = 0; i < lista.size(); i++) {
+                            
                             u = lista.get(i);
                             idA=u.getIdProgramacion();
                             json = "[{idProgramacion:\n" + u.getIdProgramacion() + "\n,idAprendiz:\n" + u.getId() + "\n}]";
                             //idA = u.getId();
                             out.println("<tr>");
-                            out.println("<td id='" + "" + "' onclick=''>" + u.getTipoDocumento() + "</td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getDocumento() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
                              out.println("<td id='' ><ul style='margin-bottom: 0px; margin-top: 0px;'>"

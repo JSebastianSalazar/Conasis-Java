@@ -54,6 +54,7 @@ public class DAOUsuario extends Conexion {
             respuesta.add(procedure.getString(6)); //obtiene lo retornado en el procedimiento)
             respuesta.add(procedure.getInt(7)); //obtiene lo retornado en el procedimiento)
             respuesta.add(procedure.getString(8)); //obtiene lo retornado en el procedimiento)
+            System.out.println(procedure.getInt(3)+"2 dao");
 
         } catch (SQLException ex) {
             System.out.println("Error al insertar " + ex.getMessage());
@@ -316,7 +317,7 @@ public class DAOUsuario extends Conexion {
 
     //Muestra los aprendices de una ficha
     public List<Usuario> aprendicesDeFichas(String ficha) {
-        java.sql.PreparedStatement pstm = null;
+        PreparedStatement pstm = null;
         ResultSet rs = null;
         String sql;
         Connection con = null;
@@ -326,7 +327,7 @@ public class DAOUsuario extends Conexion {
             sql = "select distinct id,numeroDoc,nombre,apellido,p.idProgramacion from usuario as u, asistencia as a, programacion as p "
                     + "WHERE u.id=a.idUsuario AND a.idProgramacion=p.idProgramacion AND u.numeroficha=?";//
             con = Conexion.conectar("mysql");
-            pstm = con.prepareStatement(sql);
+            pstm = (PreparedStatement) con.prepareStatement(sql);
             pstm.setString(1, ficha);
             rs = pstm.executeQuery();
             lista = new ArrayList();
@@ -338,6 +339,7 @@ public class DAOUsuario extends Conexion {
                 u.setApellido(rs.getString("apellido"));
                 u.setIdProgramacion(rs.getInt("idProgramacion"));
                 lista.add(u);
+                System.out.println(rs.getString("numeroDoc"));
             }
         } catch (SQLException ex) {
             System.out.println("Listando que faltaron en tabla " + ex);
@@ -403,7 +405,7 @@ public class DAOUsuario extends Conexion {
         Usuario u;
         try {
             sql = "select distinct id,numeroDoc,nombre,apellido from usuario "
-                    + "WHERE  u.numeroficha=?";//
+                    + "WHERE  u.id=a.idUsuario AND a.idProgramacion=p.idProgramacion AND u.numeroficha=?";//
             con = Conexion.conectar("mysql");
             pstm = con.prepareStatement(sql);
             pstm.setString(1, ficha);
@@ -465,5 +467,44 @@ public class DAOUsuario extends Conexion {
             }
         }
     }
-
+ //Muestra los aprendices de una ficha
+    public List<Usuario> aprendicesDeFichas2(String ficha) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        String sql;
+        Connection con = null;
+        List<Usuario> lista = null;
+        Usuario u;
+        try {
+            sql = "select distinct id,numeroDoc,nombre,apellido from usuario as u "
+                    + "WHERE  u.numeroficha=?";//
+            con = Conexion.conectar("mysql");
+            pstm = (PreparedStatement) con.prepareStatement(sql);
+            pstm.setString(1, ficha);
+            rs = pstm.executeQuery();
+            lista = new ArrayList();
+            while (rs.next()) {
+                u = new Usuario();
+                u.setId(rs.getInt("id"));
+                u.setDocumento(rs.getString("numeroDoc"));
+                u.setNombre(rs.getString("nombre"));
+                u.setApellido(rs.getString("apellido"));
+               // u.setIdProgramacion(rs.getInt("idProgramacion"));
+                lista.add(u);
+                System.out.println(rs.getString("numeroDoc"));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Listando que faltaron en tabla " + ex);
+        } finally {
+            try {
+                pstm.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error cerrando conexiones en daoUsuario (aprendicesNoAsistieron) " + ex);
+            } finally {
+                return lista;
+            }
+        }
+    }
 }

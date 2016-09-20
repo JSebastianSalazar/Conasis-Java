@@ -381,6 +381,7 @@ public class ServletAsistencia extends HttpServlet {
                             out.println("</script>");
                         } else if (lista.get(1) == (Object) 3) {
                             //out.print("insertó la entrada");
+                            System.out.println(lista.get(5)+"Servlet");
                             out.println("[" + "{" + "	'nombre' : '" + lista.get(2) + "'," + "'apellido' : '" + lista.get(3) + "'," + "'hora' : '" + lista.get(0) + "'," + "'faltas' : '" + lista.get(4) + "'," + "'foto' : '" + lista.get(5) + "'," + "'mensaje' : 'Se registró la entrada con exito'\n" + "}" + "]");
                         } else {
                             out.println("<script>"
@@ -641,7 +642,7 @@ public class ServletAsistencia extends HttpServlet {
                     break;
                 case "fichasInstructor3"://listando programas
                     if (!idInstructor.isEmpty()) {
-                        listaF = daoF.fichasInstructor(Integer.parseInt(idInstructor));
+                        listaF = daoF.fichas();
                         if (listaF.isEmpty() || listaF == null) {
                             out.println("<center><h4>Usted no tiene fichas asiciadas<h4></center>");
                         } else {

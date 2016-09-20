@@ -265,8 +265,8 @@ function fichasInstructor() {
 //cuando se da clic sobre la ficha mostrará los aprendices
 function tablaAprendicesFicha(val) {
     $("#contenedorGeneralAprendices").show();
-    var numeroFicha = $(val).attr('id');
-    var idProgramacion = $(val).attr('value');
+    var idProgramacion = $(val).attr('id');
+    var  numeroFicha = $(val).attr('value');
     $.ajax({
         beforeSend: function () {
             //aca pueden poner una imagen gif como un preloader
@@ -278,7 +278,7 @@ function tablaAprendicesFicha(val) {
         url: "ServletUsuario", //nombre del servlet
         data: {
             //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "aprendicesDeFichas",
+            validacion: "tblAprendicesFicha",
             ficha: numeroFicha
         }
         , error: function (jqXHR, estado, error) {
@@ -296,8 +296,13 @@ function tablaAprendicesFicha(val) {
     })
             .done(function (msg) {
                 //acá se muestra lo que se imprime en el servlert
-                //alertas de si guardo o no o si ocurrio un error
+                //alertas de si guardo o no o si ocurrio un error 
                 $("#contentAprendices").html(msg);
+                $('#sebas').dataTable({
+                    'language': {
+                        'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'
+                    }
+                });
 
             });
 }
@@ -362,4 +367,42 @@ function normal(id) {//cuando el mouse no esta encima
             $($(id)).css("color", "#039be5");
             break;
     }
+}
+
+
+//combobox de fichas en el registro de aprendices
+//funcion para listar fichas en combobox
+function listarFichas() {
+    $.ajax({
+        beforeSend: function (xhr) {
+
+        },
+        method: "POST",
+        url: "ServletProgramacion",
+        data: {
+            validacion: "comboboxFicha"
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, textStatus) {
+
+        }
+    })
+            .done(function (msg) {
+                //$("#jsonphp").html(msg);
+                //print(msg); funcion que convierte a pdf
+                $('select[name=fichas] option').remove();
+                var myObject = eval('(' + msg + ')');
+                $('select[name=fichas]').append('<option name="opciones" value="" disabled selected>Ficha</option>');
+                for (var i = 0; i < myObject.length + 1; i++) {
+                    $('select').material_select();//funcion materialize para actualizar el combobox
+                    $('select[name=fichas]').append('<option value=' + myObject[i].numeroFicha+ ' id="' + myObject[i].idPrograma + '">' + myObject[i].numeroFicha + '</option>');
+                }
+
+            });
 }

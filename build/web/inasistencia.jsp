@@ -203,21 +203,7 @@
         %>
         <!-- Sidebar navigation -->
         <ul class="nav sidebar-nav">
-            <li class="divider"></li>
-            <li class="dropdown">
-                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                    Aprendices
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="RegistroAprendizIns.jsp" tabindex="-1">
-                            Aprendices
-                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            
             <li class="divider"></li>
             <li class="dropdown">
                 <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
@@ -331,7 +317,7 @@
         <div class="ftft">
             <div class="footer-copyright">
                 <div class="container">
-                    © 2014 Copyright 
+                    © 2016 Copyright 
                     <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
                 </div>
             </div>

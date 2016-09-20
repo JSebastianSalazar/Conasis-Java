@@ -297,8 +297,8 @@ public class DaoProgramacion {
             cal.setTime(hoy);
             numeroDia = cal.get(Calendar.DAY_OF_WEEK);
             //System.out.println("hoy es " + dias[numeroDia - 1]);
-            //pstm.setString(2, "" + dias[numeroDia - 1]);
-            pstm.setString(2, "Lunes");//ESTO NO VA
+            pstm.setString(2, "" + dias[numeroDia - 1]);
+            //pstm.setString(2, "Lunes");//ESTO NO VA
             rs = pstm.executeQuery();
             lista = new ArrayList();
             while (rs.next()) {
@@ -352,8 +352,8 @@ public class DaoProgramacion {
             cal.setTime(hoy);
             numeroDia = cal.get(Calendar.DAY_OF_WEEK);
             //System.out.println("hoy es " + dias[numeroDia - 1]);
-            //pstm.setString(3, ""+dias[numeroDia - 1]);
-            pstm.setString(3, "Martes");//ESTO NO VA
+            pstm.setString(3, "" + dias[numeroDia - 1]);
+            //pstm.setString(3, "Martes");//ESTO NO VA
             rs = pstm.executeQuery();
             lista = new ArrayList();
             while (rs.next()) {
@@ -406,8 +406,8 @@ public class DaoProgramacion {
             cal.setTime(hoy);
             numeroDia = cal.get(Calendar.DAY_OF_WEEK);
             //System.out.println("hoy es " + dias[numeroDia - 1]);
-            //pstm.setString(3, ""+dias[numeroDia - 1]);
-            pstm.setString(1, "Martes");//ESTO NO VA
+            pstm.setString(1, "" + dias[numeroDia - 1]);
+            //pstm.setString(1, "Martes");//ESTO NO VA
             rs = pstm.executeQuery();
             lista = new ArrayList();
             while (rs.next()) {

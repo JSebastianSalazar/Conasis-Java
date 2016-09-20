@@ -1422,7 +1422,8 @@ $("#buscarA").click(function () {
                         $("#lblDocumento").text(nDi);
                         $("#lblFalta").text(myObject[0].faltas);
                         $("#lblTiempo").text(myObject[0].tiempo);
-                        $("#imgAprendiz").attr("href", "'" + myObject[0].foto + "'");
+                        $("#imgAprendiz").attr("src", "Img/"+nDi+".png");
+                      
                         swal({title: "Perfecto",
                             text: myObject[0].mensaje,
                             type: "success",
@@ -1586,7 +1587,8 @@ $("#buscarA2").click(function () {
                     $("#lblHora").text(myObject[0].hora);
                     $("#lblDocumento").text(nDi);
                     $("#lblFalta").text(myObject[0].faltas);
-                    $("#imgAprendiz").attr("href", "'" + myObject[0].foto + "'");
+                    $("#imgAprendiz").attr("src", "Img/"+nDi+".png");
+                    
                     swal({title: "Perfecto",
                         text: myObject[0].mensaje,
                         type: "success",
@@ -1641,7 +1643,8 @@ $("#buscarA3").click(function () {
                     $("#lblDocumento").text(nDi);
                     $("#lblFalta").text(myObject[0].faltas);
                     $("#lblTiempo").text(myObject[0].tiempo);
-                    $("#imgAprendiz").attr("href", "'" + myObject[0].foto + "'");
+                    $("#imgAprendiz").attr("src", "Img/"+nDi+".png");
+                    
                     swal({title: "Perfecto",
                         text: myObject[0].mensaje,
                         type: "success",

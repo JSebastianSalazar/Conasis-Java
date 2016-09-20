@@ -192,21 +192,7 @@
         %>
         <!-- Sidebar navigation -->
         <ul class="nav sidebar-nav">
-            <li class="divider"></li>
-            <li class="dropdown">
-                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                    Aprendices
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="RegistroAprendizIns.jsp" tabindex="-1">
-                            Aprendices
-                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            
             <li class="divider"></li>
             <li class="dropdown">
                 <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
@@ -303,27 +289,13 @@
                 </div> 
             </div>
 
-
-            <!--<div  style="border-left:#f2f2f2 70px solid; border-right:#f2f2f2 70px solid; background-color: #ffffff;" id="contenedorTablaFaltasAprendices">
-                    <div class="row z-depth-2" style="border-top: #2196f3 1px solid; padding-top: 10px; margin-top: 5px;">
-                <div class="col s12" id="TablaFaltasAprendices">
-            <!--Se muestran los aprendices que faltaron ese día a formaion
-            <div class="col s12" id="">
-                    <center>
-                        <img src="../imagenes/loader.gif" alt="" style="height: 100px; width: 100px"/><br>
-                        <span style="font-size: 16px">Cargando...</span>
-                    </center>
-                </div>
-        </div>
-    </div> 
-    </div>-->
         </div>
     </div> 
         <footer class="page-footer">
         <div class="ftft">
             <div class="footer-copyright">
                 <div class="container">
-                    © 2014 Copyright 
+                    © 2016 Copyright 
                     <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
                 </div>
             </div>

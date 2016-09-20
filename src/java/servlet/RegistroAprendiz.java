@@ -77,12 +77,12 @@ public class RegistroAprendiz extends HttpServlet {
                
                 if (insertado == 0) {
                     System.out.println("enviado");
-                    try {
-                        EmailUtility.sendEmail(host, port, user, pass, email, asunto,
-                                content);
-                    } catch (MessagingException ex) {
-                        System.out.println("no se envio el mensaje correctamente" + ex);
-                    }
+//                    try {
+//                        EmailUtility.sendEmail(host, port, user, pass, email, asunto,
+//                                content);
+//                    } catch (MessagingException ex) {
+//                        System.out.println("no se envio el mensaje correctamente" + ex);
+//                    }
 
                 } else {
                     response.setStatus(400);//errores del cliente
