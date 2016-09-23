@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- importando materizalizecss CSS por medio de CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -185,7 +186,7 @@
 
     </aside>
 
-               <!-- Modal Structure -->
+    <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
@@ -198,8 +199,8 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->  
-    
-    
+
+
     <div id="cntntMsj"></div>
     <div class="row container" style="margin-top: 2%; ">
         <div id="contenedorControles" style="  padding-bottom: 2px; border-left: 0px; border-right: 0px;">
@@ -302,15 +303,15 @@
     <script src="js/ajaxFicha.js" type="text/javascript"></script>
     <!--importacion del javaScript de las Alertas SweetAlert-->
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
-    
- <script>
-            $(document).ready(function () {
-            $("#competenciasAdministrador").click(function (){
-                                        $("#modalCDxI").openModal("#competenciasAdministrador");
-                                        $(".sidebar-overlay").trigger("click");
-                                    });
-                                  });
-        </script>
+
+    <script>
+                            $(document).ready(function () {
+                                $("#competenciasAdministrador").click(function () {
+                                    $("#modalCDxI").openModal("#competenciasAdministrador");
+                                    $(".sidebar-overlay").trigger("click");
+                                });
+                            });
+    </script>
 
 </body>
 </html>

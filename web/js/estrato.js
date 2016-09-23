@@ -1,23 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $(document).ready(function () {
 
     listarFichas();
     $('select').material_select();
     //llamando a google chart Solo se puede llamar una sola vez
     google.charts.load('current', {'packages': ['corechart']});
-    $("#stdestratocontainer").hide();
+
 });
 
-function stadistica(id) {
+function stadistica2(id) {
     var valor = $(id).attr('id');
-    window.location.assign("estadisticas.jsp");
-   
+  
+    window.location.assign("EstadisticaEstrato.jsp");
 }
+
+
 
 //funcion para listar fichas en combobox
 function listarFichas() {
@@ -50,19 +46,17 @@ function listarFichas() {
                 for (var i = 0; i < myObject.length + 1; i++) {
                     $('select').material_select();//funcion materialize para actualizar el combobox
                     $('select[name=fichas]').append('<option value=' + myObject[i].id + ' id="' + myObject[i].idPrograma + '">' + myObject[i].numeroFicha + '</option>');
+
                 }
 
             });
 }
 $('select[name=fichas]').on('change', function () {
     var Nficha = $('select[name=fichas] option:selected').text(); //saber el texto entre los option del combobox seleccionado
-    stdGenero(Nficha);
-
-
+    stdEstrato(Nficha);
 
 });
-
-function stdGenero(ficha) {
+function stdEstrato(ficha) {
    
     $.ajax({
         beforeSend: function () {
@@ -71,9 +65,10 @@ function stdGenero(ficha) {
         url: "ServletEstadistica", //nombre del servlet
         data: {
             //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "stdGenero",
-            numeroFicha: ficha
+            validacion: "stdEstrato67",
+            numeroFicha1: ficha
         }
+
         , error: function (jqXHR, estado, error) {
             swal({title: "Error en el Servidor",
                 text: error,
@@ -87,28 +82,40 @@ function stdGenero(ficha) {
             .done(function (msg) {
                 google.charts.setOnLoadCallback(function () {
                     var array = msg.split(",");
-                    var h;
-                    var m;
+                    var uno;
+                    var dos;
+                    var tres;
+                    var cuatro;
+                    var cinco;
+                    var seis;
                     for (var i = 0; i < array.length; i++) {
 
 
-                        h = array[0];
-                        m = array[1];
+                        uno = array[0];
+                        dos = array[1];
+                        tres = array[2];
+                        cuatro = array[3];
+                        cinco = array[4];
+                        seis = array[5];
                     }
-                    drawChart(h, m);
+                    drawChart(uno, dos, tres, cuatro, cinco, seis);
                 });
             });
 
-    function drawChart(h, m) {
+    function drawChart(uno, dos, tres, cuatro, cinco, seis) {
         var data = google.visualization.arrayToDataTable([
             ["Element", "Cantidad", {role: "style"}],
-            ["Hombres", parseInt(h), "#b87333"], //)
-            ["Mujeres", parseInt(m), "silver"]//
+            ["Estrato 1", parseInt(uno), "#b87333"], //)
+            ["Estrato 2", parseInt(dos), "silver"],
+            ["Estrato 3", parseInt(tres), "#e6ee9c"],
+            ["Estrato 4", parseInt(cuatro), "#b2ff59"],
+            ["Estrato 5", parseInt(cinco), "#d84315"],
+            ["Estrato 6", parseInt(seis), "#0097a7"]
         ]);
 
         var options = {
-            title: 'Cantidad generos por ficha',
-            hAxis: {title: 'Sexo'}, //
+            title: 'Cantidad estrato por ficha',
+            hAxis: {title: 'Estrato'}, //
             vAxis: {title: 'Cantidad', titleTextStyle: {color: '#333'}},
             animation: {
                 duration: 1000,
@@ -116,19 +123,16 @@ function stdGenero(ficha) {
             }
         };
 
-        var chart = new google.visualization.ColumnChart(document.getElementById('stdGenero'));
+        var chart = new google.visualization.AreaChart(document.getElementById('stdEstrato'));
         chart.draw(data, options);
         //dando animación
-        /*setTimeout(function () {
-         for (var f = 0; f < fecha.length; f++) {
-         data.setValue(f, 1, dia[f]);
-         }
-         chart.draw(data, options);
-         }, 1000);*/
+//        setTimeout(function () {
+//         for (var f = 0; f < fecha.length; f++) {
+//         data.setValue(f, 1, dia[f]);
+//         }
+//         chart.draw(data, options);
+//         }, 1000);
     }
-
-
-
+    
 }
-
 

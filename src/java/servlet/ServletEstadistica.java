@@ -37,7 +37,7 @@ public class ServletEstadistica extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             String validacion;
             String numeroFicha;
             List<Ficha> listaF;
@@ -47,25 +47,59 @@ public class ServletEstadistica extends HttpServlet {
             DAOUsuario daoU;
             String json;
             Gson jsonO;
-            
+            List estrato;
+            List Mun;
+            String numeroFicha1;
+            String numeroFicha2;
+
             validacion = request.getParameter("validacion");
             numeroFicha = request.getParameter("numeroFicha");
+            numeroFicha1 = request.getParameter("numeroFicha1");
+            numeroFicha2 = request.getParameter("numeroFicha2");
+            System.out.println("resul" + numeroFicha1);
+
             genero = new ArrayList();
+            // estrato = new ArrayList();
+
             daoU = new DAOUsuario();
-            
-            switch(validacion){
+
+            switch (validacion) {
                 case "stdGenero":
                     genero = daoU.stdGenero(numeroFicha);
                     System.out.println(numeroFicha);
-                    System.out.println("z"+genero.size());
-                    if(genero.isEmpty() || genero == null){
+                    System.out.println("z" + genero.size());
+                    if (genero.isEmpty() || genero == null) {
                         response.setStatus(200);
                         out.println("No hay datos para esta ficha");
-                    }else{
+                    } else {
                         response.setStatus(200);
-                        out.println(genero.get(0)+","+genero.get(1));
+                        out.println(genero.get(0) + "," + genero.get(1));
                     }
                     break;
+                case "stdEstrato67":
+                    estrato = daoU.estrato(numeroFicha1);
+                    System.out.println("ser" + estrato.size());
+                    if (estrato.isEmpty() || estrato == null) {
+                        response.setStatus(200);
+                        out.println("No hay datos para esta ficha");
+                    } else {
+                        response.setStatus(200);
+                        out.println(estrato.get(0) + "," + estrato.get(1) + "," + estrato.get(2) + "," + estrato.get(3) + ","
+                                + estrato.get(4) + "," + estrato.get(5));
+                    }
+                case "stMunicipio":
+                    System.out.println("el llego aca2");
+                    Mun = daoU.MunicipioEstadistica(numeroFicha2);
+
+                    if (Mun.isEmpty() || Mun == null) {
+                        response.setStatus(200);
+                        out.println("No hay datos para esta ficha");
+                    } else {
+                        response.setStatus(200);
+                        out.println(Mun.get(0) + "," + Mun.get(1) + "," + Mun.get(2) + "," + Mun.get(3) + ","
+                                + Mun.get(4) + "," + Mun.get(5) + "," + Mun.get(6) + "," + Mun.get(7) + "," + Mun.get(8) + "," + Mun.get(9));
+                    }
+
             }
         }
     }

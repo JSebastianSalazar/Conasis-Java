@@ -1,40 +1,33 @@
 <%-- 
-    Document   : asistencia2
-    Created on : 22-ago-2016, 13:49:20
-    Author     : Emerson
+    Document   : EstadisticaEstrato
+    Created on : 21/09/2016, 01:23:43 PM
+    Author     : sebas
 --%>
+
 <%@page import="beans.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.Instructor"%>
+<%@page import="DAO.Instructor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%--
-    String ficha= request.getParameter("ficha");
-    String nomComp = request.getParameter("nomComp");
-    int idProgramacion = Integer.parseInt(request.getParameter("idProgramacion"));
---%>
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-            <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
+<html>
+       <head>
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- importando materizalizecss CSS por medio de CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
         <!-- importando iconos materializecss por medio del CDN-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Estadisticas</title>
         <link href="css/styles.css" rel="stylesheet" type="text/css"/>
         <!-- importando el CSS de las alertas SweetAlert -->
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
-        <!-- importando el CSS del datable por medio de CDN -->
-        <link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-        <title>Entrada y Salida</title>
-     <!--Menu -->
+        <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <!--Menu -->
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style2.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/registroGrupo.css" rel="stylesheet" type="text/css"/>
         <style>
-
             footer.page-footer{
                 background-color: #f2f2f2;
             }
@@ -45,14 +38,13 @@
         List<Usuario> list = new ArrayList();
         if (session.getAttribute("usuario") != null) {
             String nombre = "" + session.getAttribute("usuario");
-            String tipo = "" + session.getAttribute("tipo");
     %>
 
     <body style="background: #f2f2f2">
         <nav class="cabecera" >
             <div class="nav-wrapper" style="background-color: transparent">
                 <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/>
-                <a  class="brand-logo center">Inasistencias</a>
+                <a  class="brand-logo center">Estadisticas</a>
             </div>
         </div>
     </nav>
@@ -93,9 +85,7 @@
 
             </li>
         </ul>
-        <%
-            if (tipo.equals("administrador")) {
-        %>
+
         <!-- Sidebar navigation -->
         <ul class="nav sidebar-nav">
             <li class="divider"></li>
@@ -183,53 +173,6 @@
                             <span class="sidebar-badge"><i class="material-icons">send</i></span>
                         </a>
                     </li>
-                    <li>
-                        <a href="" tabindex="-1">
-                            Ficha a cargo
-                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="divider"></li>
-           <li>
-                <a href="manual.jsp">
-                    <i class="sidebar-icon material-icons" >help outline</i>
-                    Ayuda
-                </a>
-            </li>
-        </ul>
-        <%
-        } else {
-        %>
-        <!-- Sidebar navigation -->
-        <ul class="nav sidebar-nav">
-            
-            <li class="divider"></li>
-            <li class="dropdown">
-                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                    Centro de Asistencia
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
-                            Ingreso y salida
-                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="inasistencia.jsp" tabindex="-1">
-                            Justificar falta
-                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="infoAsistencia.jsp" tabindex="-1">
-                            información de asistencia
-                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li class="divider"></li>
@@ -240,9 +183,6 @@
                 </a>
             </li>
         </ul>
-        <%
-            }
-        %>
 
     </aside>
 
@@ -258,62 +198,31 @@
             <a href="asistencia.jsp" class=" modal-action modal-close waves-effect waves-green btn-flat" id="mdAceptarProgramacion">ACEPTAR</a>
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
-    </div><!--fin del modal -->
-    
-    
-        <div id="cntntMsj"></div>
-       <div >
-        <div class="row" style="margin-top: 2%;">
-            <!--<input type="button" id="ggggg"/>-->
-        <div id="contenedorControles" style="border-left:#f2f2f2 170px solid;  border-right:#f2f2f2 170px solid;  padding-bottom: 2px; ">
-                       <div class="row z-depth-1" style="background-color: #ffffff; padding-left: 25px; padding-top: 15px;">
-        <div class="row" style="margin-bottom: 5px;"><!-- Seleccion programa o competencia -->
-            <h5 class="text-aling center">Fichas</h5>
-                <div class="row col s12" id="contenedorFichasInstructor">  
-                    <!--Se muestran las fichas que el instructor tiene asignada para impartir una formación-->
-                    <div class="col s12" id="">
-                        <center>
-                            <img src="imagenes/loader.gif" alt="" style="height: 100px; width: 100px"/><br>
-                            <span style="font-size: 16px">Cargando...</span>
-                        </center>
-                    </div>
+    </div><!--fin del modal -->  
+
+
+    <div id="cntntMsj"></div>
+    <br>
+    <br>
+
+    <div class="container z-depth-1" style="background-color: #ffffff; padding: 15px"  id="stdMunicipiocontainer"> 
+        <center >
+            <div class="row col s12" style="background-color: #ffffff; padding-left: 5px; padding-right: 5px; margin-left: 0px;margin-right: 0px;">
+                <div class="col s3" style="background-color: #ffffff;"><h1></h1></div>
+                <div class="input-field col s6 " style="background-color: #ffffff;"> <!--lista de fichas-->
+                    <select  class="" name="fichas" id="fichas">
+                        <option  value="" disabled selected>Selecccione una ficha</option>
+                    </select>
+                    <label id="lblFicha" style="font-size: 14px">Fichas</label>
                 </div>
-        </div>
-                           
-    </div>
-        </div>    
-            <div  style="border-left:#f2f2f2 70px solid; border-right:#f2f2f2 70px solid; background-color: #ffffff;" id="contenedorGeneralTablaIna">
-                <div class="row z-depth-2" style="border-top: #2196f3 1px solid; padding-top: 10px; margin-top: 5px;">
-            <div class="col s12" id="contenedorTablasInasistenciaFicha">
-                <!--Se muestran las competencia que el instructor dictó clase (competencia y fecha)-->
-                <div class="col s12" id="">
-                        <center>
-                            <img src="imagenes/loader.gif" alt="" style="height: 100px; width: 100px"/><br>
-                            <span style="font-size: 16px">Cargando...</span>
-                        </center>
-                    </div>
+                <div class="col s3" style="background-color: #ffffff;"><h1></h1></div>
             </div>
-        </div> 
-        </div>
-            
-            
-        <div  style="border-left:#f2f2f2 70px solid; border-right:#f2f2f2 70px solid; background-color: #ffffff;" id="contenedorTablaFaltasAprendices">
-                <div class="row z-depth-2" style="border-top: #2196f3 1px solid; padding-top: 10px; margin-top: 5px;">
-            <div class="col s12" id="TablaFaltasAprendices">
-                <!--Se muestran los aprendices que faltaron ese día a formaion-->
-                <div class="col s12" id="">
-                        <center>
-                            <img src="imagenes/loader.gif" alt="" style="height: 100px; width: 100px"/><br>
-                            <span style="font-size: 16px">Cargando...</span>
-                        </center>
-                    </div>
-                   <!-- Modal Structure -->
+            <div id="stdMunicipio" style="background-color: #ffffff" >
+
             </div>
-        </div> 
-        </div>
+        </center>
     </div>
-    </div> 
-        
+   
     <footer class="page-footer">
         <div class="ftft">
             <div class="footer-copyright">
@@ -324,35 +233,28 @@
             </div>
         </div>
     </footer>
-            <%} else {
+    <%} else {
             session.invalidate();
             response.sendRedirect("index.html");
-               }%> 
-        <!--importación de Jquery por medio de CDN-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <!--importacion de materializecss javaScript por medio de CDN-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-        <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
-        <!--importando en archivo .js ajax permite visualizar las informacion de la base de datos en el sitio web-->
-        <script type="text/javascript" src="js/ajax.js"></script>
-        <!--importacion del javaScript de las Alertas SweetAlert-->
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        <!--importacion de datatable javaScript por medio de CDN-->
-        <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <!--menu-->
+        }%>  
+    <!--importación de Jquery por medio de CDN-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!--menu-->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="js/index2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--importacion de materializecss javaScript por medio de CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <!--importacion del javaScript de las Alertas SweetAlert-->
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <script src="js/javascriptMunicipioestadistica.js" type="text/javascript"></script>
     <script>
                                 $(document).ready(function () {
-                                    $("#competenciasDictadasXintstructor").click(function () {
-                                        $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
-                                        $(".sidebar-overlay").trigger("click");
-                                    });
-                                    $("#competenciasAdministrador").click(function (){
+                                    $("#competenciasAdministrador").click(function () {
                                         $("#modalCDxI").openModal("#competenciasAdministrador");
                                         $(".sidebar-overlay").trigger("click");
                                     });
                                 });
     </script>
-    </body>
+</body>
 </html>

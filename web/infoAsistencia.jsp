@@ -12,10 +12,11 @@
 <!DOCTYPE html>
 <html>
     <head><!--Centro de asistencia -->
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- importando materizalizecss CSS por medio de CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-         <!-- importando el CSS del datable por medio de CDN  DATATABLE-->
+        <!-- importando el CSS del datable por medio de CDN  DATATABLE-->
         <link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <!-- importando iconos materializecss por medio del CDN-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -192,7 +193,7 @@
         %>
         <!-- Sidebar navigation -->
         <ul class="nav sidebar-nav">
-            
+
             <li class="divider"></li>
             <li class="dropdown">
                 <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
@@ -240,7 +241,7 @@
 
     </aside>
 
-        
+
     <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
@@ -291,7 +292,7 @@
 
         </div>
     </div> 
-        <footer class="page-footer">
+    <footer class="page-footer">
         <div class="ftft">
             <div class="footer-copyright">
                 <div class="container">
@@ -304,13 +305,13 @@
     <%} else {
             session.invalidate();
             response.sendRedirect("index.html");
-               }%> 
+        }%> 
     <!--importación de Jquery por medio de CDN-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!--importacion de materializecss javaScript por medio de CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-     <!--importacion de datatable javaScript por medio de CDN-->
-            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <!--importacion de datatable javaScript por medio de CDN-->
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
     <!--importando en archivo .js ajax permite visualizar las informacion de la base de datos en el sitio web-->
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -328,7 +329,7 @@
                                         $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
                                         $(".sidebar-overlay").trigger("click");
                                     });
-                                    $("#competenciasAdministrador").click(function (){
+                                    $("#competenciasAdministrador").click(function () {
                                         $("#modalCDxI").openModal("#competenciasAdministrador");
                                         $(".sidebar-overlay").trigger("click");
                                     });

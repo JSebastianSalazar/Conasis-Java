@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 
-
 $(document).ready(function () {
- iniciarActualizar();
-  inicializaCamaraModificar();
-  iniciarGuardar();
-tomaFotoGuardar();
+   $('body').bind('cut copy paste', function (e) {
+      e.preventDefault();
+   });
+});
+$(document).ready(function () {
+    iniciarActualizar();
+    inicializaCamaraModificar();
+    iniciarGuardar();
+    tomaFotoGuardar();
+
 
 });
 
@@ -20,20 +25,20 @@ function soloLetras(e) {
     especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
 
     tecla_especial = false
-    for(var i in especiales) {
-        if(key == especiales[i]) {
+    for (var i in especiales) {
+        if (key == especiales[i]) {
             tecla_especial = true;
             break;
         }
     }
 
-    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+    if (letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
 }
 
 //inicializacion modificar
-function iniciarActualizar(){
-      $("#registro3").hide();
+function iniciarActualizar() {
+    $("#registro3").hide();
     $("#registro5").hide();
 
     $("#btns").click(function () {
@@ -78,8 +83,8 @@ function iniciarActualizar(){
 
 }
 
-function inicializaCamaraModificar(){
-        //Tomando foto
+function inicializaCamaraModificar() {
+    //Tomando foto
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
     var start = document.querySelector('#start'),
@@ -105,11 +110,11 @@ function inicializaCamaraModificar(){
         }, false);
 
     }, false);
-    
-    
+
+
 ////////////////////
 //ACTUALIZA
-  $('#Actualizar').click(function () {
+    $('#Actualizar').click(function () {
         $.ajax({
             url: "RegistroInstructor",
             method: "post",
@@ -126,7 +131,7 @@ function inicializaCamaraModificar(){
             },
             success: function () {
                 swal("Bien", "Usuario registrado!", "success");
-                 window.location.assign("menuAdministrador.jsp");
+                window.location.assign("menuAdministrador.jsp");
             },
             error: function (respuesta) {
                 swal("Error", respuesta.responseText, "error");
@@ -149,13 +154,13 @@ function inicializaCamaraModificar(){
 
         });
 
-    });  
+    });
 }
 
 
 //inicializar guardar
-function iniciarGuardar(){
-      $("#registro3G").hide();
+function iniciarGuardar() {
+    $("#registro3G").hide();
     $("#registro5G").hide();
 
     $("#btnsG").click(function () {
@@ -201,8 +206,8 @@ function iniciarGuardar(){
 }
 
 //toma foto guardar
-function tomaFotoGuardar(){
-       //Tomando foto
+function tomaFotoGuardar() {
+    //Tomando foto
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
     var start = document.querySelector('#startG'),
@@ -228,9 +233,9 @@ function tomaFotoGuardar(){
         }, false);
 
     }, false);
-    
+
     ///GUARDA
-        $('#SgtnsG').click(function () {
+    $('#SgtnsG').click(function () {
         $.ajax({
             url: "RegistroInstructor",
             method: "post",
@@ -246,7 +251,7 @@ function tomaFotoGuardar(){
             },
             success: function () {
                 swal("Bien", "Usuario registrado!", "success");
-                 window.location.assign("menuAdministrador.jsp");
+                window.location.assign("menuAdministrador.jsp");
             },
             error: function (respuesta) {
                 swal("Error", respuesta.responseText, "error");
@@ -300,3 +305,28 @@ $("#competenciasAdministrador").click(function () {
                 $("#tblcompetenciasDictadasXintstructor").html(msg);
             });
 });
+
+
+function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toString();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";//Se define todo el abecedario que se quiere que se muestre.
+    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
+
+    tecla_especial = false
+    for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+
+    if (letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}
+function  correo(r) {
+    var valor = document.getElementById("email").value;
+    if (!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor))) {
+        return false;
+    }
+}

@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
         <!-- importando iconos materializecss por medio del CDN-->
@@ -203,7 +203,7 @@
     <div id="cntntMsj"></div>
     <br>
     <br>
-    
+
     <div class="container z-depth-1" style="background-color: #ffffff; padding: 15px"  id="stdgenerocontainer"> 
         <center >
             <div class="row col s12" style="background-color: #ffffff; padding-left: 5px; padding-right: 5px; margin-left: 0px;margin-right: 0px;">
@@ -214,18 +214,14 @@
                     </select>
                     <label id="lblFicha" style="font-size: 14px">Fichas</label>
                 </div>
-                 <div class="col s3" style="background-color: #ffffff;"><h1></h1></div>
+                <div class="col s3" style="background-color: #ffffff;"><h1></h1></div>
             </div>
             <div id="stdGenero" style="background-color: #ffffff" >
 
             </div>
         </center>
     </div>
-    <div class="container z-depth-1" style="background-color: #ffffff; padding: 15px"  id="stdestratocontainer"> 
-        <center >
-            kjhh
-        </center>
-    </div>
+    
     <footer class="page-footer">
         <div class="ftft">
             <div class="footer-copyright">
@@ -251,6 +247,7 @@
     <!--importacion del javaScript de las Alertas SweetAlert-->
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="js/estadisticas.js" type="text/javascript"></script>
+    
     <script>
                                 $(document).ready(function () {
                                     $("#competenciasAdministrador").click(function () {

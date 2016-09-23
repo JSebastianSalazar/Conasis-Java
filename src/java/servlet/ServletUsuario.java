@@ -36,7 +36,7 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           
+
             String fecha;
             String ficha;
             String idProgramacion;
@@ -64,9 +64,9 @@ public class ServletUsuario extends HttpServlet {
                     lista = dao.aprendicesNoAsistieron(fecha, ficha, Integer.parseInt(idProgramacion));
                     if (lista.isEmpty() || lista.size() == 0) {
                         out.println("<br>");
-                        out.println("<center><h4>Ningún aprendiz faltó el "+fecha+"<h4></center>");
+                        out.println("<center><h4>Ningún aprendiz faltó el " + fecha + "<h4></center>");
                     } else {
-                        out.println("<center><h5>Aprendices que faltaron el "+fecha+"<h5></center><br>");
+                        out.println("<center><h5>Aprendices que faltaron el " + fecha + "<h5></center><br>");
                         out.println("<table class='highlight bordered' id='tblInasistenciaApren'>");
                         out.println("<thead>");
                         out.println("<tr>");
@@ -86,17 +86,17 @@ public class ServletUsuario extends HttpServlet {
                             out.println("<td id='" + "" + "' onclick=''>" + u.getDocumento() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
-                            if(u.getNovedad() == null || u.getNovedad().equals("") || u.getNovedad().equals("null")){
-                              out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='modal(this)'  id='"+fecha+"' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'  
-                            }else{
-                                out.println("<td id='' >"+u.getNovedad()+"</td>");
+                            if (u.getNovedad() == null || u.getNovedad().equals("") || u.getNovedad().equals("null")) {
+                                out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='modal(this)'  id='" + fecha + "' value='" + json + "'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'  
+                            } else {
+                                out.println("<td id='' >" + u.getNovedad() + "</td>");
                             }
-                            
+
                             out.println("<tr>");
                         }
                         out.println("</tbody>");
                         out.println("</table>");
-                        
+
                         out.println("<div id='modal6' class='modal' >");
                         out.println("<div class='modal-content'>");
                         out.println("<h4 id='titu'>Novedad</h4>");
@@ -115,89 +115,89 @@ public class ServletUsuario extends HttpServlet {
                         out.println("$(document).ready(function () {");
                         out.println("$('#validarTxtaN').hide()");
                         /*out.println("$('#tblInasistenciaApren').dataTable({");
-                        out.println("'language': { ");
-                        out.println("'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'");
-                        out.println("}");
-                        out.println("});");*/
+                         out.println("'language': { ");
+                         out.println("'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'");
+                         out.println("}");
+                         out.println("});");*/
                         out.println("});");
 
                         out.println("$('#modalAceptarNovedad').click(function gNovedad(){");
-                        
+
                         //out.println("alert(modal());");
                         /*out.println("if ($(\"#txtaNovedad\").val().length < 1) {");
-                        out.println("$('#txtaNovedad').focus();");
-                        out.println("$('#validarTxtaN').show();");
-                        out.println("$('#validarTxtaN').css('color', '#d50000');");
-                        out.println("}else{");
-                        out.println("$('#validarTxtaN').hide()");
-                        out.println("    $.ajax({");
-                        out.println(" beforeSend: function () {");
-                        out.println("},");
-                        out.println("method: 'POST',");
-                        out.println(" url: '../ServletAsistencia', ");//nombre del servlet
-                        out.println(" data: {");
-                        out.println("    validacion: 'insertarNovedad',");
-                        out.println(" novedad: $('#txtaNovedad').val(),");
-                        out.println("    documento: "+idA+",");
-                        out.println("    idProgramacion: "+idProgramacion+" ");//Esto es el id del usuaio logueado//CAMBIAR 
-                        out.println(" }");
-                        out.println(" , error: function (jqXHR, estado, error) {");
-                        out.println("  alert('Error en el Servidor');");
-                        out.println(" },");
-                        out.println("complete: function (jqXHR, estado) {");
-                        out.println("$(\"#modal6\").closeModal('#modalAceptarNovedad');");
-                        out.println("}");
-                        out.println("})");
-                        out.println(" .done(function (msg) {");
-                        out.println(" alert(msg);");
-                        out.println("});");
-                        out.println("");
-                        out.println("}");*/
+                         out.println("$('#txtaNovedad').focus();");
+                         out.println("$('#validarTxtaN').show();");
+                         out.println("$('#validarTxtaN').css('color', '#d50000');");
+                         out.println("}else{");
+                         out.println("$('#validarTxtaN').hide()");
+                         out.println("    $.ajax({");
+                         out.println(" beforeSend: function () {");
+                         out.println("},");
+                         out.println("method: 'POST',");
+                         out.println(" url: '../ServletAsistencia', ");//nombre del servlet
+                         out.println(" data: {");
+                         out.println("    validacion: 'insertarNovedad',");
+                         out.println(" novedad: $('#txtaNovedad').val(),");
+                         out.println("    documento: "+idA+",");
+                         out.println("    idProgramacion: "+idProgramacion+" ");//Esto es el id del usuaio logueado//CAMBIAR 
+                         out.println(" }");
+                         out.println(" , error: function (jqXHR, estado, error) {");
+                         out.println("  alert('Error en el Servidor');");
+                         out.println(" },");
+                         out.println("complete: function (jqXHR, estado) {");
+                         out.println("$(\"#modal6\").closeModal('#modalAceptarNovedad');");
+                         out.println("}");
+                         out.println("})");
+                         out.println(" .done(function (msg) {");
+                         out.println(" alert(msg);");
+                         out.println("});");
+                         out.println("");
+                         out.println("}");*/
                         out.println("});");
                         out.println("</script>");
                         out.println("");
                     }
                     /*
-                    //APRENDICES QUE NO ASISTIERON PERO TRAGERON ESCUSAS
-                    lista = dao.aprendicesNoAsistieronRazones(fecha, ficha, Integer.parseInt(idProgramacion));
-                    if (lista.isEmpty() || lista.size() == 0) {
-                         out.println("<br>");
-                        out.println("<div style=' border: solid 1px #2196f3;'></div>");
-                        out.println("<br>");
-                        out.println("<center><h4>Los aprendices aun no se han reportado<h4></center>");
-                    } else {
-                        out.println("<center><h5>Aprendices que aun no se han reportado por su inasistencia<h5></center><br>");
-                        out.println("<table class='highlight bordered' >");
-                        out.println("<thead>");
-                        out.println("<tr>");
-                        out.println("<th data-field='id'><center>Numero documento</center></th>");
-                        out.println("<th data-field='id'><center>Nombre</center></th>");
-                        out.println("<th data-field='id'><center>Apellido</center></th>");
-                        out.println("<th data-field='id'><center>Novedad</center></th>");
-                        out.println("</tr>");
-                        out.println("</thead>");
-                        out.println("<tbody>");
-                        int idA = 0;
-                        for (int i = 0; i < lista.size(); i++) {
-                            u = lista.get(i);
-                            json = "[{idProgramacion:\n" + idProgramacion + "\n,idAprendiz:\n" + u.getId() + "\n}]";
-                            //idA = u.getId();
-                            out.println("<tr>");
-                            out.println("<td id='" + "" + "' onclick=''>" + u.getNumeroDoc() + "</td>");
-                            out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
-                            out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
-                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='modal(this)'  id='"+fecha+"' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'
-                            out.println("<tr>");
-                        }
-                        out.println("</tbody>");
-                        out.println("</table>");
-                    }*/
-                    
+                     //APRENDICES QUE NO ASISTIERON PERO TRAGERON ESCUSAS
+                     lista = dao.aprendicesNoAsistieronRazones(fecha, ficha, Integer.parseInt(idProgramacion));
+                     if (lista.isEmpty() || lista.size() == 0) {
+                     out.println("<br>");
+                     out.println("<div style=' border: solid 1px #2196f3;'></div>");
+                     out.println("<br>");
+                     out.println("<center><h4>Los aprendices aun no se han reportado<h4></center>");
+                     } else {
+                     out.println("<center><h5>Aprendices que aun no se han reportado por su inasistencia<h5></center><br>");
+                     out.println("<table class='highlight bordered' >");
+                     out.println("<thead>");
+                     out.println("<tr>");
+                     out.println("<th data-field='id'><center>Numero documento</center></th>");
+                     out.println("<th data-field='id'><center>Nombre</center></th>");
+                     out.println("<th data-field='id'><center>Apellido</center></th>");
+                     out.println("<th data-field='id'><center>Novedad</center></th>");
+                     out.println("</tr>");
+                     out.println("</thead>");
+                     out.println("<tbody>");
+                     int idA = 0;
+                     for (int i = 0; i < lista.size(); i++) {
+                     u = lista.get(i);
+                     json = "[{idProgramacion:\n" + idProgramacion + "\n,idAprendiz:\n" + u.getId() + "\n}]";
+                     //idA = u.getId();
+                     out.println("<tr>");
+                     out.println("<td id='" + "" + "' onclick=''>" + u.getNumeroDoc() + "</td>");
+                     out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
+                     out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
+                     out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='modal(this)'  id='"+fecha+"' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'
+                     out.println("<tr>");
+                     }
+                     out.println("</tbody>");
+                     out.println("</table>");
+                     }*/
+
                     break;
-                    case "aprendicesDeFichas":
-                        System.out.println("Hola soy aprendicesDeFicha");
+                case "aprendicesDeFichas":
+                    System.out.println("Hola soy aprendicesDeFicha");
                     lista = dao.aprendicesDeFichas(ficha);
-                        System.out.println(lista.size()+" - tamaño");
+                    System.out.println(lista.size() + " - tamaño");
                     if (lista.isEmpty() || lista.size() == 0) {
                         out.println("<br>");
                         out.println("<center><h4>La ficha No tiene aprendices<h4></center>");
@@ -217,22 +217,22 @@ public class ServletUsuario extends HttpServlet {
                         int idA = 0;
                         for (int i = 0; i < lista.size(); i++) {
                             u = lista.get(i);
-                            idA=u.getIdProgramacion();
+                            idA = u.getIdProgramacion();
                             json = "[{idProgramacion:\n" + u.getIdProgramacion() + "\n,idAprendiz:\n" + u.getId() + "\n}]";
                             //idA = u.getId();
                             out.println("<tr>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getDocumento() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
-                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntFaltas(this)'  id='btnMdlFalta' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'
-                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntTiempo(this)'  id='btnMdlTiempo' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");
-                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntGenral(this)'  id='btnMdlEstadistica' value='"+json+"'><i class=\"material-icons\" id=''>add</i></a></center></td>");
+                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntFaltas(this)'  id='btnMdlFalta' value='" + json + "'><i class=\"material-icons\" id=''>add</i></a></center></td>");//value='" + json +"'
+                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntTiempo(this)'  id='btnMdlTiempo' value='" + json + "'><i class=\"material-icons\" id=''>add</i></a></center></td>");
+                            out.println("<td id='' ><center><a class='waves-effect waves-light btn modal-trigger' onclick='mdCntGenral(this)'  id='btnMdlEstadistica' value='" + json + "'><i class=\"material-icons\" id=''>add</i></a></center></td>");
                             out.println("<tr>");
                         }
                         out.println("</tbody>");
                         out.println("</table>");
-                        out.println("<a class='waves-effect waves-light btn modal-trigger' onclick='mdCntFaltasGrupal(this)'  id='btnMdlFaltasGrupal' value='"+idA+"'>Faltas grupal</a>");
-                        
+                        out.println("<a class='waves-effect waves-light btn modal-trigger' onclick='mdCntFaltasGrupal(this)'  id='btnMdlFaltasGrupal' value='" + idA + "'>Faltas grupal</a>");
+
                         out.println("<div id='modal7' class='modal' >");
                         out.println("<div class='modal-content'>");
                         out.println("<h5 id=''>Tipo de información de asistencia</h5>");
@@ -240,7 +240,8 @@ public class ServletUsuario extends HttpServlet {
                         out.println("<div id='mdFaltasApre'>");
                         out.println("</div>");
                         out.println("<div id='contentEstadisticaApre' style='width: 600px; height: 300px;'>Hola</div>");
-                        out.println("<div id='mdTiempoApre'>");out.println("</div>");
+                        out.println("<div id='mdTiempoApre'>");
+                        out.println("</div>");
                         out.println("<div id='contentEstadisticaFaltasApre' style='width: 600px; height: 300px;'></div>");
                         out.println("</div>");
                         out.println("<div class='modal-footer'>");
@@ -253,68 +254,87 @@ public class ServletUsuario extends HttpServlet {
                         out.println("});");
                         out.println("</script>");
                     }
-                     break;
-                    case "faltasGrupal":
-                            lista = dao.faltasAprendiz(Integer.parseInt(idProgramacion));
-                            if(lista == null || lista.isEmpty()){
-                                out.println("<script>"
+                    break;
+                case "faltasGrupal":
+                    lista = dao.faltasAprendiz(Integer.parseInt(idProgramacion));
+                    if (lista == null || lista.isEmpty()) {
+                        out.println("<script>"
                                 + "$(document).ready(function () {"
-                                + "swal({title: \"Atención\",\n" +
-"                                text: \"Ha ocurrido un problema\",\n" +
-"                                type: \"warning\",\n" +
-"                                timer: 2200,\n" +
-"                                showConfirmButton: true});"
+                                + "swal({title: \"Atención\",\n"
+                                + "                                text: \"Ha ocurrido un problema\",\n"
+                                + "                                type: \"warning\",\n"
+                                + "                                timer: 2200,\n"
+                                + "                                showConfirmButton: true});"
                                 + "});"
                                 + "</script>");
-                            }else{
-                                json = jsonO.toJson(lista);
-                                out.println(json);
-                            }
-                            break;
-                        
-                        //ESTO LO PASA AL SERLET DE APRENDIZ SI QUIERE
-                    case "tblAprendicesFicha":
-                        lista = new ArrayList();
-                        lista = dao.aprendicesDeFichas2(ficha);
-                        System.out.println(ficha);
+                    } else {
+                        json = jsonO.toJson(lista);
+                        out.println(json);
+                    }
+                    break;
+
+                //ESTO LO PASA AL SERLET DE APRENDIZ SI QUIERE
+                case "tblAprendicesFicha":
+                    lista = new ArrayList();
+                    lista = dao.aprendicesDeFichas2(ficha);
+                    System.out.println(ficha);
                     if (lista.isEmpty() || lista == null) {
                         out.println("<br>");
                         out.println("<center><h4>La ficha No tiene aprendices<h4></center>");
                     } else {
+                        out.println("<center><h5>" + ficha + "<h5></center><br>");
+
                         out.println("<table class='highlight bordered' id='sebas'>");
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th data-field='id'><center>Numero documento</center></th>");
                         out.println("<th data-field='id'><center>Nombre</center></th>");
                         out.println("<th data-field='id'><center>Apellido</center></th>");
-                         out.println("<th data-field='id'>Acción</th>");
+                        out.println("<th data-field='id'><center>Foto</center></th>");
+                        out.println("<th data-field='id'><center>Correo</center></th>");
+                        out.println("<th data-field='id'>Acción</th>");
                         out.println("</tr>");
                         out.println("</thead>");
                         out.println("<tbody>");
                         int idA = 0;
-                        System.out.println(lista.size()+"aca estoy");
+                        System.out.println(lista.size() + "aca estoy");
                         for (int i = 0; i < lista.size(); i++) {
-                            
+
                             u = lista.get(i);
-                            idA=u.getIdProgramacion();
+                            idA = u.getIdProgramacion();
                             json = "[{idProgramacion:\n" + u.getIdProgramacion() + "\n,idAprendiz:\n" + u.getId() + "\n}]";
                             //idA = u.getId();
                             out.println("<tr>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getDocumento() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
                             out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
-                             out.println("<td id='' ><ul style='margin-bottom: 0px; margin-top: 0px;'>"
+                            out.println("<td id='" + u.getDocumento() + "' value='"+u.getNombre()+" "+u.getApellido() +"' onclick='verFotoAprendiz(this)'  style='cursor: pointer'><i class=\"material-icons\">add</i></td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getCorreo() + "</td>");
+                            out.println("<td id='' ><ul style='margin-bottom: 0px; margin-top: 0px;'>"
                                     + "<li><a  id='" + u.getId() + "' onclick='accion(this)' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer'>Eliminar</a></li>"
-                                    + "<li><a id='" + u.getId() + "' onclick='accion(this)' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer' value='"+json+"'>Modificar</a></li>"
+                                    + "<li><a id='" + u.getId() + "' onclick='accion(this)' onmouseover='ubicacion(this)' onmouseout='normal(this)' style='cursor: pointer' value='" + json + "'>Modificar</a></li>"
                                     + "</ul></td>");
                             out.println("<tr>");
                         }
                         out.println("</tbody>");
                         out.println("</table>");
-                    }
-                        break;
+                        
+                        out.println("<div id='apeFoto' class='modal' >");
+                        out.println("<div class='modal-content'>");
+                        out.println("<center><h4 id=''>Foto</h4></center>");
+                        out.println("<br>");
+                        out.println("<center><P id='documentofoto'></P></center>");
+                        out.println("<br>");
+                        out.println("<center><img class=' circle' id='fotoapend' src=\"\" alt=\"\" /></center>");
+                        out.println("</div>");
+                        out.println("<div class='modal-footer'>");
+                        out.println("<button href='#!' class='modal-action modal-close btn waves-effect waves-green btn-flat' id='cerrarModalNovedad'><span id=''>Cancelar</span></button>");
+                        out.println("</div>");
+                        out.println("</div>");
 
-            
+                    }
+                    break;
+
             }
         }
     }

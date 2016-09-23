@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
+    <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
     <meta charset="UTF-8">
     <title>Error</title>
     <!-- importando materizalizecss CSS por medio de CDN -->
@@ -42,10 +43,10 @@
 
 </head>
 <% Instructor dao = new Instructor();
-        List<Usuario> list = new ArrayList();
-        if (session.getAttribute("usuario") != null) {
-            String nombre = "" + session.getAttribute("usuario");
-            String tipo = "" + session.getAttribute("tipo");
+    List<Usuario> list = new ArrayList();
+    if (session.getAttribute("usuario") != null) {
+        String nombre = "" + session.getAttribute("usuario");
+        String tipo = "" + session.getAttribute("tipo");
 %>
 
 <body style="background: #f2f2f2">
@@ -278,9 +279,9 @@
     </div>
 </footer>
 <%} else {
-       session.invalidate();
-       response.sendRedirect("index.html");
-   }%> 
+        session.invalidate();
+        response.sendRedirect("index.html");
+    }%> 
 <!--importación de Jquery por medio de CDN-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <!--importacion de materializecss javaScript por medio de CDN-->

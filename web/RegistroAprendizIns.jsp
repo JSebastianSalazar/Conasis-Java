@@ -11,7 +11,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-    <head><meta name="robots" content="noindex, nofollow">
+    <head>
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
+
+        <meta name="robots" content="noindex, nofollow">
         <meta name="googlebot" content="noindex, nofollow">
 
         <title>Registro Aprendiz</title>
@@ -179,7 +182,7 @@
             <li>
                 <a href="manual.jsp">
                     <i class="sidebar-icon material-icons" >help outline</i>
-                   Ayuda
+                    Ayuda
                 </a>
             </li>
         </ul>
@@ -349,7 +352,7 @@
                         <form class="form col s12 z-depth-3"   style="padding-bottom:30px; padding-top: 20px">
                             <div  id="registro4">
                                 <div class="input-field col s6 grupoDiv"> <!--lista de los tipos de documentos-->
-                                    <select required class="grupoDiv" id="tipo_Documento" name="tipoDocumento">
+                                    <select required class="grupoDiv browser-default" id="tipo_Documento" name="tipoDocumento">
                                         <option name="opciones" value="" disabled selected></option>
                                         <option name="opciones" value="1">Cédula de ciudadanía</option>
                                         <option name="opciones" value="2">Targeta de identidad</option>
@@ -386,8 +389,8 @@
 
                             <div  id="registro3">
                                 <div class="input-field col s6 grupoDiv"> <!--generos-->
-                                    <i class="material-icons prefix">view_list_circle</i>
-                                    <select required class="grupoDiv"  id="genero" name="genero">
+                                  
+                                    <select required class="grupoDiv browser-default"   id="genero" name="genero">
                                         <option name="opciones" value="" disabled selected></option>
                                         <option name="opciones" value="0">Masculino</option>
                                         <option name="opciones" value="1">Femenino</option>
@@ -402,21 +405,22 @@
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> <!--generos-->
-                                    <i class="material-icons prefix">view_list_circle</i>
-                                    <select required class="grupoDiv"  id="estrato1" name="estrato">
+                                   
+                                    <select required class="grupoDiv browser-default"  id="estrato1" name="estrato">
                                         <option name="opciones" value="" disabled selected></option>
                                         <option name="opciones" value="1">1</option>
                                         <option name="opciones" value="2">2</option>
-                                        <option name="opciones" value="2">3</option>
-                                        <option name="opciones" value="2">4</option>
-                                        <option name="opciones" value="2">5</option>
+                                        <option name="opciones" value="3">3</option>
+                                        <option name="opciones" value="4">4</option>
+                                        <option name="opciones" value="5">5</option>
+                                        <option name="opciones" value="6">6</option>
                                     </select>
                                     <label>Estrato</label>
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> 
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input value="" id="email" type="email"  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" name="email" class="validate">
+                                    <input value="" id="email" type="email"  name="email" class="validate" onkeypress="return correo(event);">
                                     <label for="email" data-error="error" data-success="right">Email</label>
                                 </div>
 
@@ -467,7 +471,7 @@
 
                                 <div class="input-field col s6 grupoDiv"> 
                                     <select required class="browser-default"  id="Ficha" name="fichas">
-                                   
+
                                     </select>
 
                                 </div>
@@ -582,6 +586,9 @@
                                                     $("#modalCDxI").openModal("#competenciasAdministrador");
                                                     $(".sidebar-overlay").trigger("click");
                                                 });
+                                            });
+                                            $(document).ready(function () {
+                                                $('input#apellido,input#nombre').characterCounter();
                                             });
     </script>
     <script src="js/AprendizIns.js" type="text/javascript"></script>

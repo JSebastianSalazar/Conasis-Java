@@ -1,23 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $(document).ready(function () {
 
     listarFichas();
     $('select').material_select();
     //llamando a google chart Solo se puede llamar una sola vez
     google.charts.load('current', {'packages': ['corechart']});
-    $("#stdestratocontainer").hide();
+
 });
 
-function stadistica(id) {
+function stadistica3(id) {
     var valor = $(id).attr('id');
-    window.location.assign("estadisticas.jsp");
-   
+
+    window.location.assign("EstadisticaMunicipio.jsp");
 }
+
+
 
 //funcion para listar fichas en combobox
 function listarFichas() {
@@ -50,20 +46,18 @@ function listarFichas() {
                 for (var i = 0; i < myObject.length + 1; i++) {
                     $('select').material_select();//funcion materialize para actualizar el combobox
                     $('select[name=fichas]').append('<option value=' + myObject[i].id + ' id="' + myObject[i].idPrograma + '">' + myObject[i].numeroFicha + '</option>');
+
                 }
 
             });
 }
 $('select[name=fichas]').on('change', function () {
     var Nficha = $('select[name=fichas] option:selected').text(); //saber el texto entre los option del combobox seleccionado
-    stdGenero(Nficha);
-
-
+    stdMUnicipiio(Nficha);
 
 });
+function stdMUnicipiio(ficha) {
 
-function stdGenero(ficha) {
-   
     $.ajax({
         beforeSend: function () {
         },
@@ -71,9 +65,10 @@ function stdGenero(ficha) {
         url: "ServletEstadistica", //nombre del servlet
         data: {
             //aca se optiene  los datos del formulario para enviarlos al servlet
-            validacion: "stdGenero",
-            numeroFicha: ficha
+            validacion: "stMunicipio",
+            numeroFicha2: ficha
         }
+
         , error: function (jqXHR, estado, error) {
             swal({title: "Error en el Servidor",
                 text: error,
@@ -86,49 +81,71 @@ function stdGenero(ficha) {
     })
             .done(function (msg) {
                 google.charts.setOnLoadCallback(function () {
+
                     var array = msg.split(",");
-                    var h;
-                    var m;
+                    var Medellin;
+                    var Bello;
+                    var Itagüi;
+                    var Caldas;
+                    var Estrella;
+                    var Sabaneta;
+                    var Envigado;
+                    var Copacabana;
+                    var Girardota;
+                    var Barbosa;
                     for (var i = 0; i < array.length; i++) {
 
 
-                        h = array[0];
-                        m = array[1];
+                        Medellin = array[0];
+                        Bello = array[1];
+                        Itagüi = array[2];
+                        Caldas = array[3];
+                        Estrella = array[4];
+                        Sabaneta = array[5];
+                        Envigado = array[6];
+                        Copacabana = array[7];
+                        Girardota = array[8];
+                        Barbosa = array[9];
                     }
-                    drawChart(h, m);
+                    drawChart(Medellin, Bello, Itagüi, Caldas, Estrella, Sabaneta, Envigado, Copacabana, Girardota, Barbosa);
                 });
             });
 
-    function drawChart(h, m) {
+    function drawChart(Medellin, Bello, Itagüi, Caldas, Estrella, Sabaneta, Envigado, Copacabana, Girardota, Barbosa) {
         var data = google.visualization.arrayToDataTable([
             ["Element", "Cantidad", {role: "style"}],
-            ["Hombres", parseInt(h), "#b87333"], //)
-            ["Mujeres", parseInt(m), "silver"]//
+            ["Medellin", parseInt(Medellin),"#e53935"], //)
+            ["Bello", parseInt(Bello),"silver"],
+            ["Itagüi", parseInt(Itagüi), "#6a1b9a"],
+            ["Caldas", parseInt(Caldas),"#90caf9"],
+            ["Estrella", parseInt(Estrella),"#f0f4c3"],
+            ["Sabaneta", parseInt(Sabaneta),"#006064"],
+            ["Envigado", parseInt(Envigado),"#26a69a"],
+            ["Copacabana", parseInt(Copacabana),"#0097a7"],
+            ["Girardota", parseInt(Girardota),"#82b1ff"],
+            ["Barbosa", parseInt(Barbosa),"#303f9f "]
         ]);
 
         var options = {
-            title: 'Cantidad generos por ficha',
-            hAxis: {title: 'Sexo'}, //
-            vAxis: {title: 'Cantidad', titleTextStyle: {color: '#333'}},
+            title: 'Cantidad  Municipio  por ficha',
+            hAxis: {title: 'Cantidad '}, //
+            vAxis: {title: 'Municipio', titleTextStyle: {color: '#333'}},
             animation: {
                 duration: 1000,
                 easing: 'out'
             }
         };
 
-        var chart = new google.visualization.ColumnChart(document.getElementById('stdGenero'));
+        var chart = new google.visualization.PieChart(document.getElementById('stdMunicipio'));
         chart.draw(data, options);
         //dando animación
-        /*setTimeout(function () {
-         for (var f = 0; f < fecha.length; f++) {
-         data.setValue(f, 1, dia[f]);
-         }
-         chart.draw(data, options);
-         }, 1000);*/
+//        setTimeout(function () {
+//         for (var f = 0; f < fecha.length; f++) {
+//         data.setValue(f, 1, dia[f]);
+//         }
+//         chart.draw(data, options);
+//         }, 1000);
     }
 
-
-
 }
-
 

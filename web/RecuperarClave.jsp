@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- importando iconos materializecss por medio del CDN-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,7 +21,7 @@
         <!--Import materialize.css-->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/registroGrupo.css" rel="stylesheet" type="text/css"/>
-        
+
         <title>RECUPERAR CONTRASEÑA</title>
 
     </head>

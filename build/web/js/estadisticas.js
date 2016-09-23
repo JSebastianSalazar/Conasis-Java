@@ -4,32 +4,20 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function (){
-    $('#stdgenerocontainer').hide();
-    $('#stdestratocontainer').hide();
-    
-    $('select').material_select();
-   //llamando a google chart Solo se puede llamar una sola vez
-    google.charts.load('current', {'packages': ['corechart']});
-    //stdGenero();
-});
-$('#redireccionEstadistica').click(function (){
-    window.location.assign("estadisticas.jsp");
-    $('#stdgenerocontainer').show();
-    $('#stdestratocontainer').hide();
+$(document).ready(function () {
+
     listarFichas();
-    
+    $('select').material_select();
+    //llamando a google chart Solo se puede llamar una sola vez
+    google.charts.load('current', {'packages': ['corechart']});
+    $("#stdestratocontainer").hide();
 });
-$('#redireccioEstadisticaestrato').click(function (){
+
+function stadistica(id) {
+    var valor = $(id).attr('id');
     window.location.assign("estadisticas.jsp");
-    $('#stdgenerocontainer').hide();
-    $('#stdestratocontainer').show();
-   // listarFichas();
-    
-});
-
-
-
+   
+}
 
 //funcion para listar fichas en combobox
 function listarFichas() {
@@ -69,71 +57,78 @@ function listarFichas() {
 $('select[name=fichas]').on('change', function () {
     var Nficha = $('select[name=fichas] option:selected').text(); //saber el texto entre los option del combobox seleccionado
     stdGenero(Nficha);
+
+
+
 });
 
 function stdGenero(ficha) {
- 
-        $.ajax({
-            beforeSend: function () {
-            },
-            method: "POST",
-            url: "ServletEstadistica", //nombre del servlet
-            data: {
-                //aca se optiene  los datos del formulario para enviarlos al servlet
-                validacion: "stdGenero",
-                numeroFicha: ficha
-            }
-            , error: function (jqXHR, estado, error) {
-                swal({title: "Error en el Servidor",
-                    text: error,
-                    type: "warning",
-                    timer: 4000,
-                    showConfirmButton: true});
-            },
-            complete: function (jqXHR, estado) {
-            }
-        })
-                .done(function (msg) {
-                    google.charts.setOnLoadCallback(function () {
-                        var array = msg.split(",");
-                        var h;
-                        var m;
-                        for(var i = 0; i < array.length;i++){
-                       
-                           
-                            h = array[0];
-                            m = array[1];      
-                        }
-                        drawChart(h,m);
-                    });
-                });
-
-        function drawChart(h,m) {
-            var data = google.visualization.arrayToDataTable([
-        ["Element", "Cantidad", { role: "style" } ],
-        ["Hombres",parseInt(h), "#b87333"],//)
-        ["Mujeres",parseInt(m), "silver"]//
-      ]);
-
-            var options = {
-                title: 'Cantidad generos por ficha',
-                hAxis: { title: 'Sexo'}, //
-                vAxis: {title: 'Cantidad', titleTextStyle: {color: '#333'}},
-                animation: {
-                    duration: 1000,
-                    easing: 'out'
-                }
-            };
-
-            var chart = new google.visualization.ColumnChart(document.getElementById('stdGenero'));
-            chart.draw(data, options);
-            //dando animación
-            /*setTimeout(function () {
-                for (var f = 0; f < fecha.length; f++) {
-                    data.setValue(f, 1, dia[f]);
-                }
-                chart.draw(data, options);
-            }, 1000);*/
+   
+    $.ajax({
+        beforeSend: function () {
+        },
+        method: "POST",
+        url: "ServletEstadistica", //nombre del servlet
+        data: {
+            //aca se optiene  los datos del formulario para enviarlos al servlet
+            validacion: "stdGenero",
+            numeroFicha: ficha
         }
-    
+        , error: function (jqXHR, estado, error) {
+            swal({title: "Error en el Servidor",
+                text: error,
+                type: "warning",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, estado) {
+        }
+    })
+            .done(function (msg) {
+                google.charts.setOnLoadCallback(function () {
+                    var array = msg.split(",");
+                    var h;
+                    var m;
+                    for (var i = 0; i < array.length; i++) {
+
+
+                        h = array[0];
+                        m = array[1];
+                    }
+                    drawChart(h, m);
+                });
+            });
+
+    function drawChart(h, m) {
+        var data = google.visualization.arrayToDataTable([
+            ["Element", "Cantidad", {role: "style"}],
+            ["Hombres", parseInt(h), "#b87333"], //)
+            ["Mujeres", parseInt(m), "silver"]//
+        ]);
+
+        var options = {
+            title: 'Cantidad generos por ficha',
+            hAxis: {title: 'Sexo'}, //
+            vAxis: {title: 'Cantidad', titleTextStyle: {color: '#333'}},
+            animation: {
+                duration: 1000,
+                easing: 'out'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('stdGenero'));
+        chart.draw(data, options);
+        //dando animación
+        /*setTimeout(function () {
+         for (var f = 0; f < fecha.length; f++) {
+         data.setValue(f, 1, dia[f]);
+         }
+         chart.draw(data, options);
+         }, 1000);*/
+    }
+
+
+
 }
+
+

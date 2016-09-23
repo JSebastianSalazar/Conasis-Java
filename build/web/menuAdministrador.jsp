@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <title>Menú</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -33,240 +34,240 @@
     </head>
 
     <body>
-<% Instructor dao = new Instructor();
-        List<Usuario> list = new ArrayList();
-        if (session.getAttribute("usuario") != null) {
-            String nombre = "" + session.getAttribute("usuario");
-            String tipo = "" + session.getAttribute("tipo");
-%>
+        <% Instructor dao = new Instructor();
+            List<Usuario> list = new ArrayList();
+            if (session.getAttribute("usuario") != null) {
+                String nombre = "" + session.getAttribute("usuario");
+                String tipo = "" + session.getAttribute("tipo");
+        %>
 
-<body style="background: #f2f2f2">
-    <nav class="cabecera" >
-        <div class="nav-wrapper" style="background-color: transparent">
-            <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/>
-            <a  class="brand-logo center">Aprendices</a>
+    <body style="background: #f2f2f2">
+        <nav class="cabecera" >
+            <div class="nav-wrapper" style="background-color: transparent">
+                <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/>
+                <a  class="brand-logo center">Aprendices</a>
+            </div>
         </div>
-    </div>
-</nav>
-<div class="linea col s12"></div>
-<div class="sidebar-overlay"></div>
+    </nav>
+    <div class="linea col s12"></div>
+    <div class="sidebar-overlay"></div>
 
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-default open" role="navigation">
-    <!-- Sidebar header -->
-    <div class="sidebar-header header-cover" style="margin-bottom: 0px; background-color: #0090A5;opacity: 0.9; filter: alpha(opacity=90);"><!--url(http://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);             background-image:url(imagenes/conasisLogo.png); -->   
-        <!-- Top bar <div class="top-bar" style="margin-top: -8px"></div>-->
-        <center><a href="menuAdministrador.jsp"> <img src="imagenes/conasisLogo.png" alt="" style="width: 260px; height: 156px"/></a></center>
-    </div>
-    <div class="sidebar-header" style="height: 163px;">
-        <!-- Top bar -->
-        <div class="top-bar" ><center><p style="font-size: 16px"><%= session.getAttribute("tipo")%></p></center></div>
-        <!-- Sidebar brand image -->
-        <div class="sidebar-image">
-            <img src="<%= session.getAttribute("foto")%>" alt="" />
+    <!-- Material sidebar -->
+    <aside id="sidebar" class="sidebar sidebar-default open" role="navigation">
+        <!-- Sidebar header -->
+        <div class="sidebar-header header-cover" style="margin-bottom: 0px; background-color: #0090A5;opacity: 0.9; filter: alpha(opacity=90);"><!--url(http://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);             background-image:url(imagenes/conasisLogo.png); -->   
+            <!-- Top bar <div class="top-bar" style="margin-top: -8px"></div>-->
+            <center><a href="menuAdministrador.jsp"> <img src="imagenes/conasisLogo.png" alt="" style="width: 260px; height: 156px"/></a></center>
         </div>
-        <!-- Sidebar brand name -->
-        <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown" style="position: relative;">
-            <p style="font-size: 16px">  <%=nombre%></p>
-            <b class="caret"></b>
-        </a>
-    </div>
-    <!-- Sidebar navigation -->
-    <ul class="nav sidebar-nav">
-        <li class="dropdown">
-            <ul id="settings-dropdown" class="dropdown-menu">
-                <li><form action="SalidaAdmi">
-                        <a href="#" onclick="$(this).closest('form').submit()">
-                            <i class="sidebar-icon material-icons">power_settings_new</i>
-                            Salir
-                        </a></form>
-                </li>
-            </ul>
+        <div class="sidebar-header" style="height: 163px;">
+            <!-- Top bar -->
+            <div class="top-bar" ><center><p style="font-size: 16px"><%= session.getAttribute("tipo")%></p></center></div>
+            <!-- Sidebar brand image -->
+            <div class="sidebar-image">
+                <img src="<%= session.getAttribute("foto")%>" alt="" />
+            </div>
+            <!-- Sidebar brand name -->
+            <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown" style="position: relative;">
+                <p style="font-size: 16px">  <%=nombre%></p>
+                <b class="caret"></b>
+            </a>
+        </div>
+        <!-- Sidebar navigation -->
+        <ul class="nav sidebar-nav">
+            <li class="dropdown">
+                <ul id="settings-dropdown" class="dropdown-menu">
+                    <li><form action="SalidaAdmi">
+                            <a href="#" onclick="$(this).closest('form').submit()">
+                                <i class="sidebar-icon material-icons">power_settings_new</i>
+                                Salir
+                            </a></form>
+                    </li>
+                </ul>
 
-        </li>
-    </ul>
-    <%
-        if (tipo.equals("administrador")) {
-    %>
-    <!-- Sidebar navigation -->
-    <ul class="nav sidebar-nav">
-        <li class="divider"></li>
-        <li class="dropdown">
-            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                Administrar Usuarios
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="registroInstructores.jsp" tabindex="-1">
-                        Instructores
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="RegistroSecretaria.jsp" tabindex="-1">
-                        Secretaria
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="RegistroAprendizIns.jsp" tabindex="-1">
-                        Aprendices
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown">
-            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                Formación
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="ambiente.jsp" tabindex="-1">
-                        Ambientes
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="ficha.jsp" tabindex="-1">
-                        Fichas
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="prograXcompe.jsp" tabindex="-1">
-                        Programas y competencias
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="programacion.jsp" tabindex="-1">
-                        Programación
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown">
-            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                Centro de Asistencia
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="#modalCDxI" id="competenciasAdministrador"  tabindex="-1">
-                        Ingreso y salida
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="inasistencia.jsp" tabindex="-1">
-                        Justificar falta
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="infoAsistencia.jsp" tabindex="-1">
-                        información de asistencia
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown">
-            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                Estadistica
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a tabindex="-1"  id="redireccionEstadistica">
-                        Genero
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a id="redireccioEstadisticaestrato" tabindex="-1">
-                        Estrato
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" tabindex="-1">
-                    ??    
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a href="manual.jsp">
-                <i class="sidebar-icon material-icons" >help outline</i>
-                Ayuda
-            </a>
-        </li>
-    </ul>
-    <%
-    } else {
-    %>
-    <!-- Sidebar navigation -->
-    <ul class="nav sidebar-nav">
-        <li class="divider"></li>
-        <li class="dropdown">
-            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                Centro de Asistencia
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
-                        Ingreso y salida
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="inasistencia.jsp" tabindex="-1">
-                        Justificar falta
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="infoAsistencia.jsp" tabindex="-1">
-                        información de asistencia
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" tabindex="-1">
-                        Ficha a cargo
-                        <span class="sidebar-badge"><i class="material-icons">send</i></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a href="manual.jsp">
-                <i class="sidebar-icon material-icons" >help outline</i>
-                Ayuda
-            </a>
-        </li>
-    </ul>
-    <%
-        }
-    %>
+            </li>
+        </ul>
+        <%
+            if (tipo.equals("administrador")) {
+        %>
+        <!-- Sidebar navigation -->
+        <ul class="nav sidebar-nav">
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Administrar Usuarios
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="registroInstructores.jsp" tabindex="-1">
+                            Instructores
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="RegistroSecretaria.jsp" tabindex="-1">
+                            Secretaria
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="RegistroAprendizIns.jsp" tabindex="-1">
+                            Aprendices
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Formación
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="ambiente.jsp" tabindex="-1">
+                            Ambientes
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ficha.jsp" tabindex="-1">
+                            Fichas
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="prograXcompe.jsp" tabindex="-1">
+                            Programas y competencias
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="programacion.jsp" tabindex="-1">
+                            Programación
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Centro de Asistencia
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#modalCDxI" id="competenciasAdministrador"  tabindex="-1">
+                            Ingreso y salida
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inasistencia.jsp" tabindex="-1">
+                            Justificar falta
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="infoAsistencia.jsp" tabindex="-1">
+                            información de asistencia
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Estadistica
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a tabindex="-1"   onclick="stadistica(this)">
+                            Genero
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onclick="stadistica2(this)">
+                            Estrato
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a  tabindex="-1" onclick="stadistica3(this)">
+                            Municipio   
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="manual.jsp">
+                    <i class="sidebar-icon material-icons" >help outline</i>
+                    Ayuda
+                </a>
+            </li>
+        </ul>
+        <%
+        } else {
+        %>
+        <!-- Sidebar navigation -->
+        <ul class="nav sidebar-nav">
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Centro de Asistencia
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#modalCDxI" id="competenciasDictadasXintstructor"  tabindex="-1">
+                            Ingreso y salida
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inasistencia.jsp" tabindex="-1">
+                            Justificar falta
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="infoAsistencia.jsp" tabindex="-1">
+                            información de asistencia
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" tabindex="-1">
+                            Ficha a cargo
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="manual.jsp">
+                    <i class="sidebar-icon material-icons" >help outline</i>
+                    Ayuda
+                </a>
+            </li>
+        </ul>
+        <%
+            }
+        %>
 
-</aside>
+    </aside>
 
-   
 
-         <!-- Modal Structure -->
+
+    <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
@@ -279,9 +280,9 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->
-     
+
     <!--Lo que se mostrará-->
-<div id="cntntMsj"></div>
+    <div id="cntntMsj"></div>
     <div class="container">
 
         <div class="card small">
@@ -457,14 +458,14 @@
             </div>    
             <footer class="page-footer" style="background-color: #f2f2f2;">
                 <div class="ftft">
-      <div class="footer-copyright">
-            <div class="container">
-            © 2016 Copyright
-            <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
-            </div>
-          </div>
+                    <div class="footer-copyright">
+                        <div class="container">
+                            © 2016 Copyright
+                            <a class="grey-text text-lighten-4 right" href="#!">CONASIS V.1.0 2016 </a>
+                        </div>
                     </div>
-        </footer>
+                </div>
+            </footer>
             <%} else {
                     session.invalidate();
                     response.sendRedirect("index.html");
@@ -477,19 +478,19 @@
             <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
             <script src="js/sweetalert.min.js" type="text/javascript"></script>
             <!-- <script src="js/main.js" type="text/javascript"></script>-->
-             <script src="js/js.js" type="text/javascript"></script>
-              <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
+            <script src="js/js.js" type="text/javascript"></script>
+            <script src="js/materialize.js" type="text/javascript"></script><!--importando las funciones javaScript de materializecss -->
             <script src="js/ajax.js" type="text/javascript"></script>
             <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
             <script src="js/index.js"></script>
             <script>
                                 $(document).ready(function () {
                                     $('select').material_select();
-                                    $("#competenciasDictadasXintstructor").click(function (){
+                                    $("#competenciasDictadasXintstructor").click(function () {
                                         $("#modalCDxI").openModal("#competenciasDictadasXintstructor");
                                         $(".sidebar-overlay").trigger("click");
                                     });
-                                    $("#competenciasAdministrador").click(function (){
+                                    $("#competenciasAdministrador").click(function () {
                                         $("#modalCDxI").openModal("#competenciasAdministrador");
                                         $(".sidebar-overlay").trigger("click");
                                     });
@@ -507,7 +508,9 @@
                                 );
 
             </script>
-
+            <script src="js/estadisticas.js" type="text/javascript"></script>
+            <script src="js/estrato.js" type="text/javascript"></script>
+            <script src="js/javascriptMunicipioestadistica.js" type="text/javascript"></script>
             </body>
 
             </html>

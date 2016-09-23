@@ -44,6 +44,7 @@ $(document).ready(function () {//se accede al documento
 
     }
     function llenarCombo(json, combo) {
+        
         combo.options[0] = new Option('Barrrios', '');
         for (var i = 0; i < json.length; i++) {
             combo.options[combo.length] = new Option(json[i].municipio, json[i].id);
@@ -405,4 +406,20 @@ function listarFichas() {
                 }
 
             });
+}
+
+
+// validacion  de copiar y pegar 
+$(document).ready(function () {
+   $('body').bind('cut copy paste', function (e) {
+      e.preventDefault();
+   });
+});
+
+function verFotoAprendiz(foto){
+    var fotoS = $(foto).attr('id');
+    var nombre = $(foto).attr('value');
+    $("#apeFoto").openModal("#"+fotoS);
+    $("#documentofoto").text(nombre);
+    $("#fotoapend").attr("src", "Img/"+fotoS+".png");
 }

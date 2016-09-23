@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- importando materizalizecss CSS por medio de CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -191,7 +192,7 @@
 
     </aside>
 
-<!-- Modal Structure -->
+    <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
@@ -389,20 +390,20 @@
     <!--importacion de materializecss javaScript por medio de CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script>
-        $(document).ready(function (){
-          
-            $('#competencias').prop('disabled', true);
-            if($('#fichas').val() !== ""){
-                $('#competencias').prop('disabled', true);
-            }else{
-                 $('#competencias').prop('disabled', false);
-            }
-            $("#competenciasAdministrador").click(function (){
+                                $(document).ready(function () {
+
+                                    $('#competencias').prop('disabled', true);
+                                    if ($('#fichas').val() !== "") {
+                                        $('#competencias').prop('disabled', true);
+                                    } else {
+                                        $('#competencias').prop('disabled', false);
+                                    }
+                                    $("#competenciasAdministrador").click(function () {
                                         $("#modalCDxI").openModal("#competenciasAdministrador");
                                         $(".sidebar-overlay").trigger("click");
                                     });
-        });
-       
+                                });
+
     </script>
 </body>
 </html>

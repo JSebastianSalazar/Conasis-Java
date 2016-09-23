@@ -10,7 +10,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-    <head><meta name="robots" content="noindex, nofollow">
+    <head>
+        <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
+        <meta name="robots" content="noindex, nofollow">
         <meta name="googlebot" content="noindex, nofollow">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
         <link href="css/feature-carousel.css" rel="stylesheet" type="text/css"/>
@@ -187,8 +189,8 @@
         </ul>
 
     </aside>
-                
-                             <!-- Modal Structure -->
+
+    <!-- Modal Structure -->
     <div id="modalCDxI" class="modal modal-fixed-footer" >
         <div class="modal-content">
             <h4>Asistencia</h4>
@@ -201,8 +203,8 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->  
-    
-     <div id="cntntMsj"></div>
+
+    <div id="cntntMsj"></div>
     <!--Lo que aparecerá-->
     <div class="contenedorTab ">
         <div class="row">
@@ -285,15 +287,15 @@
 
                                 <div  id="registro4">
                                     <div class="input-field col s6 grupoDiv"> <!--lista de los tipos de documentos-->
-                                        <select required class="grupoDiv" id="tipo_Documento">
-                                            <option name="opciones" value="" disabled selected></option>
-                                            <option name="opciones" value="Cédula de ciudadanía">Cédula de ciudadanía</option>
-                                            <option name="opciones" value="Targeta de identidad">Targeta de identidad</option>
-                                            <option name="opciones" value="Cédula de extranjería">Cédula de extranjería</option>
-                                            <option name="opciones" value="Documento nacional de identificación">Documento nacional de identificación</option>
-                                        </select>
-                                        <label>Tipo documento</label>
-                                    </div>
+                                    <select required class="grupoDiv browser-default" id="tipo_Documento" name="tipoDocumento">
+                                        <option name="opciones" value="" disabled selected></option>
+                                        <option name="opciones" value="1">Cédula de ciudadanía</option>
+                                        <option name="opciones" value="2">Targeta de identidad</option>
+                                        <option name="opciones" value="3">Cédula de extranjería</option>
+                                        <option name="opciones" value="4">Documento nacional de identificación</option>
+                                    </select>
+                                    <label>Tipo documento</label>
+                                </div>
                                     <div class="input-field col s6 grupoDiv">
                                         <i class="material-icons prefix">view_list</i>
                                         <input id="numero_documento" type="text" name="numeroDocumento" class="validate" required onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
@@ -543,7 +545,7 @@
     <!--Import jQuery before materialize.js-->
     <!--importación de Jquery por medio de CDN-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-      <!--menu-->
+    <!--menu-->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src="js/index2.js" type="text/javascript"></script>
     <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
@@ -551,18 +553,18 @@
     <script src="js/usuario.js" type="text/javascript"></script>
     <!--importacion de materializecss javaScript por medio de CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-     <!--importacion de datatable javaScript por medio de CDN-->
-            <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <!--importacion de datatable javaScript por medio de CDN-->
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="js/js.js" type="text/javascript"></script>
     <script src="js/Carru.js" type="text/javascript"></script>
-  <script>
-            $(document).ready(function () {
-            $("#competenciasAdministrador").click(function (){
-                                        $("#modalCDxI").openModal("#competenciasAdministrador");
-                                        $(".sidebar-overlay").trigger("click");
-                                    });
-                                  });
-        </script>
+    <script>
+                                            $(document).ready(function () {
+                                                $("#competenciasAdministrador").click(function () {
+                                                    $("#modalCDxI").openModal("#competenciasAdministrador");
+                                                    $(".sidebar-overlay").trigger("click");
+                                                });
+                                            });
+    </script>
 </body>
 </html>

@@ -17,6 +17,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+            <link rel="icon" type="image/png" href="imagenes/conasis2.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- importando materizalizecss CSS por medio de CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
