@@ -266,7 +266,9 @@
             <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id=""><span id="btnCambianteAmbiente">Cancelar</span></button>
         </div>
     </div><!--fin del modal -->
-
+    <%
+        if (tipo.equals("administrador")) {
+    %>
     <div class="contenedorTab ">
         <div class="row">
             <div class="col s12 ">
@@ -351,15 +353,16 @@
                     <div class="row" >
                         <form class="form col s12 z-depth-3"   style="padding-bottom:30px; padding-top: 20px">
                             <div  id="registro4">
-                                <div class="input-field col s6 grupoDiv"> <!--lista de los tipos de documentos-->
+                                <div class=" col s6 grupoDiv"> <!--lista de los tipos de documentos-->
+                                    <label>Tipo Documento</label>
                                     <select required class="grupoDiv browser-default" id="tipo_Documento" name="tipoDocumento">
+                                        
                                         <option name="opciones" value="" disabled selected></option>
                                         <option name="opciones" value="1">Cédula de ciudadanía</option>
                                         <option name="opciones" value="2">Targeta de identidad</option>
                                         <option name="opciones" value="3">Cédula de extranjería</option>
                                         <option name="opciones" value="4">Documento nacional de identificación</option>
                                     </select>
-                                    <label>Tipo documento</label>
                                 </div>
                                 <div class="input-field col s6 grupoDiv">
                                     <input id="numero_documento" type="text" name="numeroDocumento" class="validate"  maxlength="13"required onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
@@ -388,14 +391,14 @@
                             </div>
 
                             <div  id="registro3">
-                                <div class="input-field col s6 grupoDiv"> <!--generos-->
-                                  
+                                <div class=" col s6 grupoDiv"> <!--generos-->
+                                    <label>Genero</label>
                                     <select required class="grupoDiv browser-default"   id="genero" name="genero">
                                         <option name="opciones" value="" disabled selected></option>
                                         <option name="opciones" value="0">Masculino</option>
                                         <option name="opciones" value="1">Femenino</option>
                                     </select>
-                                    <label>Genero</label>
+
                                 </div>
                                 <div class="input-field col s6 grupoDiv">
                                     <i class="material-icons prefix">phone_circle</i>
@@ -404,9 +407,10 @@
                                     <label class="active" for="telefono_fijo">Telefono Celular</label>
                                 </div>
 
-                                <div class="input-field col s6 grupoDiv"> <!--generos-->
-                                   
-                                    <select required class="grupoDiv browser-default"  id="estrato1" name="estrato">
+                                <div class="col s6 grupoDiv"> <!--generos-->
+                                    <label>Estrato</label>
+                                    <select required class="browser-default"  id="estrato1" name="estrato">
+                                        <option value="" disabled selected>Estrato</option>
                                         <option name="opciones" value="" disabled selected></option>
                                         <option name="opciones" value="1">1</option>
                                         <option name="opciones" value="2">2</option>
@@ -415,13 +419,13 @@
                                         <option name="opciones" value="5">5</option>
                                         <option name="opciones" value="6">6</option>
                                     </select>
-                                    <label>Estrato</label>
+
                                 </div>
 
                                 <div class="input-field col s6 grupoDiv"> 
                                     <i class="material-icons prefix">account_circle</i>
                                     <input value="" id="email" type="email"  name="email" class="validate" onkeypress="return correo(event);">
-                                    <label for="email" data-error="error" data-success="right">Email</label>
+                                    <label for="email" data-error="error" data-success="right">Correo</label>
                                 </div>
 
                                 <br>
@@ -437,14 +441,15 @@
                                         <!-- <input  class="waves-effect light-blue accent-4 btn" type="button" id="cancelar" name="Guardar" value="Cancelar" onClick="location.href='menuAdministrador.jsp'"/>-->
                                     </div>
                                     <div class="boton col s4 grupoDiv" style=" padding-left: 8%;" >
-                                        <button class="btn waves-effect light-blue accent-4 waves-light " type="button" id="Sgtns" >SIGUIENTE</button>
+                                        <button class="btn waves-effect light-blue accent-4 waves-light " type="button" id="Sgtns"  >SIGUIENTE</button>
                                         <!-- <input  class="waves-effect light-blue accent-4 btn" type="button" id="Sgtns1" name="btnCancelar" value="SIGUIENTE"/>-->
                                     </div>
                                 </div>
                             </div>
                             <div  id="registro5">
 
-                                <div class="input-field col s6 grupoDiv"> <!--Barrios-->
+                                <div class=" col s6 grupoDiv"> <!--Barrios-->
+                                    <label>Municipio</label>
 
                                     <select class="browser-default"  id="municipio" name="municipio">
                                         <option value="" disabled selected>Municipios</option>
@@ -461,7 +466,8 @@
                                     </select>
 
                                 </div>
-                                <div class="input-field col s6" grupoDiv>
+                                <div class=" col s6" grupoDiv>
+                                    <label>Barrio</label>
                                     <select class="browser-default" id="barrio1">
 
 
@@ -469,7 +475,8 @@
 
                                 </div>
 
-                                <div class="input-field col s6 grupoDiv"> 
+                                <div class=" col s6 grupoDiv"> 
+                                    <label>Ficha</label>
                                     <select required class="browser-default"  id="Ficha" name="fichas">
 
                                     </select>
@@ -539,6 +546,47 @@
             </div>
         </div>
     </div>
+
+    <%
+    } else {
+    %>
+    <div class="container" style="margin-top: 3%">
+        <div id="contenedorControles" style="border-left: 0px; border-right: 0px;padding-bottom: 0px; ">
+            <div class="row" style="background-color: #f2f2f2; padding-left: 0px; padding-top: 0px; margin-bottom: 0px">
+                <div class="row z-depth-1" style="margin-right: 0px; margin-right: 0px; margin-bottom: 15px; padding-top: 5px;"><!-- Seleccion programa o competencia -->
+                    <h5 class="text-aling center">Fichas</h5>
+                    <div class="row col s12" id="contenedorFichasInstructor">  
+                        <!--Se muestran las fichas que el instructor tiene asignada para impartir una formación-->
+                        <div class="col s12" id="">
+                            <center>
+                                <img src="imagenes/loader.gif" alt="" style="height: 100px; width: 100px"/><br>
+                                <span style="font-size: 16px">Cargando...</span>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>    
+        <div  style="border-left:#f2f2f2 70px solid; border-right:#f2f2f2 70px solid; background-color: #ffffff;" id="contenedorGeneralAprendices">
+            <div class="row z-depth-2" style="border-top: #2196f3 1px solid; padding-top: 10px; margin-top: 5px;">
+                <div class="col s12" id="">
+                    <!--Se muestran las competencia que el instructor dictó clase (competencia y fecha)-->
+                    <div class="col s12" id="contentAprendices">
+                        <center>
+                            <img src="imagenes/loader.gif" alt="" style="height: 100px; width: 100px"/><br>
+                            <span style="font-size: 16px">Cargando...</span>
+                        </center>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <%}%>
+
+
+
     <footer class="page-footer">
         <div class="ftft">
             <div class="footer-copyright">
@@ -586,11 +634,13 @@
                                                     $("#modalCDxI").openModal("#competenciasAdministrador");
                                                     $(".sidebar-overlay").trigger("click");
                                                 });
+
                                             });
                                             $(document).ready(function () {
                                                 $('input#apellido,input#nombre').characterCounter();
                                             });
     </script>
     <script src="js/AprendizIns.js" type="text/javascript"></script>
+
 </body>
 </html>

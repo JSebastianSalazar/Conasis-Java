@@ -14,24 +14,26 @@ import java.sql.SQLException;
  * @author Emerson
  */
 public class Conexion {
-    public Conexion(){
+
+    public Conexion() {
     }
+
     public static Connection conectar(String db) {
         Connection con = null;
-    try {
+        try {
             if (db.compareTo("mysql") == 0) {
                 String conexion = "";
-                
+
                 {
                     Class.forName("com.mysql.jdbc.Driver");
-                     con = DriverManager.getConnection("jdbc:mysql://" + "localhost:3306"
-                            + "/conasis", "root", "1234");
-                   
+                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/conasis?zeroDateTimeBehavior=convertToNull"
+                            + "", "root", "1234");
+
                     con.setAutoCommit(true);
                 }
 
             }
-            
+
         } catch (ClassNotFoundException cnfe) {
             System.out.println(cnfe.getMessage() + "Error En El Controlador, No Se Ha Podido Establecer La Conexi�n con la Base De Datos. Clase Conexion");
         } catch (SQLException sqle) {
@@ -50,5 +52,5 @@ public class Conexion {
         } catch (SQLException ex) {
         }
     }
-    
+
 }

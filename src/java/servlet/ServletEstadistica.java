@@ -9,6 +9,7 @@ import DAO.DAOUsuario;
 import DAO.DaoFicha;
 import beans.Ficha;
 import com.google.gson.Gson;
+import com.sun.xml.ws.security.impl.policy.Constants;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,6 +53,7 @@ public class ServletEstadistica extends HttpServlet {
             List Mun;
             String numeroFicha1;
             String numeroFicha2;
+            HttpSession session = request.getSession(true);
 
             validacion = request.getParameter("validacion");
             numeroFicha = request.getParameter("numeroFicha");
@@ -68,12 +71,19 @@ public class ServletEstadistica extends HttpServlet {
                     genero = daoU.stdGenero(numeroFicha);
                     System.out.println(numeroFicha);
                     System.out.println("z" + genero.size());
+                    session.setAttribute("fichaN", numeroFicha);
+
                     if (genero.isEmpty() || genero == null) {
                         response.setStatus(200);
                         out.println("No hay datos para esta ficha");
+
                     } else {
+
                         response.setStatus(200);
                         out.println(genero.get(0) + "," + genero.get(1));
+                        session.setAttribute("genero0", genero.get(0));
+                        session.setAttribute("genero1", genero.get(1));
+
                     }
                     break;
                 case "stdEstrato67":

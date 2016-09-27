@@ -184,7 +184,7 @@ public class ServletAsistencia extends HttpServlet {
                     if (!idInstructor.isEmpty()) {
                         listaF = daoF.fichasInstructor(Integer.parseInt(idInstructor));
                         if (listaF.isEmpty() || listaF == null) {
-                            out.println("<center><h4>Usted no tiene fichas asiciadas<h4></center>");
+                            out.println("<center><h4>Usted no tiene fichas asociadas<h4></center>");
                         } else {
                             for (int i = 0; i < listaF.size(); i++) {
                                 f = listaF.get(i);
@@ -473,14 +473,14 @@ public class ServletAsistencia extends HttpServlet {
                     if (!idInstructor.isEmpty()) {
                         listaF = daoF.fichasInstructor(Integer.parseInt(idInstructor));
                         if (listaF.isEmpty() || listaF == null) {
-                            out.println("<center><h4>Usted no tiene fichas asiciadas<h4></center>");
+                            out.println("<center><h4>Usted no tiene fichas asociadas<h4></center>");
                         } else {
                             for (int j = 0; j < listaF.size(); j++) {
                                 f = listaF.get(j);
                                 out.println("<center>");
                                 if(nombre.equals(f.getGestor())){
                                     out.println("<div class='col s2 center-align hoverable' id='" + f.getId() + "' value='" + f.getNumeroFicha() + "' name='cuadroFicha' onclick='tablaCompetenciasComoGestor(this)' style='background-color: #6ab7f6; padding: 5px; background-clip: content-box'><h5>" + f.getNumeroFicha() + "</h5></div>");
-                                }else{
+                                }else {
                                    out.println("<div class='col s2 center-align hoverable' id='" + f.getId() + "' value='" + f.getNumeroFicha() + "' name='cuadroFicha' onclick='tablaCompetencias(this)' style='background-color: #bbdefb; padding: 5px; background-clip: content-box'><h5>" + f.getNumeroFicha() + "</h5></div>");
                                  }
                                 out.println("</center>");
@@ -666,7 +666,37 @@ public class ServletAsistencia extends HttpServlet {
                                 + "</script>");
                     }
                     break;
-
+                    //
+                   case "fichasInstructor26"://
+                    if (!idInstructor.isEmpty()) {
+                        listaF = daoF.fichasInstructor(Integer.parseInt(idInstructor));
+                        if (listaF.isEmpty() || listaF == null) {
+                            out.println("<center><h4>Usted no tiene fichas asociadas<h4></center>");
+                        } else {
+                            for (int j = 0; j < listaF.size(); j++) {
+                                f = listaF.get(j);
+                                out.println("<center>");
+                                if(nombre.equals(f.getGestor())){
+                                    out.println("<div class='col s2 center-align hoverable' id='" + f.getId() + "' value='" + f.getNumeroFicha() + "' name='cuadroFicha' onclick='tablaAprendicesFicha2(this)' style='background-color: #6ab7f6; padding: 5px; background-clip: content-box'><h5>" + f.getNumeroFicha() + "</h5></div>");
+                                }else{
+                                   out.println("<div class='col s2 center-align hoverable' id='" + f.getId() + "' value='" + f.getNumeroFicha() + "' name='cuadroFicha' onclick='tablaAprendicesFicha2(this)' style='background-color: #bbdefb; padding: 5px; background-clip: content-box'><h5>" + f.getNumeroFicha() + "</h5></div>");
+                                 }
+                                out.println("</center>");
+                            }
+                        }
+                    } else {
+                        //  out.println("No hay instructor logueado");
+                        out.println("<script>"
+                                + "$(document).ready(function () {"
+                                + "swal({title: \"Error\",\n"
+                                + "                                text: \"No se ha logueado un instructor\",\n"
+                                + "                                type: \"error\",\n"
+                                + "                                timer: 2200,\n"
+                                + "                                showConfirmButton: true});"
+                                + "});"
+                                + "</script>");
+                    } 
+                   
             }
         }
     }

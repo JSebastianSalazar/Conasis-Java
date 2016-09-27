@@ -45,7 +45,6 @@
         <nav class="cabecera" >
             <div class="nav-wrapper" style="background-color: transparent">
                 <img src="imagenes/conasisLogo.png" alt=""  class="sidebar-toggle" style="height: 80px; width: 130px; margin-left: 5%; cursor: pointer"/>
-                <a  class="brand-logo center">Aprendices</a>
             </div>
         </div>
     </nav>
@@ -218,6 +217,21 @@
         %>
         <!-- Sidebar navigation -->
         <ul class="nav sidebar-nav">
+            <li class="divider"></li>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                    Aprendices
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="RegistroAprendizIns.jsp" tabindex="-1">
+                            Aprendices
+                            <span class="sidebar-badge"><i class="material-icons">send</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="divider"></li>
             <li class="dropdown">
                 <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">

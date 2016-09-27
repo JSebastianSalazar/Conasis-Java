@@ -262,6 +262,8 @@ function fichasInstructor() {
             });
 }
 
+
+
 //muestra los aprendices que estan en la ficha
 //cuando se da clic sobre la ficha mostrará los aprendices
 function tablaAprendicesFicha(val) {
@@ -308,6 +310,50 @@ function tablaAprendicesFicha(val) {
             });
 }
 
+
+function tablaAprendicesFicha2(val) {
+    $("#contenedorGeneralAprendices").show();
+    var idProgramacion = $(val).attr('id');
+    var  numeroFicha = $(val).attr('value');
+    $.ajax({
+        beforeSend: function () {
+            //aca pueden poner una imagen gif como un preloader
+            //¿para qué?
+            //este metodo se ejecuta antes de llegar al servlet
+            //por ejemplo al guardar algo, parecera la imagen cargando mientras se completa el registro
+        },
+        method: "POST",
+        url: "ServletUsuario", //nombre del servlet
+        data: {
+            //aca se optiene  los datos del formulario para enviarlos al servlet
+            validacion: "tblAprendicesFicha2",
+            ficha: numeroFicha
+        }
+        , error: function (jqXHR, estado, error) {
+            swal({title: "Error en el Servidor",
+                text: "Lo sentimos... Intentalo Nuevamente",
+                type: "error",
+                timer: 4000,
+                showConfirmButton: true});
+        },
+        complete: function (jqXHR, estado) {
+            //esto se ejecuta despues del done o error
+            //aca se oculta la imagen de cargando que se mostró en el beforeSend
+            // alert("completado");
+        }
+    })
+            .done(function (msg) {
+                //acá se muestra lo que se imprime en el servlert
+                //alertas de si guardo o no o si ocurrio un error 
+                $("#contentAprendices").html(msg);
+                $('#sebas').dataTable({
+                    'language': {
+                        'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'
+                    }
+                });
+
+            });
+}
 
 ///ACA si modifica 
 //acá en el case eliminar hace el ajax para eliminar el aprendiz

@@ -24,7 +24,7 @@ $(document).ready(function () {
                     
                     swal({title: "Error", type: "error", text: "Problemas de conexion a la base de datos", timer: 2000, allowEscapeKey: false, showConfirmButton: false});
                 } else {
-                    swal({title: "Error", type: "error", text: l, timer: 2000, allowEscapeKey: false, showConfirmButton: false});
+                    swal({title: "Error", type: "error",  timer: 2000, allowEscapeKey: false, showConfirmButton: false});
 
                 }
             }

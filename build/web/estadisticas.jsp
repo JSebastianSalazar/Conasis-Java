@@ -218,10 +218,15 @@
             </div>
             <div id="stdGenero" style="background-color: #ffffff" >
 
+
+
             </div>
+            <form action="ServletReportes" method="post">
+                <button class="btn waves-effect light-blue accent-4 waves-light " name="reporte" type="submit" id="bntsjsj" >Reporte</button>
+            </form>
         </center>
     </div>
-    
+
     <footer class="page-footer">
         <div class="ftft">
             <div class="footer-copyright">
@@ -247,7 +252,7 @@
     <!--importacion del javaScript de las Alertas SweetAlert-->
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="js/estadisticas.js" type="text/javascript"></script>
-    
+
     <script>
                                 $(document).ready(function () {
                                     $("#competenciasAdministrador").click(function () {

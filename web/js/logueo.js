@@ -15,22 +15,30 @@ $("#body").keyup(function (event) {
 });
 
 $(document).ready(function () {
+
     if (annyang) {
-      //  annyang.setLenguage("es");
+       
 // Let's define our first command. First the text we expect, and then the function it should call
         var commands = {
-            'hello': function () {
-                $('#enviar').click();//  animate({bottom: '-100px'});
+            'hola *valor': function (valor) {
+                //$('#enviar').click();//  animate({bottom: '-100px'});
+                alert("ESteban hola");
+                 $("#usuario").focus();
+               
+                    $("#usuario").val(valor); 
+                 
+                
             }
         };
     }
 
     // Add our commands to annyang
     annyang.addCommands(commands);
+    //annyang.setLanguage("es-MX");
 
     // Start listening. You can call this here, or attach this call to an event, button, etc.
     annyang.start();
-    
+
 
     $("#enviar").click(function () {
         $.ajax({

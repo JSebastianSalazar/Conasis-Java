@@ -334,6 +334,62 @@ public class ServletUsuario extends HttpServlet {
 
                     }
                     break;
+                    //ESTO LO PASA AL SERLET DE APRENDIZ SI QUIERE
+                case "tblAprendicesFicha2":
+                    lista = new ArrayList();
+                    lista = dao.aprendicesDeFichas2(ficha);
+                    System.out.println(ficha);
+                    if (lista.isEmpty() || lista == null) {
+                        out.println("<br>");
+                        out.println("<center><h4>La ficha No tiene aprendices<h4></center>");
+                    } else {
+                        out.println("<center><h5>" + ficha + "<h5></center><br>");
+
+                        out.println("<table class='highlight bordered' id='sebas'>");
+                        out.println("<thead>");
+                        out.println("<tr>");
+                        out.println("<th data-field='id'><center>Numero documento</center></th>");
+                        out.println("<th data-field='id'><center>Nombre</center></th>");
+                        out.println("<th data-field='id'><center>Apellido</center></th>");
+                        out.println("<th data-field='id'><center>Foto</center></th>");
+                        out.println("<th data-field='id'><center>Correo</center></th>");
+                        out.println("</tr>");
+                        out.println("</thead>");
+                        out.println("<tbody>");
+                        int idA = 0;
+                        System.out.println(lista.size() + "aca estoy");
+                        for (int i = 0; i < lista.size(); i++) {
+
+                            u = lista.get(i);
+                            idA = u.getIdProgramacion();
+                            json = "[{idProgramacion:\n" + u.getIdProgramacion() + "\n,idAprendiz:\n" + u.getId() + "\n}]";
+                            //idA = u.getId();
+                            out.println("<tr>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getDocumento() + "</td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getNombre() + "</td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getApellido() + "</td>");
+                            out.println("<td id='" + u.getDocumento() + "' value='"+u.getNombre()+" "+u.getApellido() +"' onclick='verFotoAprendiz(this)'  style='cursor: pointer'><i class=\"material-icons\">add</i></td>");
+                            out.println("<td id='" + "" + "' onclick=''>" + u.getCorreo() + "</td>");
+                            out.println("<tr>");
+                        }
+                        out.println("</tbody>");
+                        out.println("</table>");
+                        
+                        out.println("<div id='apeFoto' class='modal' >");
+                        out.println("<div class='modal-content'>");
+                        out.println("<center><h4 id=''>Foto</h4></center>");
+                        out.println("<br>");
+                        out.println("<center><P id='documentofoto'></P></center>");
+                        out.println("<br>");
+                        out.println("<center><img class=' circle' id='fotoapend' src=\"\" alt=\"\" /></center>");
+                        out.println("</div>");
+                        out.println("<div class='modal-footer'>");
+                        out.println("<button href='#!' class='modal-action modal-close btn waves-effect waves-green btn-flat' id='cerrarModalNovedad'><span id=''>Cancelar</span></button>");
+                        out.println("</div>");
+                        out.println("</div>");
+
+                    }
+                    break;
 
             }
         }
