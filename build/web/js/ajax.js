@@ -2198,8 +2198,8 @@ function mdCntGenral(id) {
                 fecha[j] = object[j].fecha;
                 dia[j] = object[j].entradaSalida;
             }
-            alert(fecha);
-            alert(dia);
+//            alert(fecha);
+//            alert(dia);
             for (var f = 0; f < fecha.length; f++) {
                 data.addRows([[new Date(fecha[f]), f]]);//filas de la grafica
             }
